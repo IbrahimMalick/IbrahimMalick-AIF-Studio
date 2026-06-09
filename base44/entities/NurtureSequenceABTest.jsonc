@@ -1,0 +1,174 @@
+{
+  "name": "NurtureSequenceABTest",
+  "type": "object",
+  "properties": {
+    "nurture_rule_id": {
+      "type": "string",
+      "description": "Parent nurture rule being tested"
+    },
+    "test_name": {
+      "type": "string",
+      "description": "A/B test name"
+    },
+    "hypothesis": {
+      "type": "string",
+      "description": "What we're testing"
+    },
+    "test_type": {
+      "type": "string",
+      "enum": [
+        "messaging",
+        "timing",
+        "channel_mix",
+        "frequency",
+        "cta",
+        "offer"
+      ],
+      "description": "What aspect is being tested"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variant_id": {
+            "type": "string"
+          },
+          "variant_name": {
+            "type": "string"
+          },
+          "sequence_config": {
+            "type": "object"
+          },
+          "leads_assigned": {
+            "type": "number",
+            "default": 0
+          },
+          "sequences_started": {
+            "type": "number",
+            "default": 0
+          },
+          "sequences_completed": {
+            "type": "number",
+            "default": 0
+          },
+          "leads_responded": {
+            "type": "number",
+            "default": 0
+          },
+          "leads_qualified": {
+            "type": "number",
+            "default": 0
+          },
+          "leads_converted": {
+            "type": "number",
+            "default": 0
+          },
+          "avg_engagement_score": {
+            "type": "number"
+          },
+          "avg_response_time_hours": {
+            "type": "number"
+          },
+          "avg_touchpoints_to_response": {
+            "type": "number"
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "open_rate": {
+                "type": "number"
+              },
+              "click_rate": {
+                "type": "number"
+              },
+              "response_rate": {
+                "type": "number"
+              },
+              "qualification_rate": {
+                "type": "number"
+              },
+              "conversion_rate": {
+                "type": "number"
+              },
+              "avg_time_to_conversion_days": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "description": "Test variants with metrics"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "running",
+        "paused",
+        "completed",
+        "cancelled"
+      ],
+      "default": "draft",
+      "description": "Test status"
+    },
+    "traffic_split": {
+      "type": "object",
+      "properties": {
+        "variant_a_percent": {
+          "type": "number",
+          "default": 50
+        },
+        "variant_b_percent": {
+          "type": "number",
+          "default": 50
+        }
+      },
+      "description": "Traffic allocation across variants"
+    },
+    "target_sample_size": {
+      "type": "number",
+      "default": 100,
+      "description": "Minimum leads needed per variant"
+    },
+    "confidence_level": {
+      "type": "number",
+      "default": 95,
+      "description": "Statistical confidence threshold"
+    },
+    "winning_variant": {
+      "type": "string",
+      "description": "Winning variant ID"
+    },
+    "statistical_significance": {
+      "type": "number",
+      "description": "p-value for significance"
+    },
+    "lift_percentage": {
+      "type": "number",
+      "description": "Performance lift of winner vs control"
+    },
+    "auto_winner_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically declare winner when significant"
+    },
+    "winner_declared_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "nurture_rule_id",
+    "test_name",
+    "variants"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "name": "CallSession",
+  "type": "object",
+  "properties": {
+    "call_sid": {
+      "type": "string",
+      "description": "Twilio call identifier"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "inbound",
+        "outbound"
+      ],
+      "description": "Call direction"
+    },
+    "from_number": {
+      "type": "string",
+      "description": "Caller phone number"
+    },
+    "to_number": {
+      "type": "string",
+      "description": "Recipient phone number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ringing",
+        "in_progress",
+        "completed",
+        "missed",
+        "failed"
+      ],
+      "default": "ringing",
+      "description": "Call status"
+    },
+    "recording_url": {
+      "type": "string",
+      "description": "Twilio recording URL"
+    },
+    "transcript": {
+      "type": "string",
+      "description": "Full call transcript"
+    },
+    "summary": {
+      "type": "string",
+      "description": "AI-generated call summary"
+    },
+    "sentiment": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1,
+      "description": "Call sentiment score (-1 to 1)"
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "schedule_meeting",
+        "qualify_lead",
+        "faq_answer",
+        "take_message",
+        "escalate_to_human",
+        "collect_payment",
+        "follow_up",
+        "pricing_inquiry",
+        "demo_request",
+        "ready_to_buy",
+        "price_concern"
+      ],
+      "description": "Detected caller intent"
+    },
+    "lead_id": {
+      "type": "string",
+      "description": "Associated lead ID"
+    },
+    "appointment_id": {
+      "type": "string",
+      "description": "Booked appointment ID"
+    },
+    "disposition": {
+      "type": "string",
+      "enum": [
+        "qualified",
+        "callback_requested",
+        "spam",
+        "no_answer",
+        "wrong_number",
+        "not_interested",
+        "booked",
+        "information_only"
+      ],
+      "description": "Call outcome"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Call duration"
+    },
+    "ai_turns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "speaker": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "number"
+          },
+          "confidence": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Conversation turns"
+    },
+    "entities_extracted": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "budget": {
+          "type": "string"
+        },
+        "timeline": {
+          "type": "string"
+        },
+        "use_case": {
+          "type": "string"
+        }
+      },
+      "description": "Extracted information"
+    },
+    "next_best_action": {
+      "type": "string",
+      "description": "AI-recommended next step"
+    },
+    "escalated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether call was escalated to human"
+    },
+    "escalation_reason": {
+      "type": "string",
+      "description": "Why call was escalated"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Total call cost"
+    },
+    "ghl_synced": {
+      "type": "boolean",
+      "default": false,
+      "description": "Synced to GoHighLevel"
+    },
+    "ghl_contact_created": {
+      "type": "boolean",
+      "default": false,
+      "description": "Created GHL contact"
+    },
+    "ghl_opportunity_created": {
+      "type": "boolean",
+      "default": false,
+      "description": "Created GHL opportunity"
+    },
+    "ghl_workflow_triggered": {
+      "type": "boolean",
+      "default": false,
+      "description": "Triggered GHL automation"
+    }
+  },
+  "required": [
+    "call_sid",
+    "direction",
+    "from_number",
+    "to_number"
+  ]
+}

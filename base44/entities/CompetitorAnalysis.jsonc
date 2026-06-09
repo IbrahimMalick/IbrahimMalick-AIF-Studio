@@ -1,0 +1,94 @@
+{
+  "name": "CompetitorAnalysis",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User conducting analysis"
+    },
+    "competitor_name": {
+      "type": "string",
+      "description": "Competitor being tracked"
+    },
+    "competitor_url": {
+      "type": "string",
+      "description": "Competitor's main URL"
+    },
+    "platforms_tracked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where we're tracking them"
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "followers": {
+          "type": "object"
+        },
+        "engagement_rate": {
+          "type": "object"
+        },
+        "posting_frequency": {
+          "type": "object"
+        },
+        "content_types": {
+          "type": "object"
+        },
+        "growth_rate": {
+          "type": "object"
+        }
+      },
+      "description": "Competitor metrics by platform"
+    },
+    "content_analysis": {
+      "type": "object",
+      "properties": {
+        "top_performing_posts": {
+          "type": "array"
+        },
+        "common_hashtags": {
+          "type": "array"
+        },
+        "posting_schedule": {
+          "type": "object"
+        },
+        "content_themes": {
+          "type": "array"
+        }
+      },
+      "description": "What content works for them"
+    },
+    "gaps_and_opportunities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where you can beat them"
+    },
+    "benchmarking": {
+      "type": "object",
+      "properties": {
+        "your_position": {
+          "type": "string"
+        },
+        "gap_to_leader": {
+          "type": "object"
+        },
+        "improvement_areas": {
+          "type": "array"
+        }
+      },
+      "description": "How you compare"
+    },
+    "last_analyzed": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "competitor_name"
+  ]
+}

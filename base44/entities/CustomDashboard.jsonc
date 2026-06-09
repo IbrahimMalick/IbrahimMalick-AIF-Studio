@@ -1,0 +1,98 @@
+{
+  "name": "CustomDashboard",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Dashboard owner"
+    },
+    "dashboard_name": {
+      "type": "string",
+      "description": "Dashboard title"
+    },
+    "widgets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "widget_id": {
+            "type": "string"
+          },
+          "widget_type": {
+            "type": "string",
+            "enum": [
+              "metric_card",
+              "line_chart",
+              "bar_chart",
+              "pie_chart",
+              "table",
+              "funnel",
+              "heatmap",
+              "goal_tracker"
+            ]
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            }
+          },
+          "config": {
+            "type": "object"
+          },
+          "data_source": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Dashboard widgets"
+    },
+    "layout": {
+      "type": "string",
+      "enum": [
+        "grid",
+        "freeform"
+      ],
+      "default": "grid"
+    },
+    "refresh_interval": {
+      "type": "number",
+      "default": 300,
+      "description": "Auto-refresh in seconds"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false
+    },
+    "shared_with": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "User emails with access"
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ],
+      "default": "dark"
+    }
+  },
+  "required": [
+    "user_email",
+    "dashboard_name"
+  ]
+}

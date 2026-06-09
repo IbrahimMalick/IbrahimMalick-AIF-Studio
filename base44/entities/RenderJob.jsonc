@@ -1,0 +1,176 @@
+{
+  "name": "RenderJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "video_render",
+        "image_generation",
+        "document_analysis",
+        "audio_synthesis"
+      ],
+      "description": "Type of job"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Related project ID"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User who submitted this job"
+    },
+    "user_subscription_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio",
+        "enterprise"
+      ],
+      "default": "free",
+      "description": "User's plan tier at time of submission"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "processing",
+        "completed",
+        "failed",
+        "cancelled"
+      ],
+      "default": "queued"
+    },
+    "priority_score": {
+      "type": "number",
+      "default": 0,
+      "description": "AI-calculated priority score (higher = renders first)"
+    },
+    "queue_position": {
+      "type": "number",
+      "description": "Current position in queue"
+    },
+    "estimated_render_time_seconds": {
+      "type": "number",
+      "description": "AI-predicted render time"
+    },
+    "estimated_wait_time_seconds": {
+      "type": "number",
+      "description": "Estimated wait before processing starts"
+    },
+    "complexity_score": {
+      "type": "number",
+      "description": "Project complexity (0-100)"
+    },
+    "complexity_factors": {
+      "type": "object",
+      "properties": {
+        "duration_seconds": {
+          "type": "number"
+        },
+        "resolution": {
+          "type": "string"
+        },
+        "fps": {
+          "type": "number"
+        },
+        "effects_count": {
+          "type": "number"
+        },
+        "ai_features_count": {
+          "type": "number"
+        },
+        "scene_count": {
+          "type": "number"
+        },
+        "has_stabilization": {
+          "type": "boolean"
+        },
+        "has_color_correction": {
+          "type": "boolean"
+        },
+        "has_audio_enhancement": {
+          "type": "boolean"
+        },
+        "has_style_transfer": {
+          "type": "boolean"
+        }
+      },
+      "description": "Factors affecting complexity"
+    },
+    "render_settings": {
+      "type": "object",
+      "description": "Export settings",
+      "properties": {
+        "codec": {
+          "type": "string"
+        },
+        "bitrate_kbps": {
+          "type": "number"
+        },
+        "resolution": {
+          "type": "string"
+        },
+        "framerate": {
+          "type": "number"
+        },
+        "preset_name": {
+          "type": "string"
+        }
+      }
+    },
+    "progress": {
+      "type": "number",
+      "default": 0,
+      "description": "Progress percentage"
+    },
+    "output_url": {
+      "type": "string",
+      "description": "Result URL"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "processing_time_seconds": {
+      "type": "number",
+      "description": "Actual time spent processing"
+    },
+    "total_time_seconds": {
+      "type": "number",
+      "description": "Total time from queue to completion"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of retry attempts if failed"
+    },
+    "max_retries": {
+      "type": "number",
+      "default": 3,
+      "description": "Maximum retry attempts"
+    },
+    "boosted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user paid to boost priority"
+    },
+    "boost_amount_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Amount paid for priority boost"
+    }
+  },
+  "required": [
+    "job_type",
+    "user_email"
+  ]
+}

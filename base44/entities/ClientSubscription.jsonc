@@ -1,0 +1,84 @@
+{
+  "name": "ClientSubscription",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      "description": "Client entity ID"
+    },
+    "plan_type": {
+      "type": "string",
+      "enum": [
+        "refresh_5k",
+        "refresh_10k",
+        "refresh_15k",
+        "custom"
+      ],
+      "description": "Subscription plan type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "cancelled",
+        "expired"
+      ],
+      "default": "active",
+      "description": "Subscription status"
+    },
+    "monthly_rate": {
+      "type": "number",
+      "description": "Monthly subscription rate in USD"
+    },
+    "billing_cycle": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "quarterly",
+        "annual"
+      ],
+      "default": "monthly",
+      "description": "Billing frequency"
+    },
+    "next_billing_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Next billing date"
+    },
+    "campaigns_included": {
+      "type": "number",
+      "description": "Number of campaigns included per cycle"
+    },
+    "campaigns_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Campaigns used this cycle"
+    },
+    "rollover_allowed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Can unused campaigns roll over"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Subscription start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Subscription end date"
+    },
+    "cancelled_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Cancellation timestamp"
+    }
+  },
+  "required": [
+    "client_id",
+    "plan_type",
+    "monthly_rate"
+  ]
+}

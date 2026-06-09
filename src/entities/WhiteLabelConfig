@@ -1,0 +1,216 @@
+{
+  "name": "WhiteLabelConfig",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User/Agency owner"
+    },
+    "brand_name": {
+      "type": "string",
+      "description": "Company/brand name"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Custom logo URL"
+    },
+    "logo_dark_url": {
+      "type": "string",
+      "description": "Logo for dark mode"
+    },
+    "favicon_url": {
+      "type": "string",
+      "description": "Custom favicon"
+    },
+    "primary_color": {
+      "type": "string",
+      "default": "#FFD700",
+      "description": "Main brand color"
+    },
+    "secondary_color": {
+      "type": "string",
+      "default": "#FF8C00",
+      "description": "Secondary color"
+    },
+    "accent_color": {
+      "type": "string",
+      "default": "#00D4C9",
+      "description": "Accent color"
+    },
+    "background_color": {
+      "type": "string",
+      "default": "#0C0C0C",
+      "description": "Background color"
+    },
+    "text_color": {
+      "type": "string",
+      "default": "#FFFFFF",
+      "description": "Primary text color"
+    },
+    "custom_domain": {
+      "type": "string",
+      "description": "Custom domain (app.clientname.com)"
+    },
+    "custom_css": {
+      "type": "string",
+      "description": "Additional CSS overrides"
+    },
+    "app_name": {
+      "type": "string",
+      "default": "AI Freedom Studios",
+      "description": "Application name"
+    },
+    "presented_by": {
+      "type": "string",
+      "default": "AI Freedom Duane",
+      "description": "Brand presenter"
+    },
+    "founder_name": {
+      "type": "string",
+      "default": "Duane Persad",
+      "description": "Platform founder"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Brand tagline"
+    },
+    "support_email": {
+      "type": "string",
+      "description": "Support contact email"
+    },
+    "support_phone": {
+      "type": "string",
+      "description": "Support phone"
+    },
+    "support_url": {
+      "type": "string",
+      "description": "Help center URL"
+    },
+    "terms_url": {
+      "type": "string",
+      "description": "Terms of service URL"
+    },
+    "privacy_url": {
+      "type": "string",
+      "description": "Privacy policy URL"
+    },
+    "hide_powered_by": {
+      "type": "boolean",
+      "default": false,
+      "description": "Hide 'Powered by' branding"
+    },
+    "custom_login_background": {
+      "type": "string",
+      "description": "Login page background URL"
+    },
+    "custom_fonts": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "description": "Custom font families"
+    },
+    "email_from_name": {
+      "type": "string",
+      "default": "AI Freedom Studios",
+      "description": "Email sender name"
+    },
+    "email_from_address": {
+      "type": "string",
+      "description": "Email sender address"
+    },
+    "email_logo_url": {
+      "type": "string",
+      "description": "Logo for emails"
+    },
+    "social_links": {
+      "type": "object",
+      "properties": {
+        "facebook": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "instagram": {
+          "type": "string"
+        },
+        "linkedin": {
+          "type": "string"
+        },
+        "youtube": {
+          "type": "string"
+        }
+      },
+      "description": "Social media links"
+    },
+    "feature_flags": {
+      "type": "object",
+      "description": "Enable/disable features",
+      "properties": {
+        "show_video_studio": {
+          "type": "boolean",
+          "default": true
+        },
+        "show_ai_art": {
+          "type": "boolean",
+          "default": true
+        },
+        "show_research_hub": {
+          "type": "boolean",
+          "default": true
+        },
+        "show_social_media": {
+          "type": "boolean",
+          "default": true
+        },
+        "show_templates": {
+          "type": "boolean",
+          "default": true
+        },
+        "show_analytics": {
+          "type": "boolean",
+          "default": true
+        },
+        "show_affiliate_program": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "custom_pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Custom menu pages"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "user_email",
+    "brand_name"
+  ]
+}

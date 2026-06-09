@@ -1,0 +1,259 @@
+{
+  "name": "BrandVoiceProfile",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this brand voice"
+    },
+    "profile_name": {
+      "type": "string",
+      "description": "Brand voice profile name"
+    },
+    "brand_id": {
+      "type": "string",
+      "description": "Optional Brand entity ID"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": true,
+      "description": "Default voice for user"
+    },
+    "manual_guidelines": {
+      "type": "object",
+      "properties": {
+        "tone": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tone descriptors (e.g., professional, witty, empathetic)"
+        },
+        "voice_attributes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Voice characteristics (e.g., concise, storytelling, data-driven)"
+        },
+        "dos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What TO do in content"
+        },
+        "donts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What NOT to do in content"
+        },
+        "preferred_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Signature phrases to use"
+        },
+        "avoid_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Phrases to never use"
+        },
+        "target_audience": {
+          "type": "string",
+          "description": "Primary audience description"
+        },
+        "brand_personality": {
+          "type": "string",
+          "description": "Overall brand personality"
+        }
+      }
+    },
+    "example_content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "type": "string",
+            "enum": [
+              "social_post",
+              "email",
+              "blog",
+              "script",
+              "ad_copy"
+            ]
+          },
+          "platform": {
+            "type": "string"
+          },
+          "content_text": {
+            "type": "string"
+          },
+          "performance_score": {
+            "type": "number"
+          },
+          "engagement_rate": {
+            "type": "number"
+          },
+          "conversion_rate": {
+            "type": "number"
+          },
+          "reason_for_success": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Best-performing content examples"
+    },
+    "ai_analyzed_voice": {
+      "type": "object",
+      "properties": {
+        "linguistic_patterns": {
+          "type": "object",
+          "properties": {
+            "avg_sentence_length": {
+              "type": "number"
+            },
+            "vocabulary_complexity": {
+              "type": "number"
+            },
+            "formality_score": {
+              "type": "number"
+            },
+            "emotional_tone_scores": {
+              "type": "object"
+            },
+            "readability_grade": {
+              "type": "number"
+            },
+            "active_voice_percentage": {
+              "type": "number"
+            }
+          }
+        },
+        "common_words": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "common_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "emoji_usage": {
+          "type": "object",
+          "properties": {
+            "frequency": {
+              "type": "number"
+            },
+            "common_emojis": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "punctuation_style": {
+          "type": "object",
+          "properties": {
+            "exclamation_frequency": {
+              "type": "number"
+            },
+            "question_frequency": {
+              "type": "number"
+            },
+            "ellipsis_usage": {
+              "type": "boolean"
+            }
+          }
+        },
+        "call_to_action_patterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "storytelling_elements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "AI-analyzed voice characteristics from examples"
+    },
+    "voice_fingerprint": {
+      "type": "string",
+      "description": "Embedding vector for similarity matching"
+    },
+    "consistency_thresholds": {
+      "type": "object",
+      "properties": {
+        "minimum_score": {
+          "type": "number",
+          "default": 75,
+          "description": "Minimum acceptable consistency score"
+        },
+        "warning_score": {
+          "type": "number",
+          "default": 65,
+          "description": "Score that triggers warnings"
+        },
+        "auto_reject_below": {
+          "type": "number",
+          "default": 50,
+          "description": "Auto-reject content below this score"
+        }
+      }
+    },
+    "analysis_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times this voice was used for analysis"
+    },
+    "avg_consistency_score": {
+      "type": "number",
+      "description": "Average consistency score across all checks"
+    },
+    "last_analyzed": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "training_status": {
+      "type": "string",
+      "enum": [
+        "untrained",
+        "analyzing",
+        "trained",
+        "needs_update"
+      ],
+      "default": "untrained",
+      "description": "AI training status"
+    },
+    "sample_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of example content pieces"
+    },
+    "confidence_level": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI confidence in voice profile accuracy"
+    }
+  },
+  "required": [
+    "user_email",
+    "profile_name"
+  ]
+}

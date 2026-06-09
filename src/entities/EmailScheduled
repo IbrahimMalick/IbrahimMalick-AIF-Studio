@@ -1,0 +1,56 @@
+{
+  "name": "EmailScheduled",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Email recipient"
+    },
+    "sequence_id": {
+      "type": "string",
+      "description": "Parent sequence"
+    },
+    "email_number": {
+      "type": "number",
+      "description": "Position in sequence"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "scheduled_for": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When to send"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "sent",
+        "failed",
+        "canceled"
+      ],
+      "default": "scheduled"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "opened_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "clicked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "error_message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_email",
+    "subject",
+    "scheduled_for"
+  ]
+}

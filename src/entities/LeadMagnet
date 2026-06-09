@@ -1,0 +1,109 @@
+{
+  "name": "LeadMagnet",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this"
+    },
+    "magnet_name": {
+      "type": "string",
+      "description": "Lead magnet title"
+    },
+    "magnet_type": {
+      "type": "string",
+      "enum": [
+        "ebook",
+        "checklist",
+        "guide",
+        "template",
+        "cheatsheet",
+        "workbook",
+        "report"
+      ],
+      "description": "Type of lead magnet"
+    },
+    "topic": {
+      "type": "string",
+      "description": "What it's about"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Who it's for"
+    },
+    "key_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Main topics covered"
+    },
+    "generated_content": {
+      "type": "string",
+      "description": "AI-generated text content"
+    },
+    "pdf_url": {
+      "type": "string",
+      "description": "Final PDF file URL"
+    },
+    "cover_image_url": {
+      "type": "string",
+      "description": "Cover design"
+    },
+    "page_count": {
+      "type": "number",
+      "description": "Number of pages"
+    },
+    "design_template": {
+      "type": "string",
+      "enum": [
+        "modern",
+        "professional",
+        "minimalist",
+        "colorful",
+        "corporate"
+      ],
+      "default": "modern"
+    },
+    "brand_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Colors used in design"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "completed",
+        "failed"
+      ],
+      "default": "generating"
+    },
+    "download_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times downloaded"
+    },
+    "ghl_form_integrated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Connected to GHL"
+    },
+    "ghl_form_url": {
+      "type": "string",
+      "description": "GHL form for delivery"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "magnet_name",
+    "magnet_type",
+    "topic"
+  ]
+}

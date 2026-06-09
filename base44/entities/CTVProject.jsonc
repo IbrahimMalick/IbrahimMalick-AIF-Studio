@@ -1,0 +1,365 @@
+{
+  "name": "CTVProject",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this CTV project"
+    },
+    "project_name": {
+      "type": "string",
+      "description": "CTV project title"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "episodic_series",
+        "standalone_video",
+        "ad_spot",
+        "promo",
+        "tutorial",
+        "news_segment",
+        "documentary"
+      ],
+      "default": "standalone_video",
+      "description": "Type of CTV content"
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "roku",
+          "apple_tv",
+          "fire_tv",
+          "android_tv",
+          "samsung_tv",
+          "vizio"
+        ]
+      },
+      "description": "Which CTV platforms to optimize for"
+    },
+    "content_category": {
+      "type": "string",
+      "enum": [
+        "entertainment",
+        "news",
+        "sports",
+        "kids",
+        "music",
+        "documentary",
+        "lifestyle",
+        "education",
+        "tech"
+      ],
+      "default": "entertainment",
+      "description": "Content category for CTV platforms"
+    },
+    "content_rating": {
+      "type": "string",
+      "enum": [
+        "G",
+        "PG",
+        "PG-13",
+        "TV-14",
+        "TV-MA"
+      ],
+      "default": "G",
+      "description": "Content rating"
+    },
+    "duration_target_seconds": {
+      "type": "number",
+      "description": "Target video duration"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "16:9",
+        "4:3"
+      ],
+      "default": "16:9",
+      "description": "CTV aspect ratio (always widescreen)"
+    },
+    "resolution": {
+      "type": "string",
+      "enum": [
+        "1920x1080",
+        "3840x2160",
+        "1280x720"
+      ],
+      "default": "1920x1080",
+      "description": "Video resolution"
+    },
+    "script": {
+      "type": "string",
+      "description": "AI-generated TV-optimized script"
+    },
+    "script_type": {
+      "type": "string",
+      "enum": [
+        "lean_back",
+        "lean_forward",
+        "ad_spot",
+        "tutorial",
+        "storytelling"
+      ],
+      "default": "lean_back",
+      "description": "Script optimized for viewing mode"
+    },
+    "attention_hooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "number"
+          },
+          "hook_type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Strategic attention retention points"
+    },
+    "intro_config": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "cinematic",
+            "modern",
+            "minimal",
+            "branded",
+            "dramatic",
+            "elegant"
+          ]
+        },
+        "duration_seconds": {
+          "type": "number",
+          "default": 5
+        },
+        "animation_url": {
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "music_url": {
+          "type": "string"
+        }
+      }
+    },
+    "outro_config": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "subscribe_cta",
+            "social_follow",
+            "watch_next",
+            "branded",
+            "minimal"
+          ]
+        },
+        "duration_seconds": {
+          "type": "number",
+          "default": 8
+        },
+        "animation_url": {
+          "type": "string"
+        },
+        "cta_text": {
+          "type": "string"
+        },
+        "social_handles": {
+          "type": "object"
+        },
+        "music_url": {
+          "type": "string"
+        }
+      }
+    },
+    "platform_optimizations": {
+      "type": "object",
+      "description": "Platform-specific optimizations",
+      "properties": {
+        "roku": {
+          "type": "object",
+          "properties": {
+            "thumbnail_url": {
+              "type": "string"
+            },
+            "preview_video_url": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object"
+            }
+          }
+        },
+        "apple_tv": {
+          "type": "object",
+          "properties": {
+            "thumbnail_url": {
+              "type": "string"
+            },
+            "preview_video_url": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object"
+            }
+          }
+        },
+        "fire_tv": {
+          "type": "object",
+          "properties": {
+            "thumbnail_url": {
+              "type": "string"
+            },
+            "preview_video_url": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Final rendered video URL"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "script_generated",
+        "rendering",
+        "optimizing",
+        "ready",
+        "published",
+        "failed"
+      ],
+      "default": "draft",
+      "description": "Project status"
+    },
+    "ai_optimization_applied": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether AI optimization was run"
+    },
+    "optimization_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "optimization_type": {
+            "type": "string"
+          },
+          "before": {
+            "type": "object"
+          },
+          "after": {
+            "type": "object"
+          },
+          "impact": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Optimization history"
+    },
+    "compliance_check": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "platform_specific_flags": {
+          "type": "object"
+        }
+      },
+      "description": "Platform compliance validation"
+    },
+    "published_to": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string"
+          },
+          "channel_id": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "content_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Publishing status per platform"
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "total_views": {
+          "type": "number",
+          "default": 0
+        },
+        "total_watch_time_minutes": {
+          "type": "number",
+          "default": 0
+        },
+        "avg_watch_percentage": {
+          "type": "number",
+          "default": 0
+        },
+        "completion_rate": {
+          "type": "number",
+          "default": 0
+        },
+        "engagement_rate": {
+          "type": "number",
+          "default": 0
+        }
+      },
+      "description": "Cross-platform analytics"
+    }
+  },
+  "required": [
+    "user_email",
+    "project_name",
+    "content_type",
+    "target_platforms"
+  ]
+}

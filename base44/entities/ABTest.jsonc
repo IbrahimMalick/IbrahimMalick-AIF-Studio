@@ -1,0 +1,84 @@
+{
+  "name": "ABTest",
+  "type": "object",
+  "properties": {
+    "test_name": {
+      "type": "string",
+      "description": "Test name"
+    },
+    "hypothesis": {
+      "type": "string",
+      "description": "What we're testing"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variant_id": {
+            "type": "string"
+          },
+          "variant_name": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "users_assigned": {
+            "type": "number",
+            "default": 0
+          },
+          "conversions": {
+            "type": "number",
+            "default": 0
+          },
+          "conversion_rate": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Test variants"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "running",
+        "paused",
+        "completed"
+      ],
+      "default": "draft"
+    },
+    "metric": {
+      "type": "string",
+      "description": "Success metric"
+    },
+    "target_sample_size": {
+      "type": "number"
+    },
+    "confidence_level": {
+      "type": "number",
+      "default": 95
+    },
+    "winner": {
+      "type": "string",
+      "description": "Winning variant ID"
+    },
+    "statistical_significance": {
+      "type": "number"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "test_name",
+    "hypothesis",
+    "metric"
+  ]
+}

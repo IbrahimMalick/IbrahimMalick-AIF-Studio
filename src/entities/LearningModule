@@ -1,0 +1,107 @@
+{
+  "name": "LearningModule",
+  "type": "object",
+  "properties": {
+    "module_name": {
+      "type": "string",
+      "description": "Name of learning module"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "video_creation",
+        "social_media",
+        "copywriting",
+        "marketing",
+        "sales",
+        "automation",
+        "ai_tools",
+        "mindset"
+      ],
+      "description": "Module category"
+    },
+    "difficulty_level": {
+      "type": "string",
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced",
+        "expert"
+      ],
+      "default": "beginner",
+      "description": "Skill level required"
+    },
+    "estimated_duration_minutes": {
+      "type": "number",
+      "description": "How long to complete"
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lesson_title": {
+            "type": "string"
+          },
+          "lesson_type": {
+            "type": "string",
+            "enum": [
+              "video",
+              "reading",
+              "exercise",
+              "quiz",
+              "project"
+            ]
+          },
+          "content_url": {
+            "type": "string"
+          },
+          "duration_minutes": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Individual lessons in module"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Modules that must be completed first"
+    },
+    "skills_taught": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills user will learn"
+    },
+    "practical_project": {
+      "type": "string",
+      "description": "Real-world project to apply learning"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether module is live"
+    },
+    "enrollment_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Users enrolled"
+    },
+    "completion_rate": {
+      "type": "number",
+      "description": "% of users who finish"
+    },
+    "average_rating": {
+      "type": "number",
+      "description": "Student ratings"
+    }
+  },
+  "required": [
+    "module_name",
+    "category"
+  ]
+}

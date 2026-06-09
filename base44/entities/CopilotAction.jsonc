@@ -1,0 +1,256 @@
+{
+  "name": "CopilotAction",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who triggered this action"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Chat session ID for grouping related actions"
+    },
+    "command": {
+      "type": "string",
+      "description": "Original natural language command from user"
+    },
+    "command_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "voice",
+        "visual"
+      ],
+      "default": "text",
+      "description": "How command was input"
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "create_video",
+        "generate_image",
+        "schedule_post",
+        "send_email",
+        "create_funnel",
+        "analyze_data",
+        "create_automation",
+        "render_video",
+        "upload_file",
+        "create_campaign",
+        "generate_caption",
+        "optimize_seo",
+        "create_workflow",
+        "send_notification",
+        "clone_voice",
+        "generate_captions",
+        "spy_competitor",
+        "create_lead_magnet",
+        "launch_ad",
+        "sync_ghl",
+        "analyze_performance",
+        "suggest_content",
+        "create_script",
+        "break_scenes",
+        "generate_voice",
+        "assemble_video",
+        "predict_viral",
+        "fetch_trends",
+        "optimize_ad",
+        "create_audience",
+        "export_data",
+        "create_template"
+      ],
+      "description": "Detected intent/action type"
+    },
+    "params": {
+      "type": "object",
+      "description": "Extracted parameters from command",
+      "default": {}
+    },
+    "chained_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of subsequent actions in chain"
+    },
+    "parent_action_id": {
+      "type": "string",
+      "description": "If part of a chain, parent action ID"
+    },
+    "workflow_id": {
+      "type": "string",
+      "description": "If action is part of workflow"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "running",
+        "success",
+        "failed",
+        "cancelled",
+        "pending_confirmation",
+        "awaiting_approval"
+      ],
+      "default": "queued",
+      "description": "Current execution status"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "reactive",
+        "proactive",
+        "planner",
+        "analyst"
+      ],
+      "default": "reactive",
+      "description": "Copilot operation mode"
+    },
+    "personality": {
+      "type": "string",
+      "enum": [
+        "mentor",
+        "hustler",
+        "analyst",
+        "creator"
+      ],
+      "description": "AI personality used"
+    },
+    "result": {
+      "type": "object",
+      "description": "Action execution result data"
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details if action failed",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "AI confidence score in understanding command (0-1)"
+    },
+    "requires_confirmation": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether user must confirm before execution"
+    },
+    "requires_approval": {
+      "type": "boolean",
+      "default": false,
+      "description": "For budget-sensitive actions"
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "Email of user who approved (for enterprise)"
+    },
+    "confirmed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When user confirmed the action"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When execution started"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When execution finished"
+    },
+    "execution_time_ms": {
+      "type": "number",
+      "description": "Total execution time in milliseconds"
+    },
+    "entity_created_id": {
+      "type": "string",
+      "description": "ID of entity created by this action"
+    },
+    "entity_created_type": {
+      "type": "string",
+      "description": "Type of entity created"
+    },
+    "ai_model_used": {
+      "type": "string",
+      "description": "AI model used for intent detection",
+      "default": "gpt-4"
+    },
+    "tokens_used": {
+      "type": "number",
+      "description": "Tokens consumed for this action"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Estimated cost of action"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of retry attempts"
+    },
+    "context_used": {
+      "type": "object",
+      "description": "Context from memory used for this action",
+      "properties": {
+        "recent_projects": {
+          "type": "array"
+        },
+        "user_preferences": {
+          "type": "object"
+        },
+        "past_performance": {
+          "type": "object"
+        }
+      }
+    },
+    "suggested_next_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AI-suggested follow-up actions"
+    },
+    "user_feedback": {
+      "type": "object",
+      "description": "User feedback on action result",
+      "properties": {
+        "was_helpful": {
+          "type": "boolean"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "proactive_trigger": {
+      "type": "string",
+      "description": "What triggered proactive suggestion (if proactive mode)"
+    },
+    "predicted_outcome": {
+      "type": "object",
+      "description": "AI prediction of action results before execution"
+    }
+  },
+  "required": [
+    "user_email",
+    "command",
+    "intent",
+    "params"
+  ]
+}

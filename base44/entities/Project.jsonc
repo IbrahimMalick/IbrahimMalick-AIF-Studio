@@ -1,0 +1,127 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      "description": "Client entity ID"
+    },
+    "project_name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "campaign_type": {
+      "type": "string",
+      "enum": [
+        "foundation",
+        "global",
+        "empire"
+      ],
+      "description": "Campaign package type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "discovery",
+        "scripting",
+        "production",
+        "revision",
+        "delivered",
+        "archived"
+      ],
+      "default": "discovery",
+      "description": "Current project status"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "rush",
+        "urgent"
+      ],
+      "default": "standard",
+      "description": "Project priority"
+    },
+    "num_ads": {
+      "type": "number",
+      "description": "Number of ads in campaign"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages for campaign"
+    },
+    "formats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ad formats (16:9, 9:16, 1:1, 4:5)"
+    },
+    "kickoff_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Project start date"
+    },
+    "target_delivery": {
+      "type": "string",
+      "format": "date",
+      "description": "Target delivery date"
+    },
+    "actual_delivery": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual delivery date"
+    },
+    "vp_output": {
+      "type": "object",
+      "description": "VP agent strategic output"
+    },
+    "manager_output": {
+      "type": "object",
+      "description": "Manager agent tactical output"
+    },
+    "engineer_output": {
+      "type": "object",
+      "description": "Engineer agent creative output"
+    },
+    "api_costs": {
+      "type": "number",
+      "default": 0,
+      "description": "Total API costs for project"
+    },
+    "production_hours": {
+      "type": "number",
+      "default": 0,
+      "description": "Total production hours"
+    },
+    "revision_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of revision rounds"
+    },
+    "satisfaction_score": {
+      "type": "number",
+      "description": "Client satisfaction score (1-10)"
+    },
+    "script_doc_url": {
+      "type": "string",
+      "description": "URL to script document"
+    },
+    "assets_folder_url": {
+      "type": "string",
+      "description": "URL to assets folder"
+    },
+    "final_deliverables": {
+      "type": "object",
+      "description": "Final deliverable assets metadata"
+    }
+  },
+  "required": [
+    "client_id",
+    "project_name",
+    "campaign_type"
+  ]
+}

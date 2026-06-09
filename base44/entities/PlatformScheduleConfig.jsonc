@@ -1,0 +1,55 @@
+{
+  "name": "PlatformScheduleConfig",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this config"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "instagram",
+        "facebook_page",
+        "twitter",
+        "linkedin",
+        "tiktok",
+        "youtube"
+      ],
+      "description": "Target social platform"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this schedule rule is enabled"
+    },
+    "preferred_time": {
+      "type": "string",
+      "description": "Preferred posting time in HH:MM (UTC), e.g. '09:00'"
+    },
+    "day_offset": {
+      "type": "number",
+      "default": 0,
+      "description": "Days from now to schedule (0 = today, 1 = tomorrow, etc.)"
+    },
+    "default_caption_template": {
+      "type": "string",
+      "description": "Caption template. Use {{title}} and {{tags}} as placeholders."
+    },
+    "allowed_file_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which asset types to auto-post (image, video)",
+      "default": [
+        "image",
+        "video"
+      ]
+    }
+  },
+  "required": [
+    "user_email",
+    "platform"
+  ]
+}

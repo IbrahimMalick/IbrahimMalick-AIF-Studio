@@ -1,0 +1,91 @@
+{
+  "name": "ClientPortalAccess",
+  "type": "object",
+  "properties": {
+    "agency_email": {
+      "type": "string",
+      "description": "Agency who owns this client"
+    },
+    "client_email": {
+      "type": "string",
+      "description": "Client's login email"
+    },
+    "client_name": {
+      "type": "string",
+      "description": "Client's full name"
+    },
+    "client_company": {
+      "type": "string",
+      "description": "Client's business name"
+    },
+    "access_level": {
+      "type": "string",
+      "enum": [
+        "view_only",
+        "create_content",
+        "full_access"
+      ],
+      "default": "view_only",
+      "description": "What client can do"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Portal access enabled"
+    },
+    "white_label_config_id": {
+      "type": "string",
+      "description": "Which white-label config to use"
+    },
+    "allowed_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Features client can access",
+      "default": [
+        "VideoStudio",
+        "Analytics"
+      ]
+    },
+    "usage_limit": {
+      "type": "object",
+      "properties": {
+        "videos_per_month": {
+          "type": "number",
+          "default": 10
+        },
+        "posts_per_month": {
+          "type": "number",
+          "default": 30
+        },
+        "storage_gb": {
+          "type": "number",
+          "default": 5
+        }
+      },
+      "description": "Client's usage limits"
+    },
+    "custom_domain": {
+      "type": "string",
+      "description": "Client's custom portal URL"
+    },
+    "onboarding_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "last_login": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_logins": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "agency_email",
+    "client_email",
+    "client_name"
+  ]
+}

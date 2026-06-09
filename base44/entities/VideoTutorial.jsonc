@@ -1,0 +1,111 @@
+{
+  "name": "VideoTutorial",
+  "type": "object",
+  "properties": {
+    "tutorial_id": {
+      "type": "string",
+      "description": "Unique tutorial identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Tutorial title"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this tutorial teaches"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "URL to video file"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Video thumbnail"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Video length"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "onboarding",
+        "integrations",
+        "video_creation",
+        "automation",
+        "social_media",
+        "analytics",
+        "advanced"
+      ],
+      "description": "Tutorial category"
+    },
+    "difficulty_level": {
+      "type": "string",
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "default": "beginner"
+    },
+    "wizard_step": {
+      "type": "number",
+      "description": "Which setup step this relates to (0 for general)"
+    },
+    "related_templates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Template IDs this tutorial applies to"
+    },
+    "transcript": {
+      "type": "string",
+      "description": "Full video transcript for accessibility"
+    },
+    "subtitles": {
+      "type": "object",
+      "description": "Subtitles in multiple languages",
+      "properties": {
+        "en": {
+          "type": "string"
+        },
+        "es": {
+          "type": "string"
+        },
+        "fr": {
+          "type": "string"
+        }
+      }
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0
+    },
+    "completion_rate": {
+      "type": "number",
+      "description": "% of viewers who finish"
+    },
+    "helpful_votes": {
+      "type": "number",
+      "default": 0
+    },
+    "not_helpful_votes": {
+      "type": "number",
+      "default": 0
+    },
+    "next_tutorial_id": {
+      "type": "string",
+      "description": "Suggested next video"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "tutorial_id",
+    "title",
+    "video_url"
+  ]
+}

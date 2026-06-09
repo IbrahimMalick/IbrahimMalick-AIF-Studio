@@ -1,0 +1,39 @@
+{
+  "name": "AffiliateClick",
+  "type": "object",
+  "properties": {
+    "affiliate_code": {
+      "type": "string",
+      "description": "Affiliate code clicked"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "Visitor IP address"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "Browser user agent"
+    },
+    "referrer_url": {
+      "type": "string",
+      "description": "Where click came from"
+    },
+    "landing_page": {
+      "type": "string",
+      "description": "Page user landed on"
+    },
+    "converted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether click converted to signup"
+    },
+    "conversion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When conversion happened"
+    }
+  },
+  "required": [
+    "affiliate_code"
+  ]
+}

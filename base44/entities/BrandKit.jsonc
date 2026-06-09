@@ -1,0 +1,118 @@
+{
+  "name": "BrandKit",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Brand kit owner"
+    },
+    "kit_name": {
+      "type": "string",
+      "description": "Brand kit name"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Brand logo"
+    },
+    "logo_dark_url": {
+      "type": "string",
+      "description": "Logo for dark backgrounds"
+    },
+    "color_palette": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "background": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "description": "Brand colors"
+    },
+    "fonts": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      },
+      "description": "Brand fonts"
+    },
+    "lower_thirds_template": {
+      "type": "object",
+      "properties": {
+        "style": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "animation": {
+          "type": "string"
+        }
+      },
+      "description": "Default lower thirds style"
+    },
+    "cta_template": {
+      "type": "object",
+      "properties": {
+        "style": {
+          "type": "string"
+        },
+        "default_text": {
+          "type": "string"
+        },
+        "default_url": {
+          "type": "string"
+        }
+      },
+      "description": "Default CTA style"
+    },
+    "caption_template": {
+      "type": "object",
+      "properties": {
+        "font": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number"
+        },
+        "color": {
+          "type": "string"
+        },
+        "background": {
+          "type": "string"
+        },
+        "style": {
+          "type": "string"
+        }
+      },
+      "description": "Caption styling"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false,
+      "description": "Default brand kit for user"
+    }
+  },
+  "required": [
+    "user_email",
+    "kit_name"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "name": "Avatar",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this avatar"
+    },
+    "avatar_name": {
+      "type": "string",
+      "description": "Avatar name/identifier"
+    },
+    "avatar_type": {
+      "type": "string",
+      "enum": [
+        "2d_animated",
+        "3d_realistic",
+        "cartoon",
+        "professional"
+      ],
+      "default": "2d_animated",
+      "description": "Style of avatar"
+    },
+    "avatar_image_url": {
+      "type": "string",
+      "description": "Avatar visual representation"
+    },
+    "avatar_video_url": {
+      "type": "string",
+      "description": "Sample avatar video"
+    },
+    "voice_clone_id": {
+      "type": "string",
+      "description": "Cloned voice ID"
+    },
+    "voice_sample_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Voice training samples"
+    },
+    "voice_characteristics": {
+      "type": "object",
+      "description": "Voice profile",
+      "properties": {
+        "pitch": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "speaking_rate": {
+          "type": "string"
+        }
+      }
+    },
+    "personality_traits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Avatar personality"
+    },
+    "greeting_script": {
+      "type": "string",
+      "description": "Default greeting message"
+    },
+    "background_color": {
+      "type": "string",
+      "description": "Video background color"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether avatar is enabled"
+    },
+    "use_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times avatar was used"
+    },
+    "last_used": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last usage timestamp"
+    }
+  },
+  "required": [
+    "user_email",
+    "avatar_name"
+  ]
+}

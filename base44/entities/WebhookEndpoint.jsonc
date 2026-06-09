@@ -1,0 +1,76 @@
+{
+  "name": "WebhookEndpoint",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this webhook"
+    },
+    "name": {
+      "type": "string",
+      "description": "Webhook name/label"
+    },
+    "url": {
+      "type": "string",
+      "description": "Endpoint URL to send webhooks to"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Events to trigger this webhook",
+      "default": [
+        "video.completed",
+        "art.generated",
+        "research.completed"
+      ]
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether webhook is enabled"
+    },
+    "secret_key": {
+      "type": "string",
+      "description": "Secret for signature verification"
+    },
+    "headers": {
+      "type": "object",
+      "description": "Custom headers to include"
+    },
+    "retry_policy": {
+      "type": "object",
+      "properties": {
+        "max_retries": {
+          "type": "number",
+          "default": 3
+        },
+        "retry_delay_seconds": {
+          "type": "number",
+          "default": 60
+        }
+      }
+    },
+    "last_triggered": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last successful trigger"
+    },
+    "success_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total successful deliveries"
+    },
+    "failure_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total failed deliveries"
+    }
+  },
+  "required": [
+    "user_email",
+    "name",
+    "url"
+  ]
+}

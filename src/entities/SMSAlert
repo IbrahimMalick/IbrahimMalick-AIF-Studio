@@ -1,0 +1,61 @@
+{
+  "name": "SMSAlert",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User receiving SMS"
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Recipient phone number"
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "integration_failed",
+        "critical_error",
+        "security_alert",
+        "payment_failed"
+      ],
+      "description": "Alert type (only critical alerts)"
+    },
+    "message": {
+      "type": "string",
+      "description": "SMS message content"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When SMS was sent"
+    },
+    "delivered_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When SMS was delivered"
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "twilio",
+        "vonage"
+      ],
+      "description": "SMS provider used"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "sent",
+        "delivered",
+        "failed"
+      ],
+      "default": "queued"
+    }
+  },
+  "required": [
+    "user_email",
+    "phone_number",
+    "message"
+  ]
+}

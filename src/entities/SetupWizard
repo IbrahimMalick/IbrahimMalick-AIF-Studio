@@ -1,0 +1,188 @@
+{
+  "name": "SetupWizard",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User completing setup"
+    },
+    "wizard_id": {
+      "type": "string",
+      "description": "Unique wizard session"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "completed",
+        "abandoned"
+      ],
+      "default": "not_started",
+      "description": "Wizard completion status"
+    },
+    "current_step": {
+      "type": "number",
+      "default": 1,
+      "description": "Current step (1-8)"
+    },
+    "selected_template": {
+      "type": "string",
+      "enum": [
+        "coach",
+        "agency",
+        "ecommerce",
+        "saas",
+        "creator",
+        "consultant",
+        "custom"
+      ],
+      "description": "Industry template chosen"
+    },
+    "steps_completed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_number": {
+            "type": "number"
+          },
+          "step_name": {
+            "type": "string"
+          },
+          "completed_at": {
+            "type": "string"
+          },
+          "data_collected": {
+            "type": "object"
+          }
+        }
+      },
+      "description": "Completed wizard steps"
+    },
+    "integrations_to_connect": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "gohighlevel",
+        "meta_ads",
+        "mailchimp",
+        "stripe"
+      ],
+      "description": "Integrations user wants"
+    },
+    "integration_status": {
+      "type": "object",
+      "description": "Status of each integration",
+      "properties": {
+        "gohighlevel": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "testing",
+            "connected",
+            "failed"
+          ]
+        },
+        "meta_ads": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "testing",
+            "connected",
+            "failed"
+          ]
+        },
+        "mailchimp": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "testing",
+            "connected",
+            "failed"
+          ]
+        },
+        "stripe": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "testing",
+            "connected",
+            "failed"
+          ]
+        }
+      }
+    },
+    "domain_setup": {
+      "type": "object",
+      "properties": {
+        "custom_domain": {
+          "type": "string"
+        },
+        "dns_configured": {
+          "type": "boolean"
+        },
+        "ssl_enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "workspace_created": {
+      "type": "boolean",
+      "default": false
+    },
+    "demo_content_generated": {
+      "type": "boolean",
+      "default": false
+    },
+    "first_automation_created": {
+      "type": "boolean",
+      "default": false
+    },
+    "ai_coach_interactions": {
+      "type": "number",
+      "default": 0,
+      "description": "Times user asked AI for help"
+    },
+    "estimated_completion_time": {
+      "type": "number",
+      "description": "Minutes to complete"
+    },
+    "actual_completion_time": {
+      "type": "number",
+      "description": "Actual minutes taken"
+    },
+    "setup_tier": {
+      "type": "string",
+      "enum": [
+        "basic_wizard",
+        "pro_hybrid",
+        "enterprise_concierge"
+      ],
+      "default": "basic_wizard",
+      "description": "Setup service level"
+    },
+    "concierge_requested": {
+      "type": "boolean",
+      "default": false
+    },
+    "concierge_scheduled_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "wizard_id"
+  ]
+}

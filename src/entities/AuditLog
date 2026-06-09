@@ -1,0 +1,66 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who performed action"
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "login",
+        "logout",
+        "export",
+        "api_call",
+        "payment",
+        "settings_change"
+      ],
+      "description": "Action performed"
+    },
+    "resource_type": {
+      "type": "string",
+      "description": "Entity affected (VideoProject, User, etc.)"
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "ID of affected resource"
+    },
+    "changes": {
+      "type": "object",
+      "description": "Before/after values"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "user_agent": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed",
+        "blocked"
+      ],
+      "default": "success"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "Security risk level"
+    }
+  },
+  "required": [
+    "user_email",
+    "action_type"
+  ]
+}

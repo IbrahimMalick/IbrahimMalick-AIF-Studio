@@ -1,0 +1,116 @@
+{
+  "name": "ScriptGeneration",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who generated script"
+    },
+    "topic": {
+      "type": "string",
+      "description": "Video topic/subject"
+    },
+    "script_type": {
+      "type": "string",
+      "enum": [
+        "short_form",
+        "long_form",
+        "educational",
+        "sales",
+        "story",
+        "tutorial"
+      ],
+      "description": "Type of script"
+    },
+    "target_duration_seconds": {
+      "type": "number",
+      "description": "Desired video length"
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "professional",
+        "casual",
+        "energetic",
+        "calm",
+        "humorous"
+      ],
+      "default": "professional",
+      "description": "Script tone"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Who this is for"
+    },
+    "key_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Must-include points"
+    },
+    "generated_script": {
+      "type": "string",
+      "description": "Full AI-generated script"
+    },
+    "scene_breakdown": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scene_number": {
+            "type": "number"
+          },
+          "duration_seconds": {
+            "type": "number"
+          },
+          "visual_description": {
+            "type": "string"
+          },
+          "voiceover_text": {
+            "type": "string"
+          },
+          "on_screen_text": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Scene-by-scene breakdown"
+    },
+    "hooks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Attention-grabbing opening lines"
+    },
+    "cta": {
+      "type": "string",
+      "description": "Call to action"
+    },
+    "estimated_word_count": {
+      "type": "number"
+    },
+    "viral_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Predicted viral potential"
+    },
+    "used_in_project": {
+      "type": "string",
+      "description": "VideoProject ID if turned into video"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "User rating of script"
+    }
+  },
+  "required": [
+    "user_email",
+    "topic",
+    "script_type"
+  ]
+}

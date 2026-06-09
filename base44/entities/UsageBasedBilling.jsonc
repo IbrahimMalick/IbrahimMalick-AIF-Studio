@@ -1,0 +1,112 @@
+{
+  "name": "UsageBasedBilling",
+  "type": "object",
+  "properties": {
+    "agency_email": {
+      "type": "string",
+      "description": "Agency billing client"
+    },
+    "client_email": {
+      "type": "string",
+      "description": "Client being billed"
+    },
+    "billing_period_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "billing_period_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "base_monthly_fee": {
+      "type": "number",
+      "default": 0,
+      "description": "Fixed monthly charge"
+    },
+    "usage_charges": {
+      "type": "object",
+      "properties": {
+        "videos_created": {
+          "type": "number",
+          "default": 0
+        },
+        "video_rate": {
+          "type": "number",
+          "description": "Price per video"
+        },
+        "videos_total": {
+          "type": "number"
+        },
+        "posts_published": {
+          "type": "number",
+          "default": 0
+        },
+        "post_rate": {
+          "type": "number"
+        },
+        "posts_total": {
+          "type": "number"
+        },
+        "storage_gb_used": {
+          "type": "number",
+          "default": 0
+        },
+        "storage_rate_per_gb": {
+          "type": "number"
+        },
+        "storage_total": {
+          "type": "number"
+        },
+        "ai_credits_used": {
+          "type": "number",
+          "default": 0
+        },
+        "ai_credit_rate": {
+          "type": "number"
+        },
+        "ai_credits_total": {
+          "type": "number"
+        }
+      },
+      "description": "Usage-based charges"
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Total invoice amount"
+    },
+    "invoice_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "sent",
+        "paid",
+        "overdue",
+        "cancelled"
+      ],
+      "default": "draft"
+    },
+    "invoice_url": {
+      "type": "string",
+      "description": "Link to invoice PDF"
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "credit_card",
+        "ach",
+        "invoice"
+      ],
+      "description": "How client pays"
+    }
+  },
+  "required": [
+    "agency_email",
+    "client_email",
+    "billing_period_start",
+    "billing_period_end"
+  ]
+}

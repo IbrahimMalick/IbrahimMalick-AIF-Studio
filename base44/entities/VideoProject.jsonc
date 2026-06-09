@@ -1,0 +1,184 @@
+{
+  "name": "VideoProject",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Project title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Source video URL"
+    },
+    "json_script": {
+      "type": "string",
+      "description": "JSON script for video generation"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Total video duration"
+    },
+    "resolution": {
+      "type": "string",
+      "enum": [
+        "1920x1080",
+        "1280x720",
+        "1080x1920",
+        "1080x1080",
+        "3840x2160"
+      ],
+      "default": "1920x1080",
+      "description": "Video resolution"
+    },
+    "fps": {
+      "type": "number",
+      "default": 30,
+      "description": "Frames per second"
+    },
+    "scenes": {
+      "type": "array",
+      "description": "Video scenes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "number"
+          },
+          "background": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "voiceover": {
+            "type": "string"
+          },
+          "animation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "rendering",
+        "completed",
+        "failed"
+      ],
+      "default": "draft"
+    },
+    "output_url": {
+      "type": "string",
+      "description": "Rendered video URL"
+    },
+    "template_id": {
+      "type": "string",
+      "description": "Template used"
+    },
+    "style_transfer_applied": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether style transfer has been applied"
+    },
+    "style_transfer_data": {
+      "type": "object",
+      "description": "Style transfer configuration",
+      "properties": {
+        "reference_url": {
+          "type": "string"
+        },
+        "reference_type": {
+          "type": "string",
+          "enum": [
+            "image",
+            "video"
+          ]
+        },
+        "style_intensity": {
+          "type": "number",
+          "default": 0.7
+        },
+        "analyzed_style": {
+          "type": "object",
+          "properties": {
+            "dominant_colors": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "color_palette": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "mood": {
+              "type": "string"
+            },
+            "artistic_style": {
+              "type": "string"
+            },
+            "texture_type": {
+              "type": "string"
+            },
+            "lighting_style": {
+              "type": "string"
+            },
+            "saturation_level": {
+              "type": "string"
+            },
+            "contrast_level": {
+              "type": "string"
+            }
+          }
+        },
+        "preview_url": {
+          "type": "string"
+        },
+        "applied_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "stabilization_applied": {
+      "type": "boolean",
+      "default": false
+    },
+    "color_correction_applied": {
+      "type": "boolean",
+      "default": false
+    },
+    "audio_enhancement_applied": {
+      "type": "boolean",
+      "default": false
+    },
+    "deep_analysis_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "deep_analysis_data": {
+      "type": "object"
+    },
+    "custom_templates_generated": {
+      "type": "boolean",
+      "default": false
+    },
+    "selected_export_preset": {
+      "type": "string"
+    },
+    "export_settings": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "name": "CreatorLevel",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User whose level this tracks"
+    },
+    "current_level": {
+      "type": "string",
+      "enum": [
+        "bronze",
+        "silver",
+        "gold",
+        "platinum",
+        "diamond"
+      ],
+      "default": "bronze",
+      "description": "Current creator level"
+    },
+    "experience_points": {
+      "type": "number",
+      "default": 0,
+      "description": "Total XP earned"
+    },
+    "level_progress": {
+      "type": "number",
+      "default": 0,
+      "description": "Progress to next level (0-100)"
+    },
+    "badges_earned": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Achievement badges",
+      "default": []
+    },
+    "achievements": {
+      "type": "array",
+      "description": "Completed achievements",
+      "items": {
+        "type": "object",
+        "properties": {
+          "achievement_id": {
+            "type": "string"
+          },
+          "achievement_name": {
+            "type": "string"
+          },
+          "unlocked_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "xp_reward": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "description": "Creator statistics",
+      "properties": {
+        "videos_created": {
+          "type": "number",
+          "default": 0
+        },
+        "posts_published": {
+          "type": "number",
+          "default": 0
+        },
+        "total_engagement": {
+          "type": "number",
+          "default": 0
+        },
+        "revenue_generated": {
+          "type": "number",
+          "default": 0
+        },
+        "streak_days": {
+          "type": "number",
+          "default": 0
+        },
+        "last_active_date": {
+          "type": "string"
+        }
+      }
+    },
+    "rank_position": {
+      "type": "number",
+      "description": "Global leaderboard position"
+    },
+    "rewards_claimed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Rewards already claimed"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

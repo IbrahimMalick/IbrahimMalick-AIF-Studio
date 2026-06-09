@@ -1,0 +1,394 @@
+{
+  "name": "GoogleAdsCampaign",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this campaign"
+    },
+    "google_ads_config_id": {
+      "type": "string",
+      "description": "GoogleAdsConfig ID"
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Campaign name"
+    },
+    "google_campaign_id": {
+      "type": "string",
+      "description": "Campaign ID from Google Ads API"
+    },
+    "campaign_type": {
+      "type": "string",
+      "enum": [
+        "search",
+        "display",
+        "video",
+        "shopping",
+        "performance_max",
+        "discovery",
+        "app",
+        "smart",
+        "local"
+      ],
+      "default": "search",
+      "description": "Google Ads campaign type"
+    },
+    "objective": {
+      "type": "string",
+      "enum": [
+        "sales",
+        "leads",
+        "website_traffic",
+        "product_brand_consideration",
+        "brand_awareness_reach",
+        "app_promotion",
+        "local_store_visits"
+      ],
+      "description": "Campaign objective"
+    },
+    "bidding_strategy": {
+      "type": "string",
+      "enum": [
+        "manual_cpc",
+        "enhanced_cpc",
+        "maximize_clicks",
+        "maximize_conversions",
+        "maximize_conversion_value",
+        "target_cpa",
+        "target_roas",
+        "target_impression_share"
+      ],
+      "default": "maximize_conversions",
+      "description": "Bidding strategy"
+    },
+    "budget_config": {
+      "type": "object",
+      "properties": {
+        "budget_type": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "lifetime"
+          ],
+          "default": "daily"
+        },
+        "amount_micros": {
+          "type": "number",
+          "description": "Budget in micros (1,000,000 = $1)"
+        },
+        "delivery_method": {
+          "type": "string",
+          "enum": [
+            "standard",
+            "accelerated"
+          ],
+          "default": "standard"
+        }
+      },
+      "description": "Budget configuration"
+    },
+    "bid_config": {
+      "type": "object",
+      "properties": {
+        "target_cpa_micros": {
+          "type": "number",
+          "description": "Target cost per acquisition"
+        },
+        "target_roas": {
+          "type": "number",
+          "description": "Target return on ad spend"
+        },
+        "cpc_bid_ceiling_micros": {
+          "type": "number",
+          "description": "Max CPC bid"
+        },
+        "cpc_bid_floor_micros": {
+          "type": "number",
+          "description": "Min CPC bid"
+        }
+      },
+      "description": "Bidding configuration"
+    },
+    "targeting": {
+      "type": "object",
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "match_type": {
+                "type": "string",
+                "enum": [
+                  "broad",
+                  "phrase",
+                  "exact"
+                ]
+              },
+              "max_cpc_micros": {
+                "type": "number"
+              }
+            }
+          },
+          "description": "Search keywords"
+        },
+        "negative_keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keywords to exclude"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Geographic targeting"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "en"
+          ],
+          "description": "Language codes"
+        },
+        "audiences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Audience segments"
+        },
+        "demographics": {
+          "type": "object",
+          "properties": {
+            "age_ranges": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "genders": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "household_incomes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "parental_statuses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "devices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Device targeting (desktop, mobile, tablet)"
+        }
+      },
+      "description": "Campaign targeting configuration"
+    },
+    "ad_schedule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day_of_week": {
+            "type": "string"
+          },
+          "start_hour": {
+            "type": "number"
+          },
+          "end_hour": {
+            "type": "number"
+          },
+          "bid_modifier": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "When ads should run"
+    },
+    "ad_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ad_group_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "cpc_bid_micros": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Campaign ad groups"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "enabled",
+        "paused",
+        "removed",
+        "draft"
+      ],
+      "default": "draft",
+      "description": "Campaign status"
+    },
+    "google_status": {
+      "type": "string",
+      "enum": [
+        "enabled",
+        "paused",
+        "removed"
+      ],
+      "description": "Status in Google Ads"
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "impressions": {
+          "type": "number",
+          "default": 0
+        },
+        "clicks": {
+          "type": "number",
+          "default": 0
+        },
+        "cost_micros": {
+          "type": "number",
+          "default": 0
+        },
+        "conversions": {
+          "type": "number",
+          "default": 0
+        },
+        "conversion_value_micros": {
+          "type": "number",
+          "default": 0
+        },
+        "ctr": {
+          "type": "number",
+          "description": "Click-through rate %"
+        },
+        "avg_cpc_micros": {
+          "type": "number",
+          "description": "Average cost per click"
+        },
+        "avg_cpm_micros": {
+          "type": "number",
+          "description": "Average cost per 1000 impressions"
+        },
+        "conversion_rate": {
+          "type": "number",
+          "description": "Conversion rate %"
+        },
+        "cost_per_conversion_micros": {
+          "type": "number"
+        },
+        "roas": {
+          "type": "number",
+          "description": "Return on ad spend"
+        },
+        "quality_score_avg": {
+          "type": "number",
+          "description": "Average quality score"
+        }
+      },
+      "description": "Performance metrics"
+    },
+    "optimization_settings": {
+      "type": "object",
+      "properties": {
+        "auto_optimize_enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "pause_low_performers": {
+          "type": "boolean",
+          "default": true
+        },
+        "quality_score_threshold": {
+          "type": "number",
+          "default": 5
+        },
+        "min_conversions_before_action": {
+          "type": "number",
+          "default": 10
+        },
+        "roas_threshold": {
+          "type": "number",
+          "default": 2.0
+        }
+      },
+      "description": "Auto-optimization rules"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign end date"
+    },
+    "last_optimized": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last optimization run"
+    }
+  },
+  "required": [
+    "user_email",
+    "google_ads_config_id",
+    "campaign_name",
+    "campaign_type"
+  ]
+}

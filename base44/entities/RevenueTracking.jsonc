@@ -1,0 +1,69 @@
+{
+  "name": "RevenueTracking",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User tracking revenue"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "affiliate",
+        "course_sales",
+        "coaching",
+        "ad_revenue",
+        "sponsorship",
+        "product_sales",
+        "subscription",
+        "other"
+      ],
+      "description": "Revenue source"
+    },
+    "amount_usd": {
+      "type": "number",
+      "description": "Revenue amount in USD"
+    },
+    "transaction_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When revenue was generated"
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform where revenue came from"
+    },
+    "content_id": {
+      "type": "string",
+      "description": "Related content (video, post, etc.)"
+    },
+    "content_type": {
+      "type": "string",
+      "description": "Type of content that generated revenue"
+    },
+    "customer_email": {
+      "type": "string",
+      "description": "Customer who paid (if applicable)"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional details"
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is recurring revenue"
+    },
+    "next_payment_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "For recurring revenue"
+    }
+  },
+  "required": [
+    "user_email",
+    "source",
+    "amount_usd",
+    "transaction_date"
+  ]
+}

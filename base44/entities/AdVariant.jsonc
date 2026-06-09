@@ -1,0 +1,154 @@
+{
+  "name": "AdVariant",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this variant"
+    },
+    "campaign_run_id": {
+      "type": "string",
+      "description": "Parent campaign"
+    },
+    "adset_id": {
+      "type": "string",
+      "description": "Parent ad set (AdSetMeta ID)"
+    },
+    "creative_id": {
+      "type": "string",
+      "description": "AdCreativeDraft ID"
+    },
+    "meta_ad_id": {
+      "type": "string",
+      "description": "Ad ID from Meta API"
+    },
+    "meta_creative_id": {
+      "type": "string",
+      "description": "Creative ID from Meta API"
+    },
+    "variant_name": {
+      "type": "string",
+      "description": "Variant identifier"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PAUSED",
+        "DELETED",
+        "ARCHIVED"
+      ],
+      "default": "PAUSED",
+      "description": "Variant status"
+    },
+    "metrics_snapshot": {
+      "type": "object",
+      "properties": {
+        "impressions": {
+          "type": "number",
+          "default": 0
+        },
+        "reach": {
+          "type": "number",
+          "default": 0
+        },
+        "clicks": {
+          "type": "number",
+          "default": 0
+        },
+        "ctr": {
+          "type": "number",
+          "default": 0,
+          "description": "Click-through rate %"
+        },
+        "cpc": {
+          "type": "number",
+          "default": 0,
+          "description": "Cost per click in cents"
+        },
+        "cpm": {
+          "type": "number",
+          "default": 0,
+          "description": "Cost per 1000 impressions in cents"
+        },
+        "spend_cents": {
+          "type": "number",
+          "default": 0
+        },
+        "conversions": {
+          "type": "number",
+          "default": 0
+        },
+        "cpa": {
+          "type": "number",
+          "default": 0,
+          "description": "Cost per acquisition in cents"
+        },
+        "revenue_cents": {
+          "type": "number",
+          "default": 0
+        },
+        "roas": {
+          "type": "number",
+          "default": 0,
+          "description": "Return on ad spend"
+        },
+        "frequency": {
+          "type": "number",
+          "default": 0,
+          "description": "Avg times shown to same person"
+        },
+        "quality_ranking": {
+          "type": "string",
+          "enum": [
+            "ABOVE_AVERAGE",
+            "AVERAGE",
+            "BELOW_AVERAGE"
+          ]
+        },
+        "engagement_rate_ranking": {
+          "type": "string",
+          "enum": [
+            "ABOVE_AVERAGE",
+            "AVERAGE",
+            "BELOW_AVERAGE"
+          ]
+        },
+        "conversion_rate_ranking": {
+          "type": "string",
+          "enum": [
+            "ABOVE_AVERAGE",
+            "AVERAGE",
+            "BELOW_AVERAGE"
+          ]
+        }
+      },
+      "description": "Performance metrics"
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last metrics update"
+    },
+    "paused_by_ai": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether AI autopilot paused this"
+    },
+    "pause_reason": {
+      "type": "string",
+      "description": "Why it was paused"
+    },
+    "is_winner": {
+      "type": "boolean",
+      "default": false,
+      "description": "Top performing variant"
+    }
+  },
+  "required": [
+    "user_email",
+    "campaign_run_id",
+    "adset_id",
+    "creative_id"
+  ]
+}

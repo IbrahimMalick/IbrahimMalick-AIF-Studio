@@ -1,0 +1,245 @@
+{
+  "name": "OfferBlueprint",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this offer"
+    },
+    "product": {
+      "type": "string",
+      "description": "Product/service being sold"
+    },
+    "audience": {
+      "type": "string",
+      "description": "Target audience"
+    },
+    "buyer_type": {
+      "type": "string",
+      "enum": [
+        "visionary",
+        "analyst",
+        "skeptic",
+        "follower",
+        "emotional"
+      ],
+      "default": "visionary",
+      "description": "Buyer archetype"
+    },
+    "goal": {
+      "type": "string",
+      "enum": [
+        "lead_gen",
+        "booked_calls",
+        "low_ticket_sale",
+        "high_ticket_sale",
+        "subscription"
+      ],
+      "default": "lead_gen",
+      "description": "Primary conversion goal"
+    },
+    "constraints": {
+      "type": "string",
+      "description": "Budget, time, or other constraints"
+    },
+    "offer_summary": {
+      "type": "string",
+      "description": "AI-generated offer summary (120 words max)"
+    },
+    "hooks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "5 attention-grabbing hooks (8 words each)"
+    },
+    "value_stack": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "3 value bullets"
+    },
+    "risk_reversals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "2 guarantees"
+    },
+    "ctas": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "string"
+        }
+      },
+      "description": "Call-to-action copy"
+    },
+    "reel_script": {
+      "type": "object",
+      "properties": {
+        "hook": {
+          "type": "string"
+        },
+        "story": {
+          "type": "string"
+        },
+        "cta": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number",
+          "default": 30
+        }
+      },
+      "description": "30-second Instagram Reel script"
+    },
+    "landing_page_sections": {
+      "type": "object",
+      "properties": {
+        "h1": {
+          "type": "string"
+        },
+        "subhead": {
+          "type": "string"
+        },
+        "proof_blocks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "faq": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "Landing page content sections"
+    },
+    "buyer_type_variations": {
+      "type": "object",
+      "description": "Copy tailored for each buyer archetype",
+      "properties": {
+        "visionary": {
+          "type": "string"
+        },
+        "analyst": {
+          "type": "string"
+        },
+        "skeptic": {
+          "type": "string"
+        },
+        "follower": {
+          "type": "string"
+        },
+        "emotional": {
+          "type": "string"
+        }
+      }
+    },
+    "belief_alignment_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Belief alignment quality score"
+    },
+    "belief_scores": {
+      "type": "object",
+      "properties": {
+        "desire_activation": {
+          "type": "number"
+        },
+        "trust_cues": {
+          "type": "number"
+        },
+        "pain_resolution": {
+          "type": "number"
+        },
+        "status_gain": {
+          "type": "number"
+        },
+        "social_proof": {
+          "type": "number"
+        },
+        "future_pacing": {
+          "type": "number"
+        },
+        "risk_reversal": {
+          "type": "number"
+        },
+        "cta_clarity": {
+          "type": "number"
+        }
+      },
+      "description": "Breakdown of belief alignment factors"
+    },
+    "improvements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Top 3 improvement suggestions"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "optimized",
+        "deployed",
+        "archived"
+      ],
+      "default": "draft"
+    },
+    "deployed_funnel_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "FunnelRun IDs using this offer"
+    },
+    "performance_metrics": {
+      "type": "object",
+      "properties": {
+        "total_impressions": {
+          "type": "number"
+        },
+        "total_clicks": {
+          "type": "number"
+        },
+        "total_leads": {
+          "type": "number"
+        },
+        "total_bookings": {
+          "type": "number"
+        },
+        "total_sales": {
+          "type": "number"
+        },
+        "total_revenue": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "required": [
+    "user_email",
+    "product",
+    "audience",
+    "buyer_type",
+    "goal"
+  ]
+}

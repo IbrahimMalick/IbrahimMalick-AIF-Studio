@@ -1,0 +1,119 @@
+{
+  "name": "DeploymentChecklist",
+  "type": "object",
+  "properties": {
+    "checklist_id": {
+      "type": "string",
+      "description": "Unique checklist identifier"
+    },
+    "deployment_name": {
+      "type": "string",
+      "description": "Deployment version/name"
+    },
+    "target_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Target launch date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "in_progress",
+        "ready",
+        "deployed",
+        "post_launch"
+      ],
+      "default": "planning",
+      "description": "Deployment status"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "task_id": {
+                  "type": "string"
+                },
+                "task_name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "string",
+                  "enum": [
+                    "critical",
+                    "high",
+                    "medium",
+                    "low"
+                  ]
+                },
+                "assigned_to": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "in_progress",
+                    "completed",
+                    "blocked"
+                  ]
+                },
+                "due_date": {
+                  "type": "string"
+                },
+                "completed_at": {
+                  "type": "string"
+                },
+                "blockers": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "Categorized task lists"
+    },
+    "team_members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Team member emails"
+    },
+    "completion_percentage": {
+      "type": "number",
+      "default": 0
+    },
+    "critical_tasks_remaining": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "checklist_id",
+    "deployment_name"
+  ]
+}

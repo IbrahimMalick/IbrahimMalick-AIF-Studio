@@ -1,0 +1,78 @@
+{
+  "name": "AffiliateLink",
+  "type": "object",
+  "properties": {
+    "partner_id": {
+      "type": "string",
+      "description": "PartnerAffiliate ID"
+    },
+    "link_code": {
+      "type": "string",
+      "description": "Unique tracking code (aff=CODE)"
+    },
+    "full_url": {
+      "type": "string",
+      "description": "Complete tracking URL"
+    },
+    "landing_page": {
+      "type": "string",
+      "enum": [
+        "home",
+        "pricing",
+        "agency",
+        "features",
+        "demo",
+        "custom"
+      ],
+      "default": "home",
+      "description": "Where link points"
+    },
+    "custom_landing_url": {
+      "type": "string",
+      "description": "Custom landing page URL"
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Campaign/source identifier"
+    },
+    "click_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total clicks"
+    },
+    "unique_clicks": {
+      "type": "number",
+      "default": 0,
+      "description": "Unique visitors"
+    },
+    "signups": {
+      "type": "number",
+      "default": 0,
+      "description": "Signups from this link"
+    },
+    "conversions": {
+      "type": "number",
+      "default": 0,
+      "description": "Paid conversions"
+    },
+    "conversion_rate": {
+      "type": "number",
+      "description": "Click to conversion %"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Link enabled"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Link expiration"
+    }
+  },
+  "required": [
+    "partner_id",
+    "link_code",
+    "full_url"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "name": "GoHighLevelConfig",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's email"
+    },
+    "ghl_location_id": {
+      "type": "string",
+      "description": "GHL Location/Sub-account ID"
+    },
+    "ghl_agency_id": {
+      "type": "string",
+      "description": "GHL Agency ID"
+    },
+    "ghl_user_id": {
+      "type": "string",
+      "description": "GHL User ID"
+    },
+    "api_key": {
+      "type": "string",
+      "description": "GHL API Key (encrypted)"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token (encrypted)"
+    },
+    "refresh_token": {
+      "type": "string",
+      "description": "OAuth refresh token (encrypted)"
+    },
+    "token_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When access token expires"
+    },
+    "webhook_url": {
+      "type": "string",
+      "description": "GHL webhook endpoint"
+    },
+    "webhook_secret": {
+      "type": "string",
+      "description": "Webhook verification secret"
+    },
+    "is_connected": {
+      "type": "boolean",
+      "default": false,
+      "description": "Connection status"
+    },
+    "sync_contacts": {
+      "type": "boolean",
+      "default": true,
+      "description": "Auto-sync contacts to GHL"
+    },
+    "sync_opportunities": {
+      "type": "boolean",
+      "default": true,
+      "description": "Create opportunities from leads"
+    },
+    "sync_calendar": {
+      "type": "boolean",
+      "default": false,
+      "description": "Sync events to GHL calendar"
+    },
+    "sync_tasks": {
+      "type": "boolean",
+      "default": false,
+      "description": "Create tasks in GHL"
+    },
+    "pipeline_id": {
+      "type": "string",
+      "description": "Default pipeline for opportunities"
+    },
+    "tag_prefix": {
+      "type": "string",
+      "default": "AFD_",
+      "description": "Prefix for auto-created tags"
+    },
+    "custom_fields_mapping": {
+      "type": "object",
+      "description": "Map our fields to GHL custom fields"
+    },
+    "automation_triggers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which events trigger GHL workflows"
+    },
+    "white_label_config": {
+      "type": "object",
+      "properties": {
+        "brand_name": {
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "primary_color": {
+          "type": "string"
+        },
+        "secondary_color": {
+          "type": "string"
+        },
+        "custom_domain": {
+          "type": "string"
+        }
+      },
+      "description": "White-label settings"
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sync_errors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "required": [
+    "user_email",
+    "ghl_location_id"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "TutorialProgress",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User watching tutorial"
+    },
+    "tutorial_id": {
+      "type": "string",
+      "description": "Tutorial being watched"
+    },
+    "progress_seconds": {
+      "type": "number",
+      "default": 0,
+      "description": "How far user watched"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user finished video"
+    },
+    "was_helpful": {
+      "type": "boolean",
+      "description": "User feedback"
+    },
+    "notes": {
+      "type": "string",
+      "description": "User's personal notes"
+    },
+    "last_watched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "tutorial_id"
+  ]
+}

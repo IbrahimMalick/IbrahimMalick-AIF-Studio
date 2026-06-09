@@ -1,0 +1,50 @@
+{
+  "name": "DatabaseOptimization",
+  "type": "object",
+  "properties": {
+    "entity_name": {
+      "type": "string",
+      "description": "Entity being optimized"
+    },
+    "optimization_type": {
+      "type": "string",
+      "enum": ["index_creation", "query_plan", "denormalization", "partitioning", "archival"],
+      "description": "Type of optimization"
+    },
+    "fields_indexed": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Fields that are indexed"
+    },
+    "query_pattern": {
+      "type": "string",
+      "description": "Common query pattern being optimized"
+    },
+    "estimated_improvement_percent": {
+      "type": "number",
+      "description": "Expected query speed improvement (%)"
+    },
+    "implementation_status": {
+      "type": "string",
+      "enum": ["planned", "in_progress", "deployed", "monitoring"],
+      "default": "planned"
+    },
+    "deployed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "queries_before": {
+      "type": "number",
+      "description": "Avg query time before (ms)"
+    },
+    "queries_after": {
+      "type": "number",
+      "description": "Avg query time after (ms)"
+    },
+    "impact_score": {
+      "type": "number",
+      "description": "Estimated impact on overall performance (1-100)"
+    }
+  },
+  "required": ["entity_name", "optimization_type"]
+}

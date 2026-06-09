@@ -1,0 +1,77 @@
+{
+  "name": "ChatMessage",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who sent/received the message"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message content"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant",
+        "system"
+      ],
+      "description": "Who sent the message"
+    },
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "quick_action",
+        "suggestion",
+        "system_alert"
+      ],
+      "default": "text",
+      "description": "Type of message"
+    },
+    "context": {
+      "type": "object",
+      "description": "Page context when message was sent",
+      "properties": {
+        "page_name": {
+          "type": "string"
+        },
+        "page_data": {
+          "type": "object"
+        }
+      }
+    },
+    "suggested_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Quick action buttons for user"
+    },
+    "was_helpful": {
+      "type": "boolean",
+      "description": "User feedback on response"
+    },
+    "response_time_ms": {
+      "type": "number",
+      "description": "How long AI took to respond"
+    }
+  },
+  "required": [
+    "user_email",
+    "message",
+    "role"
+  ]
+}

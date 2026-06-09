@@ -1,0 +1,89 @@
+{
+  "name": "SocialMediaAccount",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this account"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "instagram",
+        "facebook_page",
+        "twitter",
+        "linkedin",
+        "tiktok",
+        "youtube",
+        "roku",
+        "apple_tv",
+        "fire_tv",
+        "android_tv",
+        "samsung_tv",
+        "vizio"
+      ],
+      "description": "Social media or CTV platform"
+    },
+    "account_name": {
+      "type": "string",
+      "description": "Display name or handle"
+    },
+    "account_id": {
+      "type": "string",
+      "description": "Platform-specific account ID"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token (encrypted)"
+    },
+    "refresh_token": {
+      "type": "string",
+      "description": "OAuth refresh token (encrypted)"
+    },
+    "token_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When access token expires"
+    },
+    "is_connected": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether account is currently connected"
+    },
+    "profile_image_url": {
+      "type": "string",
+      "description": "Profile picture URL"
+    },
+    "followers_count": {
+      "type": "number",
+      "description": "Follower/subscriber count (cached)"
+    },
+    "auto_post_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether auto-posting is enabled"
+    },
+    "platform_username": {
+      "type": "string",
+      "description": "Username/handle on platform (e.g., @username)"
+    },
+    "channel_id": {
+      "type": "string",
+      "description": "Channel ID (YouTube, Roku, etc.)"
+    },
+    "developer_id": {
+      "type": "string",
+      "description": "Developer account ID (for CTV platforms)"
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time we synced with platform"
+    }
+  },
+  "required": [
+    "user_email",
+    "platform",
+    "account_name"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "name": "AdOptimizationLog",
+  "type": "object",
+  "properties": {
+    "campaign_run_id": {
+      "type": "string",
+      "description": "Campaign being optimized"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "PAUSE_VARIANT",
+        "ACTIVATE_VARIANT",
+        "SCALE_BUDGET",
+        "REDUCE_BUDGET",
+        "ROTATE_COPY",
+        "SWAP_CREATIVE",
+        "ADJUST_TARGETING",
+        "CHANGE_BID"
+      ],
+      "description": "Optimization action taken"
+    },
+    "action_target": {
+      "type": "string",
+      "description": "What was changed (variant ID, adset ID, etc.)"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Why action was taken"
+    },
+    "trigger_rule": {
+      "type": "string",
+      "description": "Which rule triggered this action"
+    },
+    "metric_before": {
+      "type": "object",
+      "description": "Metrics before optimization"
+    },
+    "metric_after": {
+      "type": "object",
+      "description": "Expected/actual metrics after"
+    },
+    "automated": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether AI autopilot did this (vs manual)"
+    },
+    "approved_by_user": {
+      "type": "boolean",
+      "default": false,
+      "description": "If required user approval, was it approved"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether action succeeded"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "impact_analysis": {
+      "type": "object",
+      "properties": {
+        "spend_change_cents": {
+          "type": "number"
+        },
+        "ctr_change": {
+          "type": "number"
+        },
+        "roas_change": {
+          "type": "number"
+        }
+      },
+      "description": "Measured impact after 24-48h"
+    }
+  },
+  "required": [
+    "campaign_run_id",
+    "action",
+    "reason"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "CustomerHealthScore",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User being scored"
+    },
+    "overall_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Health score 0-100"
+    },
+    "score_category": {
+      "type": "string",
+      "enum": [
+        "at_risk",
+        "needs_attention",
+        "healthy",
+        "excellent"
+      ],
+      "description": "Score classification"
+    },
+    "factors": {
+      "type": "object",
+      "description": "Contributing factors",
+      "properties": {
+        "login_frequency": {
+          "type": "number"
+        },
+        "feature_adoption": {
+          "type": "number"
+        },
+        "support_tickets": {
+          "type": "number"
+        },
+        "payment_status": {
+          "type": "string"
+        },
+        "engagement_rate": {
+          "type": "number"
+        }
+      }
+    },
+    "trend": {
+      "type": "string",
+      "enum": [
+        "improving",
+        "stable",
+        "declining"
+      ],
+      "description": "Score trend"
+    },
+    "risk_indicators": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Warning signs"
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "automated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Suggested interventions"
+    },
+    "last_calculated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "next_check_in": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "overall_score"
+  ]
+}

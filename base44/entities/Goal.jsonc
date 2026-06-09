@@ -1,0 +1,119 @@
+{
+  "name": "Goal",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who set this goal"
+    },
+    "goal_title": {
+      "type": "string",
+      "description": "What user wants to achieve"
+    },
+    "goal_type": {
+      "type": "string",
+      "enum": [
+        "revenue",
+        "audience_growth",
+        "content_creation",
+        "skill_building",
+        "personal_development"
+      ],
+      "description": "Category of goal"
+    },
+    "target_metric": {
+      "type": "string",
+      "description": "Measurable target (e.g., '$10k/month', '1000 followers')"
+    },
+    "current_value": {
+      "type": "string",
+      "description": "Current progress"
+    },
+    "target_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deadline for goal"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "achieved",
+        "abandoned"
+      ],
+      "default": "not_started",
+      "description": "Goal status"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium",
+      "description": "Goal priority"
+    },
+    "coaching_session_id": {
+      "type": "string",
+      "description": "Session where goal was set"
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "milestone": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "due_date": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Sub-goals to track progress"
+    },
+    "obstacles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Challenges user is facing"
+    },
+    "coach_guidance": {
+      "type": "string",
+      "description": "AI coach's advice for achieving goal"
+    },
+    "check_in_frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "biweekly",
+        "monthly"
+      ],
+      "default": "weekly",
+      "description": "How often to review progress"
+    },
+    "last_check_in": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "achieved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When goal was completed"
+    }
+  },
+  "required": [
+    "user_email",
+    "goal_title",
+    "goal_type",
+    "target_metric"
+  ]
+}

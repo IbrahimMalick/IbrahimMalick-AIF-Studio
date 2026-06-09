@@ -1,0 +1,157 @@
+{
+  "name": "CampaignTrigger",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this trigger"
+    },
+    "trigger_name": {
+      "type": "string",
+      "description": "Trigger name"
+    },
+    "campaign_id": {
+      "type": "string",
+      "description": "Campaign to trigger"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "call_completed",
+        "call_missed",
+        "sms_received",
+        "email_opened",
+        "email_clicked",
+        "link_clicked",
+        "form_submitted",
+        "appointment_booked",
+        "appointment_no_show",
+        "lead_score_increased",
+        "lead_score_decreased",
+        "tag_added",
+        "tag_removed",
+        "status_changed",
+        "ghl_opportunity_created",
+        "ghl_stage_changed",
+        "ghl_workflow_completed",
+        "payment_received",
+        "subscription_started",
+        "subscription_cancelled",
+        "inactivity_detected",
+        "high_engagement_detected",
+        "objection_detected",
+        "buying_signal_detected"
+      ],
+      "description": "Event that triggers campaign"
+    },
+    "event_filters": {
+      "type": "object",
+      "properties": {
+        "call_intent": {
+          "type": "string"
+        },
+        "call_sentiment_min": {
+          "type": "number"
+        },
+        "email_campaign_id": {
+          "type": "string"
+        },
+        "form_id": {
+          "type": "string"
+        },
+        "score_threshold": {
+          "type": "number"
+        },
+        "tag_name": {
+          "type": "string"
+        },
+        "status_value": {
+          "type": "string"
+        },
+        "ghl_stage_id": {
+          "type": "string"
+        },
+        "days_inactive": {
+          "type": "number"
+        },
+        "engagement_score_min": {
+          "type": "number"
+        }
+      },
+      "description": "Additional event filters"
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "equals",
+              "not_equals",
+              "greater_than",
+              "less_than",
+              "contains",
+              "not_contains",
+              "exists",
+              "not_exists"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Additional conditions to check"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Trigger enabled"
+    },
+    "priority": {
+      "type": "number",
+      "default": 5,
+      "description": "Trigger priority (1=highest)"
+    },
+    "max_triggers_per_lead": {
+      "type": "number",
+      "default": 1,
+      "description": "Max times to trigger for same lead"
+    },
+    "cooldown_period_days": {
+      "type": "number",
+      "default": 30,
+      "description": "Days before re-triggering"
+    },
+    "trigger_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times triggered"
+    },
+    "success_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Successful campaign starts"
+    },
+    "last_triggered": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last trigger time"
+    },
+    "webhook_url": {
+      "type": "string",
+      "description": "Webhook to notify on trigger"
+    }
+  },
+  "required": [
+    "user_email",
+    "trigger_name",
+    "campaign_id",
+    "event_type"
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "name": "CampaignRun",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this campaign"
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Campaign name"
+    },
+    "ad_account_id": {
+      "type": "string",
+      "description": "Meta ad account ID"
+    },
+    "meta_campaign_id": {
+      "type": "string",
+      "description": "Campaign ID from Meta API"
+    },
+    "objective": {
+      "type": "string",
+      "enum": [
+        "OUTCOME_AWARENESS",
+        "OUTCOME_TRAFFIC",
+        "OUTCOME_ENGAGEMENT",
+        "OUTCOME_LEADS",
+        "OUTCOME_APP_PROMOTION",
+        "OUTCOME_SALES"
+      ],
+      "description": "Meta campaign objective"
+    },
+    "budget_type": {
+      "type": "string",
+      "enum": [
+        "DAILY",
+        "LIFETIME"
+      ],
+      "default": "DAILY",
+      "description": "Budget type"
+    },
+    "daily_budget_cents": {
+      "type": "number",
+      "description": "Daily budget in cents (1000 = $10)"
+    },
+    "lifetime_budget_cents": {
+      "type": "number",
+      "description": "Total budget in cents"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign start time"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign end time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "LAUNCHED",
+        "LEARNING",
+        "SCALING",
+        "PAUSED",
+        "COMPLETED",
+        "ERROR"
+      ],
+      "default": "DRAFT",
+      "description": "Campaign lifecycle status"
+    },
+    "meta_status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PAUSED",
+        "DELETED",
+        "ARCHIVED"
+      ],
+      "description": "Status in Meta Ads Manager"
+    },
+    "learning_phase": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether in learning phase (first 50 conversions)"
+    },
+    "learning_notes": {
+      "type": "string",
+      "description": "AI notes about learning phase performance"
+    },
+    "guardrails": {
+      "type": "object",
+      "properties": {
+        "max_cpa": {
+          "type": "number",
+          "description": "Max cost per acquisition"
+        },
+        "min_roas": {
+          "type": "number",
+          "description": "Minimum return on ad spend"
+        },
+        "max_daily_spend": {
+          "type": "number",
+          "description": "Max spend per day"
+        },
+        "pause_if_no_conversions_after_spend": {
+          "type": "number",
+          "description": "Auto-pause threshold"
+        }
+      },
+      "description": "Performance guardrails"
+    },
+    "auto_optimize_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable automatic optimization"
+    },
+    "optimization_frequency_hours": {
+      "type": "number",
+      "default": 6,
+      "description": "How often to run optimization"
+    },
+    "last_optimized": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last optimization run"
+    },
+    "total_spend_cents": {
+      "type": "number",
+      "default": 0,
+      "description": "Total spent in cents"
+    },
+    "total_revenue_cents": {
+      "type": "number",
+      "default": 0,
+      "description": "Total revenue generated in cents"
+    },
+    "creative_draft_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AdCreativeDraft IDs used"
+    },
+    "ad_set_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AdSetMeta IDs in this campaign"
+    }
+  },
+  "required": [
+    "user_email",
+    "campaign_name",
+    "ad_account_id",
+    "objective"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "RoleDefinition",
+  "type": "object",
+  "properties": {
+    "role_name": {
+      "type": "string",
+      "enum": [
+        "super_admin",
+        "project_manager",
+        "editor",
+        "collaborator",
+        "viewer",
+        "analyst"
+      ],
+      "description": "Role identifier"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable role name"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this role can do"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of permission strings",
+      "default": []
+    },
+    "is_system_role": {
+      "type": "boolean",
+      "default": true,
+      "description": "System-defined role (cannot be deleted)"
+    },
+    "priority_level": {
+      "type": "number",
+      "default": 0,
+      "description": "Role hierarchy (higher = more power)"
+    },
+    "can_manage_users": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_manage_projects": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_view_analytics": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_manage_billing": {
+      "type": "boolean",
+      "default": false
+    },
+    "max_projects": {
+      "type": "number",
+      "default": -1,
+      "description": "Max projects user can create (-1 = unlimited)"
+    },
+    "max_storage_mb": {
+      "type": "number",
+      "default": 1000,
+      "description": "Storage limit for users with this role"
+    }
+  },
+  "required": [
+    "role_name",
+    "display_name",
+    "permissions"
+  ]
+}

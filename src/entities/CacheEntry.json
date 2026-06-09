@@ -1,0 +1,47 @@
+{
+  "name": "CacheEntry",
+  "type": "object",
+  "properties": {
+    "cache_key": {
+      "type": "string",
+      "description": "Unique cache key (hash of query/operation)"
+    },
+    "value": {
+      "type": "string",
+      "description": "Cached value (JSON stringified)"
+    },
+    "entity_type": {
+      "type": "string",
+      "description": "Which entity this cache is for (e.g., UsageMetrics, Agent)"
+    },
+    "ttl_seconds": {
+      "type": "number",
+      "default": 3600,
+      "description": "Time to live in seconds"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this cache entry expires"
+    },
+    "hit_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times accessed"
+    },
+    "last_accessed": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "size_bytes": {
+      "type": "number",
+      "description": "Approximate size of cached value"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Tags for invalidation (e.g., user_email, project_id)"
+    }
+  },
+  "required": ["cache_key", "value", "entity_type"]
+}

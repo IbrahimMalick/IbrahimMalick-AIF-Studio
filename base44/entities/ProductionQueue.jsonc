@@ -1,0 +1,97 @@
+{
+  "name": "ProductionQueue",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "description": "Project entity ID"
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "discovery",
+        "script",
+        "video",
+        "revision",
+        "export"
+      ],
+      "description": "Type of production task"
+    },
+    "assigned_to": {
+      "type": "string",
+      "enum": [
+        "vp",
+        "manager",
+        "engineer",
+        "human"
+      ],
+      "description": "Which agent handles this task"
+    },
+    "input_data": {
+      "type": "object",
+      "description": "Task input data and context"
+    },
+    "output_data": {
+      "type": "object",
+      "description": "Task output and results"
+    },
+    "llm_provider": {
+      "type": "string",
+      "description": "LLM provider used (openai, anthropic, etc)"
+    },
+    "llm_model": {
+      "type": "string",
+      "description": "Specific model used"
+    },
+    "tokens_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Total tokens consumed"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "default": "pending",
+      "description": "Task status"
+    },
+    "priority": {
+      "type": "number",
+      "default": 5,
+      "description": "Task priority (1=highest, 10=lowest)"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of retry attempts"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "queued_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When task was queued"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When processing started"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When task completed"
+    }
+  },
+  "required": [
+    "project_id",
+    "task_type",
+    "assigned_to"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "name": "AdCampaign",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this campaign"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "google_ads",
+        "meta_ads",
+        "tiktok_ads",
+        "linkedin_ads"
+      ],
+      "description": "Ad platform"
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Campaign name"
+    },
+    "campaign_id": {
+      "type": "string",
+      "description": "Platform campaign ID"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "completed",
+        "draft"
+      ],
+      "default": "draft",
+      "description": "Campaign status"
+    },
+    "budget_usd": {
+      "type": "number",
+      "description": "Total budget in USD"
+    },
+    "daily_budget_usd": {
+      "type": "number",
+      "description": "Daily spend limit"
+    },
+    "spent_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Amount spent so far"
+    },
+    "impressions": {
+      "type": "number",
+      "default": 0,
+      "description": "Total impressions"
+    },
+    "clicks": {
+      "type": "number",
+      "default": 0,
+      "description": "Total clicks"
+    },
+    "conversions": {
+      "type": "number",
+      "default": 0,
+      "description": "Total conversions"
+    },
+    "revenue_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Revenue generated"
+    },
+    "roas": {
+      "type": "number",
+      "description": "Return on Ad Spend (calculated)"
+    },
+    "cpa": {
+      "type": "number",
+      "description": "Cost Per Acquisition"
+    },
+    "ctr": {
+      "type": "number",
+      "description": "Click Through Rate %"
+    },
+    "linked_content_id": {
+      "type": "string",
+      "description": "VideoProject or Asset ID used in ad"
+    },
+    "linked_content_type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "image",
+        "carousel"
+      ],
+      "description": "Type of content in ad"
+    },
+    "target_audience": {
+      "type": "object",
+      "description": "Audience targeting settings"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign end date"
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last data sync from platform"
+    }
+  },
+  "required": [
+    "user_email",
+    "platform",
+    "campaign_name"
+  ]
+}

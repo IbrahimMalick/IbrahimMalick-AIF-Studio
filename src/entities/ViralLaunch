@@ -1,0 +1,134 @@
+{
+  "name": "ViralLaunch",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who initiated launch"
+    },
+    "launch_name": {
+      "type": "string",
+      "description": "Campaign name"
+    },
+    "launch_type": {
+      "type": "string",
+      "enum": [
+        "instant",
+        "scheduled",
+        "drip"
+      ],
+      "default": "instant",
+      "description": "Launch strategy"
+    },
+    "content_topic": {
+      "type": "string",
+      "description": "What the content is about"
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where to publish"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "ready",
+        "publishing",
+        "published",
+        "failed"
+      ],
+      "default": "generating"
+    },
+    "generated_content": {
+      "type": "object",
+      "description": "AI-generated assets",
+      "properties": {
+        "video_url": {
+          "type": "string"
+        },
+        "short_video_url": {
+          "type": "string"
+        },
+        "thumbnail_url": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "hashtags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "email_subject": {
+          "type": "string"
+        },
+        "email_body": {
+          "type": "string"
+        },
+        "blog_post": {
+          "type": "string"
+        }
+      }
+    },
+    "trending_data": {
+      "type": "object",
+      "description": "Trending topic analysis",
+      "properties": {
+        "trend_score": {
+          "type": "number"
+        },
+        "related_keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optimal_posting_time": {
+          "type": "string"
+        }
+      }
+    },
+    "published_urls": {
+      "type": "object",
+      "description": "URLs of published content"
+    },
+    "performance_prediction": {
+      "type": "object",
+      "properties": {
+        "estimated_reach": {
+          "type": "number"
+        },
+        "estimated_engagement": {
+          "type": "number"
+        },
+        "viral_probability": {
+          "type": "number"
+        }
+      }
+    },
+    "actual_performance": {
+      "type": "object",
+      "properties": {
+        "total_views": {
+          "type": "number"
+        },
+        "total_engagement": {
+          "type": "number"
+        },
+        "conversion_rate": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "required": [
+    "user_email",
+    "launch_name",
+    "content_topic"
+  ]
+}

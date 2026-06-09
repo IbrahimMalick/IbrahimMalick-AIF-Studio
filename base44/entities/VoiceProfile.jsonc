@@ -1,0 +1,122 @@
+{
+  "name": "VoiceProfile",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this voice profile"
+    },
+    "profile_name": {
+      "type": "string",
+      "description": "Voice profile name"
+    },
+    "voice_provider": {
+      "type": "string",
+      "enum": [
+        "elevenlabs",
+        "playht",
+        "openai",
+        "azure",
+        "google"
+      ],
+      "default": "elevenlabs",
+      "description": "TTS service provider"
+    },
+    "provider_voice_id": {
+      "type": "string",
+      "description": "Voice ID from provider"
+    },
+    "is_cloned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is a cloned voice"
+    },
+    "clone_samples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Audio samples used for cloning"
+    },
+    "languages_supported": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages this voice can speak",
+      "default": [
+        "en"
+      ]
+    },
+    "default_language": {
+      "type": "string",
+      "default": "en",
+      "description": "Primary language"
+    },
+    "emotion_presets": {
+      "type": "object",
+      "properties": {
+        "calm": {
+          "type": "object"
+        },
+        "energetic": {
+          "type": "object"
+        },
+        "empathetic": {
+          "type": "object"
+        },
+        "urgent": {
+          "type": "object"
+        },
+        "professional": {
+          "type": "object"
+        },
+        "friendly": {
+          "type": "object"
+        }
+      },
+      "description": "Emotion configuration per preset"
+    },
+    "default_emotion": {
+      "type": "string",
+      "enum": [
+        "calm",
+        "energetic",
+        "empathetic",
+        "urgent",
+        "professional",
+        "friendly"
+      ],
+      "default": "professional",
+      "description": "Default emotion setting"
+    },
+    "prosody_support": {
+      "type": "boolean",
+      "default": true,
+      "description": "Supports pause/emphasis/whisper tags"
+    },
+    "quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Voice quality rating"
+    },
+    "sample_audio_url": {
+      "type": "string",
+      "description": "Sample audio for preview"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "use_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "user_email",
+    "profile_name",
+    "voice_provider"
+  ]
+}

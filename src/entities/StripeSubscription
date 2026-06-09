@@ -1,0 +1,91 @@
+{
+  "name": "StripeSubscription",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Subscriber email"
+    },
+    "stripe_customer_id": {
+      "type": "string",
+      "description": "Stripe customer ID"
+    },
+    "stripe_subscription_id": {
+      "type": "string",
+      "description": "Stripe subscription ID"
+    },
+    "plan_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio",
+        "enterprise"
+      ],
+      "description": "Current plan"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "trialing",
+        "past_due",
+        "canceled",
+        "incomplete"
+      ],
+      "description": "Subscription status"
+    },
+    "billing_cycle": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "yearly"
+      ],
+      "default": "monthly"
+    },
+    "amount_usd": {
+      "type": "number",
+      "description": "Subscription price"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "trial_ends_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "current_period_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "current_period_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cancel_at_period_end": {
+      "type": "boolean",
+      "default": false
+    },
+    "canceled_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payment_method_id": {
+      "type": "string",
+      "description": "Default payment method"
+    },
+    "last_payment_error": {
+      "type": "string"
+    },
+    "next_invoice_date": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "stripe_customer_id",
+    "plan_tier"
+  ]
+}

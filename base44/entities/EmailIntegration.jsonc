@@ -1,0 +1,84 @@
+{
+  "name": "EmailIntegration",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this integration"
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "mailchimp",
+        "aweber",
+        "convertkit",
+        "activecampaign"
+      ],
+      "description": "Email service provider"
+    },
+    "api_key": {
+      "type": "string",
+      "description": "API key (encrypted)"
+    },
+    "api_secret": {
+      "type": "string",
+      "description": "API secret if needed (encrypted)"
+    },
+    "account_id": {
+      "type": "string",
+      "description": "Account ID on platform"
+    },
+    "is_connected": {
+      "type": "boolean",
+      "default": false,
+      "description": "Connection status"
+    },
+    "lists": {
+      "type": "array",
+      "description": "Available email lists",
+      "items": {
+        "type": "object",
+        "properties": {
+          "list_id": {
+            "type": "string"
+          },
+          "list_name": {
+            "type": "string"
+          },
+          "subscriber_count": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "auto_sync_subscribers": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-sync new subscribers to User entity"
+    },
+    "send_video_on_signup": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-send welcome video to new subscribers"
+    },
+    "welcome_video_id": {
+      "type": "string",
+      "description": "VideoProject ID to send on signup"
+    },
+    "track_video_clicks": {
+      "type": "boolean",
+      "default": true,
+      "description": "Track when subscribers click video links"
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last data sync"
+    }
+  },
+  "required": [
+    "user_email",
+    "provider",
+    "api_key"
+  ]
+}

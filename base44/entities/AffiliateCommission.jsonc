@@ -1,0 +1,57 @@
+{
+  "name": "AffiliateCommission",
+  "type": "object",
+  "properties": {
+    "affiliate_email": {
+      "type": "string",
+      "description": "Affiliate earning commission"
+    },
+    "customer_email": {
+      "type": "string",
+      "description": "Customer who made purchase"
+    },
+    "payment_id": {
+      "type": "string",
+      "description": "Related payment transaction"
+    },
+    "sale_amount_usd": {
+      "type": "number",
+      "description": "Total sale amount"
+    },
+    "commission_rate": {
+      "type": "number",
+      "description": "Commission percentage applied"
+    },
+    "commission_amount_usd": {
+      "type": "number",
+      "description": "Commission earned"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "paid",
+        "refunded"
+      ],
+      "default": "pending",
+      "description": "Commission status"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When commission was approved"
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When commission was paid"
+    }
+  },
+  "required": [
+    "affiliate_email",
+    "customer_email",
+    "sale_amount_usd",
+    "commission_amount_usd"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "ChatSession",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this session"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "resolved",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Session status"
+    },
+    "topic": {
+      "type": "string",
+      "description": "Main topic of conversation"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "neutral",
+        "negative"
+      ],
+      "description": "Overall conversation sentiment"
+    },
+    "message_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total messages in session"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session start time"
+    },
+    "last_message_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last message timestamp"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When issue was resolved"
+    }
+  },
+  "required": [
+    "user_email",
+    "session_id"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "name": "Achievement",
+  "type": "object",
+  "properties": {
+    "achievement_id": {
+      "type": "string",
+      "description": "Unique achievement identifier"
+    },
+    "achievement_name": {
+      "type": "string",
+      "description": "Achievement title"
+    },
+    "description": {
+      "type": "string",
+      "description": "What user accomplished"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "content_creation",
+        "engagement",
+        "revenue",
+        "learning",
+        "consistency",
+        "collaboration",
+        "innovation",
+        "social"
+      ],
+      "description": "Achievement category"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "bronze",
+        "silver",
+        "gold",
+        "platinum",
+        "diamond"
+      ],
+      "description": "Achievement tier"
+    },
+    "xp_reward": {
+      "type": "number",
+      "description": "Experience points awarded"
+    },
+    "coin_reward": {
+      "type": "number",
+      "default": 0,
+      "description": "Virtual coins awarded"
+    },
+    "badge_icon_url": {
+      "type": "string",
+      "description": "Badge image"
+    },
+    "badge_animation": {
+      "type": "string",
+      "description": "Lottie animation JSON"
+    },
+    "requirements": {
+      "type": "object",
+      "description": "Criteria to unlock",
+      "properties": {
+        "videos_created": {
+          "type": "number"
+        },
+        "posts_published": {
+          "type": "number"
+        },
+        "revenue_generated": {
+          "type": "number"
+        },
+        "followers_gained": {
+          "type": "number"
+        },
+        "streak_days": {
+          "type": "number"
+        },
+        "courses_completed": {
+          "type": "number"
+        },
+        "tutorials_watched": {
+          "type": "number"
+        },
+        "referrals_made": {
+          "type": "number"
+        }
+      }
+    },
+    "reward_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Unlockable rewards (templates, features, etc.)"
+    },
+    "is_secret": {
+      "type": "boolean",
+      "default": false,
+      "description": "Secret achievement"
+    },
+    "unlock_count": {
+      "type": "number",
+      "default": 0,
+      "description": "How many users unlocked this"
+    },
+    "rarity": {
+      "type": "string",
+      "enum": [
+        "common",
+        "rare",
+        "epic",
+        "legendary"
+      ],
+      "default": "common"
+    }
+  },
+  "required": [
+    "achievement_id",
+    "achievement_name",
+    "category",
+    "xp_reward"
+  ]
+}

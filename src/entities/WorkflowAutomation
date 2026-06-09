@@ -1,0 +1,123 @@
+{
+  "name": "WorkflowAutomation",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Workflow owner"
+    },
+    "workflow_name": {
+      "type": "string",
+      "description": "Automation name"
+    },
+    "workflow_description": {
+      "type": "string",
+      "description": "What this workflow does"
+    },
+    "trigger": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "schedule",
+            "webhook",
+            "entity_created",
+            "entity_updated"
+          ]
+        },
+        "config": {
+          "type": "object"
+        }
+      },
+      "description": "What starts the workflow"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "create_video",
+              "generate_script",
+              "post_social",
+              "send_email",
+              "wait",
+              "condition",
+              "ghl_action",
+              "ai_generate"
+            ]
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          },
+          "config": {
+            "type": "object"
+          },
+          "connections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Workflow steps"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Workflow enabled"
+    },
+    "execution_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times workflow has run"
+    },
+    "success_count": {
+      "type": "number",
+      "default": 0
+    },
+    "failure_count": {
+      "type": "number",
+      "default": 0
+    },
+    "average_duration_seconds": {
+      "type": "number"
+    },
+    "last_executed": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_template": {
+      "type": "boolean",
+      "default": false,
+      "description": "Available as template for others"
+    }
+  },
+  "required": [
+    "user_email",
+    "workflow_name",
+    "trigger"
+  ]
+}

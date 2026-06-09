@@ -1,0 +1,775 @@
+{
+  "name": "CompetitorAnalysisReport",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who ran this analysis"
+    },
+    "competitor_profile_id": {
+      "type": "string",
+      "description": "CompetitorProfile ID"
+    },
+    "analysis_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When analysis was performed"
+    },
+    "analysis_period": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "days_analyzed": {
+          "type": "number"
+        }
+      },
+      "description": "Time period analyzed"
+    },
+    "overall_strategy_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall competitor strategy effectiveness"
+    },
+    "content_analysis": {
+      "type": "object",
+      "properties": {
+        "top_performing_content": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "post_id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "post_url": {
+                "type": "string"
+              },
+              "content_type": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "engagement_rate": {
+                "type": "number"
+              },
+              "views": {
+                "type": "number"
+              },
+              "likes": {
+                "type": "number"
+              },
+              "comments": {
+                "type": "number"
+              },
+              "shares": {
+                "type": "number"
+              },
+              "why_it_worked": {
+                "type": "string"
+              },
+              "hook_used": {
+                "type": "string"
+              },
+              "cta_used": {
+                "type": "string"
+              },
+              "emotional_trigger": {
+                "type": "string"
+              },
+              "format_type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "underperforming_content": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "post_id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "engagement_rate": {
+                "type": "number"
+              },
+              "why_it_failed": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "content_themes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "theme": {
+                "type": "string"
+              },
+              "frequency": {
+                "type": "number"
+              },
+              "avg_engagement": {
+                "type": "number"
+              },
+              "posts_count": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "posting_patterns": {
+          "type": "object",
+          "properties": {
+            "posts_per_week": {
+              "type": "number"
+            },
+            "best_performing_days": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "best_performing_times": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "content_mix": {
+              "type": "object",
+              "properties": {
+                "video_percent": {
+                  "type": "number"
+                },
+                "image_percent": {
+                  "type": "number"
+                },
+                "carousel_percent": {
+                  "type": "number"
+                },
+                "text_percent": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "messaging_analysis": {
+      "type": "object",
+      "properties": {
+        "top_hooks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hook_text": {
+                "type": "string"
+              },
+              "avg_engagement": {
+                "type": "number"
+              },
+              "usage_count": {
+                "type": "number"
+              },
+              "hook_pattern": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "top_ctas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cta_text": {
+                "type": "string"
+              },
+              "click_rate": {
+                "type": "number"
+              },
+              "usage_count": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "value_propositions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Key value props they emphasize"
+        },
+        "pain_points_addressed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tone_profile": {
+          "type": "object",
+          "properties": {
+            "overall_tone": {
+              "type": "string"
+            },
+            "formality_score": {
+              "type": "number"
+            },
+            "energy_level": {
+              "type": "number"
+            },
+            "emoji_usage": {
+              "type": "number"
+            },
+            "question_frequency": {
+              "type": "number"
+            }
+          }
+        },
+        "hashtag_strategy": {
+          "type": "object",
+          "properties": {
+            "avg_hashtags_per_post": {
+              "type": "number"
+            },
+            "most_used_hashtags": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "hashtag": {
+                    "type": "string"
+                  },
+                  "usage_count": {
+                    "type": "number"
+                  },
+                  "avg_engagement": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "hashtag_performance": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ad_strategy_analysis": {
+      "type": "object",
+      "properties": {
+        "active_ads_detected": {
+          "type": "number"
+        },
+        "ad_platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ad_creatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "creative_url": {
+                "type": "string"
+              },
+              "headline": {
+                "type": "string"
+              },
+              "primary_text": {
+                "type": "string"
+              },
+              "cta": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              },
+              "landing_page_url": {
+                "type": "string"
+              },
+              "estimated_spend": {
+                "type": "string"
+              },
+              "ad_performance_indicator": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "targeting_insights": {
+          "type": "object",
+          "properties": {
+            "likely_target_demographics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "likely_interests": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "geo_targeting": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ad_copy_patterns": {
+          "type": "object",
+          "properties": {
+            "common_hooks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "value_propositions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "urgency_tactics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "social_proof_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "audience_insights": {
+      "type": "object",
+      "properties": {
+        "engagement_patterns": {
+          "type": "object",
+          "properties": {
+            "most_engaged_content_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "engagement_by_day": {
+              "type": "object"
+            },
+            "engagement_by_time": {
+              "type": "object"
+            },
+            "comment_sentiment": {
+              "type": "object",
+              "properties": {
+                "positive_percent": {
+                  "type": "number"
+                },
+                "negative_percent": {
+                  "type": "number"
+                },
+                "neutral_percent": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "audience_questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "frequency": {
+                "type": "number"
+              },
+              "answered": {
+                "type": "boolean"
+              }
+            }
+          },
+          "description": "Common questions in comments"
+        },
+        "audience_pain_points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Pain points extracted from comments"
+        }
+      }
+    },
+    "competitor_strengths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "strength": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "impact_level": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          }
+        }
+      },
+      "description": "What competitor does well"
+    },
+    "competitor_weaknesses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "weakness": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "opportunity_level": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "how_to_exploit": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Competitor gaps and vulnerabilities"
+    },
+    "market_gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "gap_type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "opportunity_size": {
+            "type": "string",
+            "enum": [
+              "massive",
+              "large",
+              "medium",
+              "small"
+            ]
+          },
+          "competition_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "suggested_approach": {
+            "type": "string"
+          },
+          "content_ideas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "expected_impact": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Untapped opportunities in the market"
+    },
+    "differentiation_strategies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "strategy_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "how_to_position": {
+            "type": "string"
+          },
+          "messaging_angles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "content_examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "expected_advantage": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "How to differentiate from competitor"
+    },
+    "counterstrategy_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recommendation_id": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "content_strategy",
+              "messaging",
+              "targeting",
+              "platform",
+              "timing",
+              "pricing",
+              "positioning"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "specific_tactics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tactic": {
+                  "type": "string"
+                },
+                "implementation": {
+                  "type": "string"
+                },
+                "example": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "expected_results": {
+            "type": "object",
+            "properties": {
+              "engagement_lift": {
+                "type": "string"
+              },
+              "market_share_gain": {
+                "type": "string"
+              },
+              "competitive_advantage": {
+                "type": "string"
+              }
+            }
+          },
+          "effort_required": {
+            "type": "string",
+            "enum": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "time_to_impact_days": {
+            "type": "number"
+          },
+          "roi_score": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Actionable strategies to outperform competitor"
+    },
+    "benchmarking": {
+      "type": "object",
+      "properties": {
+        "your_metrics": {
+          "type": "object",
+          "properties": {
+            "avg_engagement_rate": {
+              "type": "number"
+            },
+            "avg_reach": {
+              "type": "number"
+            },
+            "posting_frequency": {
+              "type": "number"
+            },
+            "follower_count": {
+              "type": "number"
+            }
+          }
+        },
+        "competitor_metrics": {
+          "type": "object",
+          "properties": {
+            "avg_engagement_rate": {
+              "type": "number"
+            },
+            "avg_reach": {
+              "type": "number"
+            },
+            "posting_frequency": {
+              "type": "number"
+            },
+            "follower_count": {
+              "type": "number"
+            }
+          }
+        },
+        "performance_gaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "your_value": {
+                "type": "number"
+              },
+              "their_value": {
+                "type": "number"
+              },
+              "gap_percentage": {
+                "type": "number"
+              },
+              "how_to_close": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "your_advantages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "advantage": {
+                "type": "string"
+              },
+              "leverage_strategy": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "campaign_integration": {
+      "type": "object",
+      "properties": {
+        "campaign_id": {
+          "type": "string"
+        },
+        "insights_applied": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "competitor_inspired_content": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "differentiation_applied": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "How insights were used in campaigns"
+    },
+    "ai_confidence_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI confidence in analysis accuracy"
+    },
+    "data_sources_count": {
+      "type": "number",
+      "description": "Number of competitor posts analyzed"
+    },
+    "next_analysis_recommended": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "competitor_profile_id",
+    "overall_strategy_score"
+  ]
+}

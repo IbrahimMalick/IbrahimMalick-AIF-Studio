@@ -1,0 +1,64 @@
+{
+  "name": "Asset",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Asset title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Asset description"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "URL to the uploaded file"
+    },
+    "file_type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video",
+        "audio",
+        "document"
+      ],
+      "description": "Type of media file"
+    },
+    "file_size_mb": {
+      "type": "number",
+      "description": "File size in megabytes"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Searchable tags"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether asset is published"
+    },
+    "license_type": {
+      "type": "string",
+      "enum": [
+        "free",
+        "personal",
+        "commercial",
+        "exclusive"
+      ],
+      "default": "free"
+    },
+    "price": {
+      "type": "number",
+      "default": 0,
+      "description": "Price in USD"
+    }
+  },
+  "required": [
+    "title",
+    "file_url",
+    "file_type"
+  ]
+}

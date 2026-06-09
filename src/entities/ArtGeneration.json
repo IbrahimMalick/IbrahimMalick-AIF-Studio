@@ -1,0 +1,65 @@
+{
+  "name": "ArtGeneration",
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "description": "Image generation prompt"
+    },
+    "negative_prompt": {
+      "type": "string",
+      "description": "What to avoid in generation"
+    },
+    "style": {
+      "type": "string",
+      "enum": [
+        "photorealistic",
+        "digital_art",
+        "oil_painting",
+        "watercolor",
+        "anime",
+        "3d_render",
+        "sketch",
+        "abstract"
+      ],
+      "default": "digital_art"
+    },
+    "dimensions": {
+      "type": "string",
+      "enum": [
+        "square",
+        "portrait",
+        "landscape",
+        "wide"
+      ],
+      "default": "square"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Generated image URL"
+    },
+    "variations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs of variations"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "completed",
+        "failed"
+      ],
+      "default": "generating"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "prompt"
+  ]
+}

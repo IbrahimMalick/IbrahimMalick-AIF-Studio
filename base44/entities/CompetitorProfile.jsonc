@@ -1,0 +1,89 @@
+{
+  "name": "CompetitorProfile",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User tracking this competitor"
+    },
+    "competitor_name": {
+      "type": "string",
+      "description": "Competitor business name"
+    },
+    "competitor_url": {
+      "type": "string",
+      "description": "Main website URL"
+    },
+    "platforms_tracked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Social platforms to monitor",
+      "default": [
+        "instagram",
+        "facebook",
+        "tiktok",
+        "youtube"
+      ]
+    },
+    "social_handles": {
+      "type": "object",
+      "properties": {
+        "instagram": {
+          "type": "string"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "tiktok": {
+          "type": "string"
+        },
+        "youtube": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        }
+      },
+      "description": "Social media usernames"
+    },
+    "industry": {
+      "type": "string",
+      "description": "Business category"
+    },
+    "monitoring_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "alert_frequency": {
+      "type": "string",
+      "enum": [
+        "realtime",
+        "daily",
+        "weekly"
+      ],
+      "default": "daily"
+    },
+    "alert_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What to get alerted about",
+      "default": [
+        "new_post",
+        "viral_content",
+        "ad_spotted"
+      ]
+    },
+    "notes": {
+      "type": "string",
+      "description": "User notes about competitor"
+    }
+  },
+  "required": [
+    "user_email",
+    "competitor_name"
+  ]
+}

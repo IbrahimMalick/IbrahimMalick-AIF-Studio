@@ -1,0 +1,77 @@
+{
+  "name": "CampaignTemplate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "saas",
+        "ecommerce",
+        "services",
+        "healthcare",
+        "finance",
+        "general"
+      ],
+      "description": "Industry category"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ad",
+        "script",
+        "visual",
+        "audio",
+        "full_campaign"
+      ],
+      "description": "Template type"
+    },
+    "base_prompt": {
+      "type": "string",
+      "description": "Base LLM prompt for this template"
+    },
+    "style_guidelines": {
+      "type": "object",
+      "description": "Visual and creative style guidelines"
+    },
+    "performance_metrics": {
+      "type": "object",
+      "description": "Historical performance data"
+    },
+    "times_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times template was used"
+    },
+    "avg_satisfaction": {
+      "type": "number",
+      "description": "Average client satisfaction score"
+    },
+    "avg_revision_count": {
+      "type": "number",
+      "description": "Average number of revisions needed"
+    },
+    "avg_api_cost": {
+      "type": "number",
+      "description": "Average API cost per use"
+    },
+    "last_optimized": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When template was last optimized"
+    },
+    "ab_test_winner": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this won A/B testing"
+    }
+  },
+  "required": [
+    "name",
+    "category",
+    "type"
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "name": "ReceptionistConfig",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this config"
+    },
+    "brand_name": {
+      "type": "string",
+      "default": "AI Freedom Studios",
+      "description": "Brand name for greeting"
+    },
+    "greeting_message": {
+      "type": "string",
+      "default": "Hi! You're speaking with the AI receptionist. How can I help today?",
+      "description": "Opening greeting"
+    },
+    "business_hours": {
+      "type": "object",
+      "properties": {
+        "timezone": {
+          "type": "string",
+          "default": "America/New_York"
+        },
+        "monday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "tuesday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "wednesday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "thursday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "friday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "saturday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "sunday": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "description": "Business hours configuration"
+    },
+    "after_hours_message": {
+      "type": "string",
+      "default": "We're currently closed. Please leave a message or text us and we'll get back to you shortly.",
+      "description": "After hours greeting"
+    },
+    "escalation_rules": {
+      "type": "object",
+      "properties": {
+        "low_confidence_threshold": {
+          "type": "number",
+          "default": 0.55
+        },
+        "escalate_keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "lawyer",
+            "urgent",
+            "emergency",
+            "complaint"
+          ]
+        },
+        "escalation_phone": {
+          "type": "string"
+        },
+        "escalation_email": {
+          "type": "string"
+        },
+        "slack_webhook": {
+          "type": "string"
+        }
+      },
+      "description": "When to escalate to human"
+    },
+    "qualification_criteria": {
+      "type": "object",
+      "properties": {
+        "required_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "budget",
+            "timeline"
+          ]
+        },
+        "qualifying_budget_min": {
+          "type": "number"
+        },
+        "high_score_threshold": {
+          "type": "number",
+          "default": 70
+        },
+        "auto_book_if_score_above": {
+          "type": "number",
+          "default": 80
+        }
+      },
+      "description": "Lead scoring rules"
+    },
+    "faq_knowledge_base": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "FAQ database for AI",
+      "default": []
+    },
+    "recording_disclaimer": {
+      "type": "string",
+      "default": "This call may be recorded and transcribed to improve service.",
+      "description": "Legal disclosure"
+    },
+    "twilio_phone_number": {
+      "type": "string",
+      "description": "Twilio phone number"
+    },
+    "calendar_integrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "calendar_id": {
+            "type": "string"
+          },
+          "calendar_name": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "ghl",
+              "google",
+              "calcom"
+            ]
+          },
+          "is_default": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Connected calendars"
+    },
+    "auto_follow_up_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Send auto follow-ups"
+    },
+    "follow_up_templates": {
+      "type": "object",
+      "properties": {
+        "post_call_sms": {
+          "type": "string"
+        },
+        "post_call_email": {
+          "type": "string"
+        },
+        "no_answer_sms": {
+          "type": "string"
+        },
+        "appointment_reminder_24h": {
+          "type": "string"
+        },
+        "appointment_reminder_2h": {
+          "type": "string"
+        }
+      },
+      "description": "Follow-up message templates"
+    },
+    "voice_settings": {
+      "type": "object",
+      "properties": {
+        "voice_id": {
+          "type": "string",
+          "default": "en-US-Neural2-J"
+        },
+        "speaking_rate": {
+          "type": "number",
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "number",
+          "default": 0
+        },
+        "volume_gain_db": {
+          "type": "number",
+          "default": 0
+        }
+      },
+      "description": "TTS voice settings"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Receptionist enabled"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

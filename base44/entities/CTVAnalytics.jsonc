@@ -1,0 +1,522 @@
+{
+  "name": "CTVAnalytics",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this analytics data"
+    },
+    "ctv_project_id": {
+      "type": "string",
+      "description": "Related CTVProject ID"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "roku",
+        "apple_tv",
+        "fire_tv",
+        "android_tv",
+        "samsung_tv",
+        "vizio"
+      ],
+      "description": "CTV platform"
+    },
+    "analysis_period": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "Analytics time range"
+    },
+    "overall_metrics": {
+      "type": "object",
+      "properties": {
+        "total_views": {
+          "type": "number",
+          "default": 0
+        },
+        "unique_viewers": {
+          "type": "number",
+          "default": 0
+        },
+        "total_watch_time_minutes": {
+          "type": "number",
+          "default": 0
+        },
+        "avg_watch_time_minutes": {
+          "type": "number",
+          "default": 0
+        },
+        "completion_rate": {
+          "type": "number",
+          "default": 0
+        },
+        "replay_rate": {
+          "type": "number",
+          "default": 0
+        },
+        "share_count": {
+          "type": "number",
+          "default": 0
+        },
+        "favorite_count": {
+          "type": "number",
+          "default": 0
+        }
+      },
+      "description": "High-level metrics"
+    },
+    "viewer_demographics": {
+      "type": "object",
+      "properties": {
+        "age_breakdown": {
+          "type": "object",
+          "properties": {
+            "18_24": {
+              "type": "number",
+              "default": 0
+            },
+            "25_34": {
+              "type": "number",
+              "default": 0
+            },
+            "35_44": {
+              "type": "number",
+              "default": 0
+            },
+            "45_54": {
+              "type": "number",
+              "default": 0
+            },
+            "55_64": {
+              "type": "number",
+              "default": 0
+            },
+            "65_plus": {
+              "type": "number",
+              "default": 0
+            }
+          }
+        },
+        "gender_breakdown": {
+          "type": "object",
+          "properties": {
+            "male": {
+              "type": "number",
+              "default": 0
+            },
+            "female": {
+              "type": "number",
+              "default": 0
+            },
+            "other": {
+              "type": "number",
+              "default": 0
+            }
+          }
+        },
+        "geo_breakdown": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "viewer_count": {
+                "type": "number"
+              },
+              "percentage": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "household_income": {
+          "type": "object",
+          "properties": {
+            "under_50k": {
+              "type": "number"
+            },
+            "50k_100k": {
+              "type": "number"
+            },
+            "100k_150k": {
+              "type": "number"
+            },
+            "over_150k": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "description": "Audience demographics"
+    },
+    "device_analytics": {
+      "type": "object",
+      "properties": {
+        "device_breakdown": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "device_model": {
+                "type": "string"
+              },
+              "os_version": {
+                "type": "string"
+              },
+              "view_count": {
+                "type": "number"
+              },
+              "avg_watch_time": {
+                "type": "number"
+              },
+              "completion_rate": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "screen_size_breakdown": {
+          "type": "object",
+          "properties": {
+            "720p": {
+              "type": "number"
+            },
+            "1080p": {
+              "type": "number"
+            },
+            "4k": {
+              "type": "number"
+            },
+            "8k": {
+              "type": "number"
+            }
+          }
+        },
+        "network_type": {
+          "type": "object",
+          "properties": {
+            "wifi": {
+              "type": "number"
+            },
+            "ethernet": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "description": "Device and technical analytics"
+    },
+    "segment_analytics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment_start_seconds": {
+            "type": "number"
+          },
+          "segment_end_seconds": {
+            "type": "number"
+          },
+          "segment_name": {
+            "type": "string"
+          },
+          "total_views": {
+            "type": "number"
+          },
+          "completion_rate": {
+            "type": "number"
+          },
+          "avg_watch_time": {
+            "type": "number"
+          },
+          "drop_off_count": {
+            "type": "number"
+          },
+          "replay_count": {
+            "type": "number"
+          },
+          "engagement_score": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Performance per video segment"
+    },
+    "retention_curve": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp_seconds": {
+            "type": "number"
+          },
+          "viewers_remaining": {
+            "type": "number"
+          },
+          "retention_percentage": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Audience retention over time"
+    },
+    "engagement_heatmap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp_seconds": {
+            "type": "number"
+          },
+          "replay_count": {
+            "type": "number"
+          },
+          "pause_count": {
+            "type": "number"
+          },
+          "rewind_count": {
+            "type": "number"
+          },
+          "skip_count": {
+            "type": "number"
+          },
+          "engagement_intensity": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Viewer interaction patterns"
+    },
+    "viewing_sessions": {
+      "type": "object",
+      "properties": {
+        "total_sessions": {
+          "type": "number"
+        },
+        "avg_session_duration": {
+          "type": "number"
+        },
+        "sessions_completed": {
+          "type": "number"
+        },
+        "sessions_abandoned": {
+          "type": "number"
+        },
+        "peak_viewing_hours": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hour": {
+                "type": "number"
+              },
+              "day_of_week": {
+                "type": "string"
+              },
+              "view_count": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "description": "Viewing session data"
+    },
+    "platform_specific_metrics": {
+      "type": "object",
+      "description": "Platform-specific data",
+      "properties": {
+        "roku_metrics": {
+          "type": "object",
+          "properties": {
+            "channel_installs": {
+              "type": "number"
+            },
+            "channel_uninstalls": {
+              "type": "number"
+            },
+            "search_impressions": {
+              "type": "number"
+            },
+            "thumbnail_ctr": {
+              "type": "number"
+            },
+            "preview_play_rate": {
+              "type": "number"
+            }
+          }
+        },
+        "apple_tv_metrics": {
+          "type": "object",
+          "properties": {
+            "app_downloads": {
+              "type": "number"
+            },
+            "siri_searches": {
+              "type": "number"
+            },
+            "airplay_sessions": {
+              "type": "number"
+            },
+            "handoff_sessions": {
+              "type": "number"
+            }
+          }
+        },
+        "fire_tv_metrics": {
+          "type": "object",
+          "properties": {
+            "alexa_voice_searches": {
+              "type": "number"
+            },
+            "ime_purchases": {
+              "type": "number"
+            },
+            "cross_device_views": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "ad_performance": {
+      "type": "object",
+      "properties": {
+        "ad_impressions": {
+          "type": "number",
+          "default": 0
+        },
+        "ad_starts": {
+          "type": "number",
+          "default": 0
+        },
+        "ad_completions": {
+          "type": "number",
+          "default": 0
+        },
+        "ad_skip_rate": {
+          "type": "number",
+          "default": 0
+        },
+        "ad_ctr": {
+          "type": "number",
+          "default": 0
+        },
+        "ad_revenue_usd": {
+          "type": "number",
+          "default": 0
+        }
+      },
+      "description": "Ad monetization metrics"
+    },
+    "ai_predictions": {
+      "type": "object",
+      "properties": {
+        "predicted_total_views_7d": {
+          "type": "number"
+        },
+        "predicted_total_views_30d": {
+          "type": "number"
+        },
+        "predicted_completion_rate": {
+          "type": "number"
+        },
+        "predicted_viral_score": {
+          "type": "number"
+        },
+        "confidence_level": {
+          "type": "number"
+        },
+        "factors_analyzed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Predictive analytics"
+    },
+    "benchmarks": {
+      "type": "object",
+      "properties": {
+        "category_avg_views": {
+          "type": "number"
+        },
+        "category_avg_completion": {
+          "type": "number"
+        },
+        "platform_avg_views": {
+          "type": "number"
+        },
+        "platform_avg_completion": {
+          "type": "number"
+        },
+        "your_rank_in_category": {
+          "type": "number"
+        },
+        "percentile": {
+          "type": "number"
+        }
+      },
+      "description": "Comparative benchmarks"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recommendation": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "expected_impact": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "AI-generated optimization recommendations"
+    },
+    "last_synced": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last API sync with platform"
+    },
+    "sync_frequency": {
+      "type": "string",
+      "enum": [
+        "hourly",
+        "daily",
+        "weekly"
+      ],
+      "default": "daily",
+      "description": "How often to refresh data"
+    }
+  },
+  "required": [
+    "user_email",
+    "ctv_project_id",
+    "platform"
+  ]
+}

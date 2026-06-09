@@ -1,0 +1,139 @@
+{
+  "name": "CoachingSession",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User being coached"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "session_type": {
+      "type": "string",
+      "enum": [
+        "onboarding",
+        "goal_setting",
+        "strategy_review",
+        "performance_review",
+        "problem_solving",
+        "skill_building",
+        "accountability_check"
+      ],
+      "default": "goal_setting",
+      "description": "Type of coaching session"
+    },
+    "coach_avatar_id": {
+      "type": "string",
+      "description": "AI coach avatar used"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "scheduled",
+      "description": "Session status"
+    },
+    "conversation_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Full conversation with coach"
+    },
+    "goals_discussed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Goals covered in this session"
+    },
+    "action_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string"
+          },
+          "due_date": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Tasks assigned by coach"
+    },
+    "insights_generated": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key insights from session"
+    },
+    "user_sentiment": {
+      "type": "string",
+      "enum": [
+        "energized",
+        "motivated",
+        "overwhelmed",
+        "confused",
+        "satisfied"
+      ],
+      "description": "User's emotional state"
+    },
+    "coach_notes": {
+      "type": "string",
+      "description": "AI coach's private notes for next session"
+    },
+    "next_session_scheduled": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When next check-in is scheduled"
+    },
+    "session_rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "User's rating of session"
+    },
+    "duration_minutes": {
+      "type": "number",
+      "description": "Session length"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "session_id",
+    "session_type"
+  ]
+}

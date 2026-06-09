@@ -1,0 +1,96 @@
+{
+  "name": "ProjectComment",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "description": "VideoProject ID"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Who commented"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Commenter's display name"
+    },
+    "comment_text": {
+      "type": "string",
+      "description": "Comment content"
+    },
+    "comment_type": {
+      "type": "string",
+      "enum": [
+        "general",
+        "scene_specific",
+        "timestamp_specific",
+        "approval",
+        "revision_request"
+      ],
+      "default": "general"
+    },
+    "scene_index": {
+      "type": "number",
+      "description": "Which scene (if scene-specific)"
+    },
+    "timestamp_seconds": {
+      "type": "number",
+      "description": "Video timestamp (if timestamp-specific)"
+    },
+    "parent_comment_id": {
+      "type": "string",
+      "description": "Reply to another comment"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "resolved",
+        "archived"
+      ],
+      "default": "open"
+    },
+    "resolved_by": {
+      "type": "string",
+      "description": "Who marked as resolved"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mentions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Mentioned user emails"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Image/file URLs"
+    },
+    "reactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "emoji": {
+            "type": "string"
+          },
+          "user_email": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Emoji reactions"
+    }
+  },
+  "required": [
+    "project_id",
+    "user_email",
+    "comment_text"
+  ]
+}

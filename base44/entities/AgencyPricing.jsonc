@@ -1,0 +1,99 @@
+{
+  "name": "AgencyPricing",
+  "type": "object",
+  "properties": {
+    "agency_id": {
+      "type": "string",
+      "description": "GHL Agency ID"
+    },
+    "pricing_tier": {
+      "type": "string",
+      "enum": [
+        "starter",
+        "professional",
+        "enterprise",
+        "custom"
+      ],
+      "default": "professional",
+      "description": "Pricing tier"
+    },
+    "base_monthly_price": {
+      "type": "number",
+      "description": "Base monthly subscription"
+    },
+    "per_user_price": {
+      "type": "number",
+      "default": 0,
+      "description": "Additional cost per user"
+    },
+    "per_video_price": {
+      "type": "number",
+      "default": 0,
+      "description": "Cost per video rendered"
+    },
+    "setup_fee": {
+      "type": "number",
+      "default": 0,
+      "description": "One-time setup fee"
+    },
+    "included_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Features included in tier"
+    },
+    "video_credits_monthly": {
+      "type": "number",
+      "description": "Videos included per month"
+    },
+    "storage_limit_gb": {
+      "type": "number",
+      "description": "Storage limit"
+    },
+    "team_members_limit": {
+      "type": "number",
+      "description": "Max team members"
+    },
+    "white_label_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "custom_domain_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "priority_support": {
+      "type": "boolean",
+      "default": false
+    },
+    "commission_rate": {
+      "type": "number",
+      "default": 0,
+      "description": "Agency commission %"
+    },
+    "trial_days": {
+      "type": "number",
+      "default": 14
+    },
+    "contract_length_months": {
+      "type": "number",
+      "default": 1,
+      "description": "Minimum contract"
+    },
+    "annual_discount_percent": {
+      "type": "number",
+      "default": 20,
+      "description": "Discount for annual payment"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "agency_id",
+    "pricing_tier",
+    "base_monthly_price"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "SessionLog",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's email"
+    },
+    "session_token": {
+      "type": "string",
+      "description": "Session identifier"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "Login IP"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "Browser/device info"
+    },
+    "device_type": {
+      "type": "string",
+      "enum": [
+        "desktop",
+        "mobile",
+        "tablet"
+      ],
+      "description": "Device category"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      }
+    },
+    "login_method": {
+      "type": "string",
+      "enum": [
+        "password",
+        "oauth",
+        "magic_link",
+        "2fa"
+      ]
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_activity": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "logged_out_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "session_token"
+  ]
+}

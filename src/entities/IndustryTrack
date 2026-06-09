@@ -1,0 +1,105 @@
+{
+  "name": "IndustryTrack",
+  "type": "object",
+  "properties": {
+    "track_name": {
+      "type": "string",
+      "description": "Name of industry track"
+    },
+    "industry": {
+      "type": "string",
+      "enum": [
+        "real_estate",
+        "fitness",
+        "coaching",
+        "ecommerce",
+        "saas",
+        "agency",
+        "creator_economy",
+        "consulting",
+        "healthcare",
+        "education"
+      ],
+      "description": "Target industry"
+    },
+    "track_description": {
+      "type": "string",
+      "description": "What this track teaches"
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Learning module IDs in sequence"
+    },
+    "duration_weeks": {
+      "type": "number",
+      "description": "Expected completion time"
+    },
+    "difficulty_level": {
+      "type": "string",
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "default": "beginner"
+    },
+    "skills_covered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills taught"
+    },
+    "tools_introduced": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tools/platforms covered"
+    },
+    "case_studies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "results": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Real-world examples"
+    },
+    "mentor_avatar_id": {
+      "type": "string",
+      "description": "Default AI mentor for this track"
+    },
+    "enrollment_count": {
+      "type": "number",
+      "default": 0
+    },
+    "completion_rate": {
+      "type": "number",
+      "description": "% who complete"
+    },
+    "average_rating": {
+      "type": "number"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "track_name",
+    "industry"
+  ]
+}

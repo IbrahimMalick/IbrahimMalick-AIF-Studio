@@ -1,0 +1,83 @@
+{
+  "name": "VideoProject",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Project title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description"
+    },
+    "json_script": {
+      "type": "string",
+      "description": "JSON script for video generation"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Total video duration"
+    },
+    "resolution": {
+      "type": "string",
+      "enum": [
+        "1920x1080",
+        "1280x720",
+        "1080x1920",
+        "1080x1080"
+      ],
+      "default": "1920x1080",
+      "description": "Video resolution"
+    },
+    "fps": {
+      "type": "number",
+      "default": 30,
+      "description": "Frames per second"
+    },
+    "scenes": {
+      "type": "array",
+      "description": "Video scenes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "number"
+          },
+          "background": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "voiceover": {
+            "type": "string"
+          },
+          "animation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "rendering",
+        "completed",
+        "failed"
+      ],
+      "default": "draft"
+    },
+    "output_url": {
+      "type": "string",
+      "description": "Rendered video URL"
+    },
+    "template_id": {
+      "type": "string",
+      "description": "Template used"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

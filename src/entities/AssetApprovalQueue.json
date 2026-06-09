@@ -1,0 +1,58 @@
+{
+  "name": "AssetApprovalQueue",
+  "type": "object",
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "description": "Associated asset entity ID"
+    },
+    "asset_title": {
+      "type": "string",
+      "description": "Asset title for display"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": ["video", "image", "audio", "document"],
+      "description": "Type of asset"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "approved", "rejected", "published"],
+      "default": "pending"
+    },
+    "approval_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "Email of approver"
+    },
+    "publishing_config_id": {
+      "type": "string",
+      "description": "Which config to use for publishing"
+    },
+    "auto_tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Tags applied during publishing"
+    },
+    "channels_published_to": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Channels where asset was published"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "published_by_automation": {
+      "type": "boolean",
+      "default": false
+    },
+    "rejection_reason": {
+      "type": "string"
+    }
+  },
+  "required": ["asset_id", "asset_title", "asset_type"]
+}

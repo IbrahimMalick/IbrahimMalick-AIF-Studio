@@ -1,0 +1,199 @@
+{
+  "name": "CampaignExecution",
+  "type": "object",
+  "properties": {
+    "campaign_id": {
+      "type": "string",
+      "description": "MultiChannelCampaign ID"
+    },
+    "lead_id": {
+      "type": "string",
+      "description": "Lead in this execution"
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": [
+        "running",
+        "paused",
+        "completed",
+        "cancelled",
+        "failed"
+      ],
+      "default": "running",
+      "description": "Execution status"
+    },
+    "current_node_id": {
+      "type": "string",
+      "description": "Current step in flow"
+    },
+    "nodes_completed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string"
+          },
+          "executed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "variant_id": {
+            "type": "string"
+          },
+          "response_received": {
+            "type": "boolean"
+          },
+          "engagement_score": {
+            "type": "number"
+          },
+          "error_message": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Completed nodes with results"
+    },
+    "next_node_scheduled": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When next action executes"
+    },
+    "branch_taken": {
+      "type": "object",
+      "properties": {
+        "node_id": {
+          "type": "string"
+        },
+        "branch_label": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "description": "Which conditional branch was taken"
+    },
+    "ab_test_assignments": {
+      "type": "object",
+      "description": "Variant assignments per A/B test node"
+    },
+    "lead_responses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "response_text": {
+            "type": "string"
+          },
+          "sentiment": {
+            "type": "number"
+          },
+          "intent": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "description": "Lead responses during campaign"
+    },
+    "engagement_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0,
+      "description": "Overall engagement"
+    },
+    "converted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether lead converted"
+    },
+    "conversion_node_id": {
+      "type": "string",
+      "description": "Where conversion happened"
+    },
+    "converted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Conversion timestamp"
+    },
+    "exit_reason": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "converted",
+        "unsubscribed",
+        "failed",
+        "manual_stop",
+        "timeout",
+        "disqualified"
+      ],
+      "description": "Why execution ended"
+    },
+    "total_messages_sent": {
+      "type": "number",
+      "default": 0,
+      "description": "Total outreach attempts"
+    },
+    "total_responses_received": {
+      "type": "number",
+      "default": 0,
+      "description": "Lead replies"
+    },
+    "cost_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Total execution cost"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign start"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign end"
+    },
+    "duration_days": {
+      "type": "number",
+      "description": "Total duration"
+    },
+    "ghl_activity_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "ghl_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "description": "GHL sync activity"
+    }
+  },
+  "required": [
+    "campaign_id",
+    "lead_id"
+  ]
+}

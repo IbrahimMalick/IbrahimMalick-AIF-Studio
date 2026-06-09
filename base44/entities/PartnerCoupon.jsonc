@@ -1,0 +1,84 @@
+{
+  "name": "PartnerCoupon",
+  "type": "object",
+  "properties": {
+    "coupon_code": {
+      "type": "string",
+      "description": "Unique coupon code (e.g., DUANE30)"
+    },
+    "partner_id": {
+      "type": "string",
+      "description": "PartnerAffiliate ID (null for general coupons)"
+    },
+    "discount_type": {
+      "type": "string",
+      "enum": [
+        "percentage",
+        "fixed_amount",
+        "free_trial_extended"
+      ],
+      "default": "percentage",
+      "description": "Discount type"
+    },
+    "discount_value": {
+      "type": "number",
+      "description": "Discount amount (30 for 30%, or dollar amount)"
+    },
+    "applies_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Plan tiers coupon applies to",
+      "default": [
+        "creator",
+        "pro",
+        "agency",
+        "enterprise"
+      ]
+    },
+    "duration": {
+      "type": "string",
+      "enum": [
+        "once",
+        "forever",
+        "repeating"
+      ],
+      "default": "once",
+      "description": "How long discount lasts"
+    },
+    "duration_months": {
+      "type": "number",
+      "description": "Months for repeating discount"
+    },
+    "max_redemptions": {
+      "type": "number",
+      "default": -1,
+      "description": "Max uses (-1 = unlimited)"
+    },
+    "redemptions_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times redeemed"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Coupon enabled"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expiration date"
+    },
+    "stripe_coupon_id": {
+      "type": "string",
+      "description": "Stripe coupon ID"
+    }
+  },
+  "required": [
+    "coupon_code",
+    "discount_type",
+    "discount_value"
+  ]
+}

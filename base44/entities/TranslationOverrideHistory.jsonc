@@ -1,0 +1,103 @@
+{
+  "name": "TranslationOverrideHistory",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this override version"
+    },
+    "version_number": {
+      "type": "number",
+      "description": "Version number (incremental)"
+    },
+    "version_name": {
+      "type": "string",
+      "description": "User-provided version label (e.g., 'Initial Spanish', 'Client Review v2')"
+    },
+    "override_data": {
+      "type": "string",
+      "description": "Full JSON of overrides at this version"
+    },
+    "changes_summary": {
+      "type": "string",
+      "description": "What changed in this version"
+    },
+    "languages_affected": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which languages were modified"
+    },
+    "keys_added": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "New translation keys added"
+    },
+    "keys_modified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Existing keys that were changed"
+    },
+    "keys_deleted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Keys that were removed"
+    },
+    "comment": {
+      "type": "string",
+      "description": "User's comment about this version"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for organizing versions (e.g., 'client_feedback', 'production', 'testing')"
+    },
+    "is_auto_save": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this was auto-saved or manually saved"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "manual_import",
+        "ai_translation",
+        "client_upload",
+        "auto_save",
+        "merge"
+      ],
+      "description": "How this version was created"
+    },
+    "file_size_kb": {
+      "type": "number",
+      "description": "Size of override data"
+    },
+    "total_keys": {
+      "type": "number",
+      "description": "Total translation keys in this version"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is the currently active version"
+    },
+    "restored_from": {
+      "type": "string",
+      "description": "If this is a restored version, the original version ID"
+    }
+  },
+  "required": [
+    "user_email",
+    "version_number",
+    "override_data"
+  ]
+}

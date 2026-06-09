@@ -1,0 +1,235 @@
+{
+  "name": "NurtureRule",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this rule"
+    },
+    "rule_name": {
+      "type": "string",
+      "description": "Nurture rule name"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether rule is enabled"
+    },
+    "trigger_conditions": {
+      "type": "object",
+      "properties": {
+        "lead_status": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Trigger for these statuses"
+        },
+        "score_min": {
+          "type": "number",
+          "description": "Minimum lead score"
+        },
+        "score_max": {
+          "type": "number",
+          "description": "Maximum lead score"
+        },
+        "days_since_last_contact": {
+          "type": "number",
+          "description": "Days inactive"
+        },
+        "call_disposition": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specific call outcomes"
+        },
+        "has_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Lead must have these tags"
+        },
+        "missing_data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Trigger if missing email, budget, etc."
+        }
+      },
+      "description": "When to trigger nurture"
+    },
+    "sequence_config": {
+      "type": "object",
+      "properties": {
+        "sequence_type": {
+          "type": "string",
+          "enum": [
+            "sms_only",
+            "email_only",
+            "sms_email_combo",
+            "callback_schedule",
+            "multi_channel"
+          ],
+          "description": "Sequence type"
+        },
+        "touchpoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "number"
+              },
+              "channel": {
+                "type": "string",
+                "enum": [
+                  "sms",
+                  "email",
+                  "call"
+                ]
+              },
+              "template_id": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "subject": {
+                "type": "string"
+              },
+              "wait_for_reply": {
+                "type": "boolean"
+              },
+              "if_no_reply_action": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Nurture touchpoints"
+        },
+        "duration_days": {
+          "type": "number",
+          "default": 14,
+          "description": "Total sequence length"
+        },
+        "stop_on_reply": {
+          "type": "boolean",
+          "default": true,
+          "description": "Stop sequence if lead responds"
+        },
+        "escalate_on_engagement": {
+          "type": "boolean",
+          "default": true,
+          "description": "Move to 'qualified' if lead engages"
+        }
+      },
+      "description": "Nurture sequence configuration"
+    },
+    "exit_conditions": {
+      "type": "object",
+      "properties": {
+        "auto_qualify_score": {
+          "type": "number",
+          "description": "Auto-qualify if score reaches this"
+        },
+        "auto_lost_after_days": {
+          "type": "number",
+          "description": "Mark lost if no response after N days"
+        },
+        "stop_if_status_changes_to": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Stop if status becomes these"
+        }
+      },
+      "description": "When to exit nurture"
+    },
+    "callback_config": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Schedule callbacks"
+        },
+        "calendar_id": {
+          "type": "string",
+          "description": "Which calendar to use"
+        },
+        "callback_delay_days": {
+          "type": "number",
+          "default": 3,
+          "description": "Days after trigger"
+        },
+        "callback_duration_minutes": {
+          "type": "number",
+          "default": 15,
+          "description": "Call duration"
+        },
+        "business_hours_only": {
+          "type": "boolean",
+          "default": true
+        },
+        "assigned_to": {
+          "type": "string",
+          "description": "Sales rep email"
+        }
+      },
+      "description": "Automatic callback scheduling"
+    },
+    "ghl_integration": {
+      "type": "object",
+      "properties": {
+        "sync_to_ghl": {
+          "type": "boolean",
+          "default": true
+        },
+        "ghl_workflow_id": {
+          "type": "string",
+          "description": "Trigger GHL workflow"
+        },
+        "ghl_pipeline_stage_id": {
+          "type": "string",
+          "description": "Move to this pipeline stage"
+        },
+        "ghl_tags_to_add": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags to apply in GHL"
+        }
+      },
+      "description": "GoHighLevel sync settings"
+    },
+    "execution_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times rule has triggered"
+    },
+    "active_leads_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Leads currently in this nurture"
+    },
+    "success_rate": {
+      "type": "number",
+      "description": "% of leads that qualified/converted"
+    },
+    "avg_time_to_conversion_days": {
+      "type": "number",
+      "description": "Average days to convert"
+    }
+  },
+  "required": [
+    "user_email",
+    "rule_name",
+    "trigger_conditions",
+    "sequence_config"
+  ]
+}

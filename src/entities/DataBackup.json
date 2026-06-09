@@ -1,0 +1,63 @@
+{
+  "name": "DataBackup",
+  "type": "object",
+  "properties": {
+    "backup_type": {
+      "type": "string",
+      "enum": ["full", "incremental", "transaction_log"],
+      "default": "incremental",
+      "description": "Type of backup"
+    },
+    "source_entity": {
+      "type": "string",
+      "description": "Entity being backed up (or 'all' for full)"
+    },
+    "record_count": {
+      "type": "number",
+      "description": "Number of records backed up"
+    },
+    "backup_size_mb": {
+      "type": "number",
+      "description": "Size of backup in MB"
+    },
+    "storage_location": {
+      "type": "string",
+      "description": "Where backup is stored (S3 path, etc.)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["in_progress", "completed", "failed", "verified"],
+      "default": "in_progress"
+    },
+    "checksum": {
+      "type": "string",
+      "description": "SHA256 checksum for verification"
+    },
+    "retention_days": {
+      "type": "number",
+      "default": 30,
+      "description": "Days to keep backup"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_encrypted": {
+      "type": "boolean",
+      "default": true
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["backup_type", "storage_location"]
+}

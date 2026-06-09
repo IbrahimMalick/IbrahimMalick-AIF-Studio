@@ -1,0 +1,91 @@
+{
+  "name": "SetupAnalytics",
+  "type": "object",
+  "properties": {
+    "wizard_id": {
+      "type": "string",
+      "description": "Setup wizard session ID"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User completing setup"
+    },
+    "template_selected": {
+      "type": "string",
+      "description": "Which template user chose"
+    },
+    "time_to_complete_seconds": {
+      "type": "number",
+      "description": "Total setup time"
+    },
+    "steps_completed": {
+      "type": "number",
+      "description": "How many steps finished"
+    },
+    "steps_skipped": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which steps were skipped"
+    },
+    "integrations_connected": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which integrations were set up"
+    },
+    "integrations_failed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which integrations failed"
+    },
+    "ai_coach_interactions": {
+      "type": "number",
+      "default": 0,
+      "description": "Times user asked AI for help"
+    },
+    "completion_rate": {
+      "type": "number",
+      "description": "Percentage completed"
+    },
+    "abandoned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user abandoned setup"
+    },
+    "abandoned_at_step": {
+      "type": "number",
+      "description": "Which step user left"
+    },
+    "device_type": {
+      "type": "string",
+      "enum": [
+        "desktop",
+        "mobile",
+        "tablet"
+      ],
+      "description": "Device used"
+    },
+    "browser": {
+      "type": "string",
+      "description": "Browser used"
+    },
+    "upgrade_tier_selected": {
+      "type": "string",
+      "enum": [
+        "basic_wizard",
+        "pro_hybrid",
+        "enterprise_concierge"
+      ],
+      "description": "Which tier user chose"
+    }
+  },
+  "required": [
+    "wizard_id",
+    "user_email"
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "name": "Avatar",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this avatar"
+    },
+    "avatar_name": {
+      "type": "string",
+      "description": "Avatar name/identifier"
+    },
+    "avatar_type": {
+      "type": "string",
+      "enum": [
+        "photoreal_studio",
+        "photoreal_professional",
+        "stylized_cartoon",
+        "stylized_anime",
+        "brand_mascot",
+        "head_shoulders",
+        "full_body",
+        "audio_only"
+      ],
+      "default": "photoreal_studio",
+      "description": "Style of avatar"
+    },
+    "presentation_mode": {
+      "type": "string",
+      "enum": [
+        "face_only",
+        "head_shoulders",
+        "full_body",
+        "greenscreen",
+        "audio_waveform"
+      ],
+      "default": "head_shoulders",
+      "description": "How avatar is presented"
+    },
+    "avatar_image_url": {
+      "type": "string",
+      "description": "Avatar visual representation"
+    },
+    "avatar_video_url": {
+      "type": "string",
+      "description": "Sample avatar video"
+    },
+    "voice_profile_id": {
+      "type": "string",
+      "description": "Linked voice profile ID"
+    },
+    "voice_clone_id": {
+      "type": "string",
+      "description": "Cloned voice ID"
+    },
+    "voice_sample_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Voice training samples"
+    },
+    "voice_characteristics": {
+      "type": "object",
+      "description": "Voice profile",
+      "properties": {
+        "pitch": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "speaking_rate": {
+          "type": "string"
+        },
+        "emotion_range": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "personality_traits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Avatar personality"
+    },
+    "greeting_script": {
+      "type": "string",
+      "description": "Default greeting message"
+    },
+    "background_style": {
+      "type": "string",
+      "enum": [
+        "solid_color",
+        "gradient",
+        "studio",
+        "office",
+        "transparent",
+        "custom"
+      ],
+      "default": "studio",
+      "description": "Background type"
+    },
+    "background_color": {
+      "type": "string",
+      "description": "Video background color"
+    },
+    "background_image_url": {
+      "type": "string",
+      "description": "Custom background image"
+    },
+    "brand_kit_id": {
+      "type": "string",
+      "description": "Associated brand kit for templates"
+    },
+    "default_template": {
+      "type": "string",
+      "description": "Default motion template ID"
+    },
+    "camera_preset": {
+      "type": "string",
+      "enum": [
+        "tight_face",
+        "medium_bust",
+        "wide_full_body",
+        "square_1_1",
+        "vertical_9_16"
+      ],
+      "default": "medium_bust",
+      "description": "Camera framing"
+    },
+    "caption_style": {
+      "type": "object",
+      "properties": {
+        "font_family": {
+          "type": "string"
+        },
+        "font_size": {
+          "type": "number"
+        },
+        "color": {
+          "type": "string"
+        },
+        "background_color": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string",
+          "enum": [
+            "top",
+            "middle",
+            "bottom"
+          ]
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "bold",
+            "minimal",
+            "outlined",
+            "animated",
+            "none"
+          ]
+        }
+      },
+      "description": "Default caption styling"
+    },
+    "lower_thirds": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "name_text": {
+          "type": "string"
+        },
+        "title_text": {
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        }
+      },
+      "description": "Name/title overlay configuration"
+    },
+    "cta_overlay": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "qr_code_enabled": {
+          "type": "boolean"
+        },
+        "style": {
+          "type": "string"
+        }
+      },
+      "description": "Call-to-action overlay"
+    },
+    "gesture_settings": {
+      "type": "object",
+      "properties": {
+        "eye_contact_correction": {
+          "type": "boolean",
+          "default": true
+        },
+        "blink_enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "head_nod_enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "micro_gestures": {
+          "type": "boolean",
+          "default": true
+        },
+        "hand_gestures": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "description": "Avatar animation controls"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether avatar is enabled"
+    },
+    "is_brand_wide": {
+      "type": "boolean",
+      "default": false,
+      "description": "Available to entire brand/team"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false,
+      "description": "Default avatar for user"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Who can use this avatar",
+      "default": [
+        "owner"
+      ]
+    },
+    "use_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times avatar was used"
+    },
+    "total_render_minutes": {
+      "type": "number",
+      "default": 0,
+      "description": "Total minutes rendered"
+    },
+    "last_used": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last usage timestamp"
+    },
+    "consent_recorded": {
+      "type": "boolean",
+      "default": false,
+      "description": "Explicit consent for likeness use"
+    },
+    "consent_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When consent was given"
+    }
+  },
+  "required": [
+    "user_email",
+    "avatar_name",
+    "avatar_type"
+  ]
+}

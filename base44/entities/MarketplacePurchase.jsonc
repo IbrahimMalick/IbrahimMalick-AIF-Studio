@@ -1,0 +1,54 @@
+{
+  "name": "MarketplacePurchase",
+  "type": "object",
+  "properties": {
+    "buyer_email": {
+      "type": "string",
+      "description": "User who purchased"
+    },
+    "seller_email": {
+      "type": "string",
+      "description": "Automation creator"
+    },
+    "automation_id": {
+      "type": "string",
+      "description": "Automation purchased"
+    },
+    "purchase_price": {
+      "type": "number",
+      "description": "Amount paid"
+    },
+    "platform_commission": {
+      "type": "number",
+      "description": "Commission kept by platform"
+    },
+    "seller_payout": {
+      "type": "number",
+      "description": "Amount paid to seller"
+    },
+    "transaction_id": {
+      "type": "string",
+      "description": "Payment transaction ID"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "refunded",
+        "disputed"
+      ],
+      "default": "completed"
+    },
+    "installed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether buyer installed automation"
+    }
+  },
+  "required": [
+    "buyer_email",
+    "seller_email",
+    "automation_id",
+    "purchase_price"
+  ]
+}

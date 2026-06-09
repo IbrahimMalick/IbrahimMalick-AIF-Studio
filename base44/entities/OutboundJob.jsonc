@@ -1,0 +1,90 @@
+{
+  "name": "OutboundJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "sms",
+        "email",
+        "call"
+      ],
+      "description": "Type of outbound communication"
+    },
+    "to": {
+      "type": "string",
+      "description": "Recipient (phone or email)"
+    },
+    "template_id": {
+      "type": "string",
+      "description": "Message template ID"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Template variables"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "sending",
+        "sent",
+        "delivered",
+        "failed",
+        "bounced"
+      ],
+      "default": "queued",
+      "description": "Job status"
+    },
+    "scheduled_for": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When to send (null = immediate)"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When actually sent"
+    },
+    "delivered_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When delivered"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of retry attempts"
+    },
+    "max_retries": {
+      "type": "number",
+      "default": 3,
+      "description": "Maximum retry attempts"
+    },
+    "lead_id": {
+      "type": "string",
+      "description": "Associated lead ID"
+    },
+    "call_session_id": {
+      "type": "string",
+      "description": "Triggered by call session"
+    },
+    "provider_message_id": {
+      "type": "string",
+      "description": "Twilio/SendGrid message ID"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Communication cost"
+    }
+  },
+  "required": [
+    "job_type",
+    "to",
+    "template_id"
+  ]
+}

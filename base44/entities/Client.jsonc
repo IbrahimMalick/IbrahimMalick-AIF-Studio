@@ -1,0 +1,76 @@
+{
+  "name": "Client",
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "contact_name": {
+      "type": "string",
+      "description": "Primary contact name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "foundation",
+        "global",
+        "empire",
+        "enterprise"
+      ],
+      "default": "foundation",
+      "description": "Client tier/package"
+    },
+    "lifetime_value": {
+      "type": "number",
+      "default": 0,
+      "description": "Total lifetime value in USD"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "lead",
+        "active",
+        "paused",
+        "churned"
+      ],
+      "default": "lead",
+      "description": "Client status"
+    },
+    "onboarded_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date client was onboarded"
+    },
+    "assigned_manager": {
+      "type": "string",
+      "description": "Email of assigned account manager"
+    },
+    "slack_webhook": {
+      "type": "string",
+      "description": "Slack webhook URL for notifications"
+    },
+    "brand_guidelines_url": {
+      "type": "string",
+      "description": "URL to brand guidelines document"
+    },
+    "notes": {
+      "type": "object",
+      "description": "Additional notes and metadata"
+    }
+  },
+  "required": [
+    "company_name",
+    "contact_name",
+    "email"
+  ]
+}

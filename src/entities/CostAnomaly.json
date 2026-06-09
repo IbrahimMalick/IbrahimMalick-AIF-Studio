@@ -1,0 +1,49 @@
+{
+  "name": "CostAnomaly",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User with anomaly"
+    },
+    "detection_type": {
+      "type": "string",
+      "enum": ["hourly_spike", "daily_high", "monthly_trend", "runaway_token"],
+      "description": "Type of anomaly"
+    },
+    "expected_cost": {
+      "type": "number",
+      "description": "Expected cost based on history"
+    },
+    "actual_cost": {
+      "type": "number",
+      "description": "Actual cost incurred"
+    },
+    "deviation_percent": {
+      "type": "number",
+      "description": "% over expected"
+    },
+    "contributing_operation": {
+      "type": "string",
+      "description": "Which operation caused it (llm_tokens, video_render, etc.)"
+    },
+    "alert_sent": {
+      "type": "boolean",
+      "default": false
+    },
+    "action_taken": {
+      "type": "string",
+      "enum": ["rate_limited", "paused", "none"],
+      "default": "none"
+    },
+    "resolution_notes": {
+      "type": "string",
+      "description": "How it was resolved"
+    },
+    "detected_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["user_email", "detection_type", "actual_cost"]
+}

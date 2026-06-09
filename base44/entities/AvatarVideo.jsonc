@@ -1,0 +1,160 @@
+{
+  "name": "AvatarVideo",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Parent AvatarProject ID"
+    },
+    "avatar_id": {
+      "type": "string",
+      "description": "Avatar used"
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Video language"
+    },
+    "script": {
+      "type": "string",
+      "description": "What avatar says"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Generated video URL"
+    },
+    "audio_url": {
+      "type": "string",
+      "description": "Generated audio URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Video thumbnail"
+    },
+    "srt_url": {
+      "type": "string",
+      "description": "Caption file (SRT format)"
+    },
+    "vtt_url": {
+      "type": "string",
+      "description": "Caption file (WebVTT format)"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Video duration"
+    },
+    "file_size_mb": {
+      "type": "number",
+      "description": "Video file size"
+    },
+    "resolution": {
+      "type": "string",
+      "default": "1080p",
+      "description": "Video resolution"
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "description": "Aspect ratio (9:16, 1:1, etc.)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "generating",
+        "completed",
+        "failed"
+      ],
+      "default": "queued",
+      "description": "Generation status"
+    },
+    "video_type": {
+      "type": "string",
+      "enum": [
+        "greeting",
+        "coaching",
+        "reply",
+        "presentation",
+        "announcement",
+        "explainer",
+        "ad",
+        "testimonial"
+      ],
+      "description": "Purpose of video"
+    },
+    "recipient_email": {
+      "type": "string",
+      "description": "If video is for specific person"
+    },
+    "render_mode": {
+      "type": "string",
+      "enum": [
+        "fast_path",
+        "standard",
+        "high_quality"
+      ],
+      "default": "standard",
+      "description": "Render quality/speed tradeoff"
+    },
+    "lipsync_offset_ms": {
+      "type": "number",
+      "description": "Audio-visual sync offset (<120ms target)"
+    },
+    "lipsync_validated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether lip-sync passed QA"
+    },
+    "published_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Platforms where published"
+    },
+    "published_urls": {
+      "type": "object",
+      "description": "Platform-specific post URLs"
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times viewed"
+    },
+    "engagement_metrics": {
+      "type": "object",
+      "properties": {
+        "likes": {
+          "type": "number"
+        },
+        "comments": {
+          "type": "number"
+        },
+        "shares": {
+          "type": "number"
+        },
+        "watch_through_rate": {
+          "type": "number"
+        }
+      },
+      "description": "Performance data"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Generation cost"
+    },
+    "render_time_seconds": {
+      "type": "number",
+      "description": "How long rendering took"
+    }
+  },
+  "required": [
+    "user_email",
+    "avatar_id",
+    "script",
+    "language"
+  ]
+}

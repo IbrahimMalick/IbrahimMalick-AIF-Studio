@@ -1,0 +1,56 @@
+{
+  "name": "RenderJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "video_render",
+        "image_generation",
+        "document_analysis",
+        "audio_synthesis"
+      ],
+      "description": "Type of job"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Related project ID"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "default": "queued"
+    },
+    "progress": {
+      "type": "number",
+      "default": 0,
+      "description": "Progress percentage"
+    },
+    "output_url": {
+      "type": "string",
+      "description": "Result URL"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "processing_time_seconds": {
+      "type": "number"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "job_type"
+  ]
+}

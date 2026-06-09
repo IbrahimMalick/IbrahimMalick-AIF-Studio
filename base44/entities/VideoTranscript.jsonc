@@ -1,0 +1,220 @@
+{
+  "name": "VideoTranscript",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this transcript"
+    },
+    "video_project_id": {
+      "type": "string",
+      "description": "Related VideoProject ID"
+    },
+    "raw_transcript": {
+      "type": "string",
+      "description": "Full transcript text"
+    },
+    "timestamped_segments": {
+      "type": "array",
+      "description": "Transcript with timestamps",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start_time": {
+            "type": "number"
+          },
+          "end_time": {
+            "type": "number"
+          },
+          "text": {
+            "type": "string"
+          },
+          "speaker": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "ai_generated_chapters": {
+      "type": "array",
+      "description": "AI-detected chapters",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chapter_number": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "start_time": {
+            "type": "number"
+          },
+          "end_time": {
+            "type": "number"
+          },
+          "duration": {
+            "type": "number"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "key_topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "importance_score": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "content_summary": {
+      "type": "object",
+      "description": "AI-generated video summary",
+      "properties": {
+        "brief_summary": {
+          "type": "string"
+        },
+        "detailed_summary": {
+          "type": "string"
+        },
+        "key_points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "main_topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "key_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "quote": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "number"
+              },
+              "context": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "sentiment": {
+          "type": "string"
+        },
+        "target_audience": {
+          "type": "string"
+        },
+        "content_type": {
+          "type": "string"
+        }
+      }
+    },
+    "searchable_index": {
+      "type": "array",
+      "description": "Indexed topics and timestamps for quick search",
+      "items": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "timestamps": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "context_snippets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relevance_score": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "named_entities": {
+      "type": "array",
+      "description": "People, places, products mentioned",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "timestamps": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "context": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Transcript language"
+    },
+    "word_count": {
+      "type": "number",
+      "description": "Total words in transcript"
+    },
+    "processing_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "transcribing",
+        "analyzing",
+        "completed",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "transcription_accuracy": {
+      "type": "number",
+      "description": "AI confidence score (0-100)"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "video_project_id"
+  ]
+}

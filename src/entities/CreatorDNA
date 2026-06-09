@@ -1,0 +1,109 @@
+{
+  "name": "CreatorDNA",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User whose DNA profile this is"
+    },
+    "style_embedding": {
+      "type": "string",
+      "description": "JSON string of style vector embeddings"
+    },
+    "tone_profile": {
+      "type": "object",
+      "description": "Analyzed tone characteristics",
+      "properties": {
+        "formality_score": {
+          "type": "number"
+        },
+        "emoji_frequency": {
+          "type": "number"
+        },
+        "sentence_length_avg": {
+          "type": "number"
+        },
+        "vocabulary_sophistication": {
+          "type": "number"
+        },
+        "humor_level": {
+          "type": "number"
+        },
+        "energy_level": {
+          "type": "number"
+        }
+      }
+    },
+    "phrase_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Common phrases user uses"
+    },
+    "emoji_preferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Frequently used emojis"
+    },
+    "content_themes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Common content themes"
+    },
+    "visual_style": {
+      "type": "object",
+      "description": "Visual preferences",
+      "properties": {
+        "color_palette": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "font_preferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "layout_style": {
+          "type": "string"
+        }
+      }
+    },
+    "writing_samples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Reference writing samples for training"
+    },
+    "confidence_score": {
+      "type": "number",
+      "default": 0,
+      "description": "How well we know this creator (0-100)"
+    },
+    "sample_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of samples analyzed"
+    },
+    "last_trained": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time DNA was updated"
+    },
+    "brand_voice_description": {
+      "type": "string",
+      "description": "User's own description of their brand voice"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

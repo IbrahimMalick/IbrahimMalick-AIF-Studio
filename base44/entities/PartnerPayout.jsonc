@@ -1,0 +1,112 @@
+{
+  "name": "PartnerPayout",
+  "type": "object",
+  "properties": {
+    "partner_id": {
+      "type": "string",
+      "description": "PartnerAffiliate ID"
+    },
+    "payout_period": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "month": {
+          "type": "string"
+        }
+      },
+      "description": "Period covered by this payout"
+    },
+    "total_amount_usd": {
+      "type": "number",
+      "description": "Total payout amount"
+    },
+    "commission_count": {
+      "type": "number",
+      "description": "Number of commissions included"
+    },
+    "commission_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "PartnerCommission IDs included"
+    },
+    "breakdown": {
+      "type": "object",
+      "properties": {
+        "recurring": {
+          "type": "number"
+        },
+        "addon": {
+          "type": "number"
+        },
+        "bounty": {
+          "type": "number"
+        },
+        "revenue_share": {
+          "type": "number"
+        }
+      },
+      "description": "Payout breakdown by type"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "paypal",
+        "stripe",
+        "bank_transfer",
+        "manual"
+      ],
+      "description": "How paid"
+    },
+    "payment_details": {
+      "type": "object",
+      "description": "Payment account info"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "paid",
+        "failed",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "Payout status"
+    },
+    "transaction_id": {
+      "type": "string",
+      "description": "Payment processor transaction ID"
+    },
+    "invoice_url": {
+      "type": "string",
+      "description": "Payout invoice PDF"
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Payment timestamp"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal payout notes"
+    }
+  },
+  "required": [
+    "partner_id",
+    "payout_period",
+    "total_amount_usd"
+  ]
+}

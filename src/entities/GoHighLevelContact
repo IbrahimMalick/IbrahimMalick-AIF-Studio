@@ -1,0 +1,71 @@
+{
+  "name": "GoHighLevelContact",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "App user who owns this"
+    },
+    "ghl_contact_id": {
+      "type": "string",
+      "description": "Contact ID in GHL"
+    },
+    "ghl_location_id": {
+      "type": "string",
+      "description": "GHL Location ID"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "GHL tags"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "GHL custom field values"
+    },
+    "source": {
+      "type": "string",
+      "description": "Where contact came from"
+    },
+    "last_synced": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sync_status": {
+      "type": "string",
+      "enum": [
+        "synced",
+        "pending",
+        "error"
+      ],
+      "default": "synced"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional GHL data"
+    }
+  },
+  "required": [
+    "user_email",
+    "ghl_contact_id",
+    "email"
+  ]
+}

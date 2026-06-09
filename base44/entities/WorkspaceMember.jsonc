@@ -1,0 +1,65 @@
+{
+  "name": "WorkspaceMember",
+  "type": "object",
+  "properties": {
+    "workspace_id": {
+      "type": "string",
+      "description": "Workspace this member belongs to"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Member's email"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "admin",
+        "member",
+        "viewer"
+      ],
+      "default": "member",
+      "description": "Member's role in workspace"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific permissions granted",
+      "default": [
+        "view_projects",
+        "create_projects"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "invited",
+        "suspended"
+      ],
+      "default": "invited",
+      "description": "Member status"
+    },
+    "invited_by": {
+      "type": "string",
+      "description": "Email of user who sent invite"
+    },
+    "invited_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When invitation was sent"
+    },
+    "joined_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When member accepted invite"
+    }
+  },
+  "required": [
+    "workspace_id",
+    "user_email",
+    "role"
+  ]
+}

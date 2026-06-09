@@ -1,0 +1,72 @@
+{
+  "name": "GoHighLevelSyncLog",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User performing sync"
+    },
+    "sync_type": {
+      "type": "string",
+      "enum": [
+        "contacts",
+        "opportunities",
+        "tasks",
+        "calendar",
+        "full"
+      ],
+      "description": "What was synced"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "to_ghl",
+        "from_ghl",
+        "bidirectional"
+      ],
+      "description": "Sync direction"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "running",
+        "completed",
+        "failed"
+      ],
+      "default": "running"
+    },
+    "records_processed": {
+      "type": "number",
+      "default": 0
+    },
+    "records_success": {
+      "type": "number",
+      "default": 0
+    },
+    "records_failed": {
+      "type": "number",
+      "default": 0
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "duration_seconds": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "user_email",
+    "sync_type"
+  ]
+}

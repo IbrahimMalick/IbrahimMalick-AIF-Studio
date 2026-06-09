@@ -1,0 +1,61 @@
+{
+  "name": "FeatureFlag",
+  "type": "object",
+  "properties": {
+    "flag_key": {
+      "type": "string",
+      "description": "Unique flag identifier"
+    },
+    "flag_name": {
+      "type": "string",
+      "description": "Human-readable name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Global flag state"
+    },
+    "rollout_percentage": {
+      "type": "number",
+      "default": 0,
+      "description": "% of users who see feature (0-100)"
+    },
+    "target_users": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific user emails to enable for"
+    },
+    "target_plans": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Plans that get this feature"
+    },
+    "environment": {
+      "type": "string",
+      "enum": [
+        "development",
+        "staging",
+        "production"
+      ],
+      "default": "production"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "enabled_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "flag_key",
+    "flag_name"
+  ]
+}

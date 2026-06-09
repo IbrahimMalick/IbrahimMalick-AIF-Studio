@@ -1,0 +1,103 @@
+{
+  "name": "ContentIdea",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created/received idea"
+    },
+    "idea_title": {
+      "type": "string",
+      "description": "Content idea title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed idea description"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "blog_post",
+        "social_post",
+        "podcast",
+        "course",
+        "ebook"
+      ],
+      "description": "Format"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "ai_generated",
+        "user_created",
+        "trending_topic",
+        "audience_request",
+        "competitor_inspired"
+      ],
+      "description": "Where idea came from"
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "estimated_effort": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "description": "How much work required"
+    },
+    "viral_potential": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI-predicted viral score"
+    },
+    "target_keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_audience": {
+      "type": "string"
+    },
+    "related_trends": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "script_outline": {
+      "type": "string",
+      "description": "AI-generated outline"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "idea",
+        "in_production",
+        "published",
+        "archived"
+      ],
+      "default": "idea"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "If turned into project"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_email",
+    "idea_title",
+    "content_type"
+  ]
+}

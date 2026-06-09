@@ -1,0 +1,79 @@
+{
+  "name": "SLACompliance",
+  "type": "object",
+  "properties": {
+    "sla_config_id": {
+      "type": "string",
+      "description": "SLA Config this tracks"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Service name"
+    },
+    "measurement_period": {
+      "type": "string",
+      "enum": ["hourly", "daily", "weekly", "monthly"],
+      "default": "hourly"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actual_uptime": {
+      "type": "number",
+      "description": "Measured uptime percentage"
+    },
+    "actual_latency_p95": {
+      "type": "number",
+      "description": "95th percentile latency in ms"
+    },
+    "actual_error_rate": {
+      "type": "number",
+      "description": "Actual error rate percentage"
+    },
+    "uptime_status": {
+      "type": "string",
+      "enum": ["met", "breached", "at_risk"],
+      "default": "met"
+    },
+    "latency_status": {
+      "type": "string",
+      "enum": ["met", "breached", "at_risk"],
+      "default": "met"
+    },
+    "error_rate_status": {
+      "type": "string",
+      "enum": ["met", "breached", "at_risk"],
+      "default": "met"
+    },
+    "total_downtime_minutes": {
+      "type": "number",
+      "default": 0
+    },
+    "breach_count": {
+      "type": "number",
+      "default": 0
+    },
+    "incident_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {"type": "string"},
+          "type": {"type": "string"},
+          "duration_minutes": {"type": "number"}
+        }
+      }
+    },
+    "overall_compliance": {
+      "type": "string",
+      "enum": ["compliant", "at_risk", "non_compliant"],
+      "default": "compliant"
+    }
+  },
+  "required": ["sla_config_id", "service_name", "period_start", "period_end"]
+}

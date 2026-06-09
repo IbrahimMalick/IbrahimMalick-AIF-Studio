@@ -1,0 +1,39 @@
+{
+  "name": "Translation",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Translation key (e.g., 'dashboard.welcome')"
+    },
+    "language_code": {
+      "type": "string",
+      "description": "ISO 639-1 language code"
+    },
+    "translated_text": {
+      "type": "string",
+      "description": "Translated string"
+    },
+    "context": {
+      "type": "string",
+      "description": "Where this text appears"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether translation is verified"
+    },
+    "verified_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "key",
+    "language_code",
+    "translated_text"
+  ]
+}

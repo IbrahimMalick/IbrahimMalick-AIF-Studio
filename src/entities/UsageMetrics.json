@@ -1,0 +1,104 @@
+{
+  "name": "UsageMetrics",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User email"
+    },
+    "period": {
+      "type": "string",
+      "enum": ["daily", "monthly"],
+      "default": "monthly"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Period start date"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Period end date"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["free", "starter", "professional", "enterprise"],
+      "default": "free"
+    },
+    "agents_created": {
+      "type": "number",
+      "default": 0
+    },
+    "agents_limit": {
+      "type": "number",
+      "default": 5
+    },
+    "llm_tokens_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Total LLM tokens consumed"
+    },
+    "llm_tokens_limit": {
+      "type": "number",
+      "default": 100000,
+      "description": "Monthly token quota"
+    },
+    "video_minutes_used": {
+      "type": "number",
+      "default": 0
+    },
+    "video_minutes_limit": {
+      "type": "number",
+      "default": 10
+    },
+    "api_calls_used": {
+      "type": "number",
+      "default": 0
+    },
+    "api_calls_limit": {
+      "type": "number",
+      "default": 10000
+    },
+    "storage_mb_used": {
+      "type": "number",
+      "default": 0
+    },
+    "storage_mb_limit": {
+      "type": "number",
+      "default": 1000
+    },
+    "cost_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Estimated costs this period"
+    },
+    "overage_alerts_sent": {
+      "type": "number",
+      "default": 0
+    },
+    "alert_75_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the 75% threshold alert has been sent this period"
+    },
+    "alert_90_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the 90% threshold alert has been sent this period"
+    },
+    "alert_100_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the 100% threshold alert has been sent this period"
+    },
+    "last_reset": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "tier"
+  ]
+}

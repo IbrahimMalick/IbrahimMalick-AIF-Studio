@@ -1,0 +1,74 @@
+{
+  "name": "DataExport",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User requesting export"
+    },
+    "export_type": {
+      "type": "string",
+      "enum": [
+        "full_account",
+        "videos",
+        "posts",
+        "analytics",
+        "revenue",
+        "custom"
+      ],
+      "description": "Data to export"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "json",
+        "csv",
+        "pdf",
+        "excel"
+      ],
+      "default": "json"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "requested",
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "default": "requested"
+    },
+    "filters": {
+      "type": "object",
+      "description": "Export filters and parameters"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Download link"
+    },
+    "file_size_mb": {
+      "type": "number"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Link expiration"
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "gdpr_request": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_email",
+    "export_type"
+  ]
+}

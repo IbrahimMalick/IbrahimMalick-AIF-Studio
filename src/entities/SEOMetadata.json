@@ -1,0 +1,50 @@
+{
+  "name": "SEOMetadata",
+  "type": "object",
+  "properties": {
+    "page_path": {
+      "type": "string",
+      "description": "URL path of the page"
+    },
+    "title": {
+      "type": "string",
+      "description": "SEO title tag"
+    },
+    "description": {
+      "type": "string",
+      "description": "Meta description"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Target keywords"
+    },
+    "og_title": {
+      "type": "string",
+      "description": "Open Graph title"
+    },
+    "og_description": {
+      "type": "string",
+      "description": "Open Graph description"
+    },
+    "og_image": {
+      "type": "string",
+      "description": "Open Graph image URL"
+    },
+    "canonical_url": {
+      "type": "string",
+      "description": "Canonical URL"
+    },
+    "schema_markup": {
+      "type": "object",
+      "description": "JSON-LD structured data"
+    }
+  },
+  "required": [
+    "page_path",
+    "title",
+    "description"
+  ]
+}

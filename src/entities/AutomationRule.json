@@ -1,0 +1,74 @@
+{
+  "name": "AutomationRule",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this rule"
+    },
+    "name": {
+      "type": "string",
+      "description": "Rule name"
+    },
+    "trigger": {
+      "type": "object",
+      "description": "What triggers this automation",
+      "properties": {
+        "event": {
+          "type": "string",
+          "enum": [
+            "video_completed",
+            "art_generated",
+            "document_analyzed",
+            "manual"
+          ]
+        },
+        "conditions": {
+          "type": "object"
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "description": "Actions to perform when triggered",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "post_to_social",
+              "send_email",
+              "webhook",
+              "create_notification"
+            ]
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether rule is enabled"
+    },
+    "execution_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times this rule has run"
+    },
+    "last_executed": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time rule executed"
+    }
+  },
+  "required": [
+    "user_email",
+    "name",
+    "trigger",
+    "actions"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "ProjectShare",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "description": "VideoProject being shared"
+    },
+    "shared_by": {
+      "type": "string",
+      "description": "Owner's email"
+    },
+    "shared_with": {
+      "type": "string",
+      "description": "Recipient's email or team ID"
+    },
+    "share_type": {
+      "type": "string",
+      "enum": [
+        "user",
+        "team",
+        "public_link"
+      ],
+      "description": "Who has access"
+    },
+    "access_level": {
+      "type": "string",
+      "enum": [
+        "view",
+        "comment",
+        "edit",
+        "full"
+      ],
+      "default": "view"
+    },
+    "share_link": {
+      "type": "string",
+      "description": "Unique share URL"
+    },
+    "link_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expiration for public links"
+    },
+    "password_protected": {
+      "type": "boolean",
+      "default": false
+    },
+    "password_hash": {
+      "type": "string",
+      "description": "Encrypted password for link"
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times accessed"
+    },
+    "last_accessed": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "allow_download": {
+      "type": "boolean",
+      "default": false
+    },
+    "custom_message": {
+      "type": "string",
+      "description": "Message to recipient"
+    },
+    "notification_sent": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "project_id",
+    "shared_by",
+    "shared_with",
+    "share_type"
+  ]
+}

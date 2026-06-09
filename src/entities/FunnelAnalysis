@@ -1,0 +1,87 @@
+{
+  "name": "FunnelAnalysis",
+  "type": "object",
+  "properties": {
+    "funnel_name": {
+      "type": "string",
+      "description": "Funnel identifier"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_number": {
+            "type": "number"
+          },
+          "step_name": {
+            "type": "string"
+          },
+          "event_name": {
+            "type": "string"
+          },
+          "users_entered": {
+            "type": "number"
+          },
+          "users_completed": {
+            "type": "number"
+          },
+          "completion_rate": {
+            "type": "number"
+          },
+          "avg_time_to_complete": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Funnel steps"
+    },
+    "overall_conversion_rate": {
+      "type": "number"
+    },
+    "total_users": {
+      "type": "number"
+    },
+    "total_converted": {
+      "type": "number"
+    },
+    "bottleneck_step": {
+      "type": "number",
+      "description": "Step with biggest drop-off"
+    },
+    "date_range": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string"
+        },
+        "end_date": {
+          "type": "string"
+        }
+      }
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment_name": {
+            "type": "string"
+          },
+          "conversion_rate": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Conversion by segment"
+    },
+    "last_calculated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "funnel_name",
+    "steps"
+  ]
+}

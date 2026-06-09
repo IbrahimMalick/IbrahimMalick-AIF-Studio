@@ -1,0 +1,118 @@
+{
+  "name": "Appointment",
+  "type": "object",
+  "properties": {
+    "lead_id": {
+      "type": "string",
+      "description": "Associated lead ID"
+    },
+    "calendar_id": {
+      "type": "string",
+      "description": "Calendar identifier (ghl:XYZ or google:primary)"
+    },
+    "external_id": {
+      "type": "string",
+      "description": "External calendar event ID"
+    },
+    "title": {
+      "type": "string",
+      "description": "Appointment title"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Appointment start"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Appointment end"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "America/New_York",
+      "description": "Timezone"
+    },
+    "location": {
+      "type": "string",
+      "enum": [
+        "zoom",
+        "phone",
+        "office",
+        "google_meet",
+        "teams"
+      ],
+      "default": "zoom",
+      "description": "Meeting location/type"
+    },
+    "meeting_url": {
+      "type": "string",
+      "description": "Zoom/Google Meet link"
+    },
+    "attendees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Meeting attendees"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "tentative",
+        "confirmed",
+        "cancelled",
+        "no_show",
+        "completed"
+      ],
+      "default": "tentative",
+      "description": "Appointment status"
+    },
+    "booked_by": {
+      "type": "string",
+      "enum": [
+        "ai_receptionist",
+        "manual",
+        "self_service",
+        "admin"
+      ],
+      "default": "ai_receptionist",
+      "description": "How appointment was created"
+    },
+    "call_session_id": {
+      "type": "string",
+      "description": "Related call session"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Appointment notes"
+    },
+    "reminder_sent_24h": {
+      "type": "boolean",
+      "default": false
+    },
+    "reminder_sent_2h": {
+      "type": "boolean",
+      "default": false
+    },
+    "reminder_sent_10m": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "start_time",
+    "end_time"
+  ]
+}

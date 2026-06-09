@@ -1,0 +1,133 @@
+{
+  "name": "PartnerTrainingProgress",
+  "type": "object",
+  "properties": {
+    "partner_id": {
+      "type": "string",
+      "description": "PartnerAffiliate ID"
+    },
+    "module_id": {
+      "type": "string",
+      "description": "Training module identifier"
+    },
+    "module_category": {
+      "type": "string",
+      "enum": [
+        "onboarding",
+        "platform_basics",
+        "sales_training",
+        "ai_features",
+        "resources_usage",
+        "advanced_tactics"
+      ],
+      "description": "Training category"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "completed",
+        "certified"
+      ],
+      "default": "not_started",
+      "description": "Module completion status"
+    },
+    "progress_percentage": {
+      "type": "number",
+      "default": 0,
+      "description": "Completion progress 0-100"
+    },
+    "lessons_completed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Completed lesson IDs",
+      "default": []
+    },
+    "videos_watched": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "video_id": {
+            "type": "string"
+          },
+          "watched_percentage": {
+            "type": "number"
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "watched_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "description": "Video viewing progress"
+    },
+    "quiz_attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "quiz_id": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "attempted_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "description": "Quiz results"
+    },
+    "time_spent_minutes": {
+      "type": "number",
+      "default": 0,
+      "description": "Time invested in training"
+    },
+    "certificate_earned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether certificate was earned"
+    },
+    "certificate_url": {
+      "type": "string",
+      "description": "Certificate PDF URL"
+    },
+    "certificate_issued_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Certificate issuance date"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "First access to module"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Module completion date"
+    },
+    "last_accessed": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last activity timestamp"
+    }
+  },
+  "required": [
+    "partner_id",
+    "module_id",
+    "module_category"
+  ]
+}

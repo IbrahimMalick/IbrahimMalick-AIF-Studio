@@ -1,0 +1,94 @@
+{
+  "name": "VoiceClone",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this voice"
+    },
+    "voice_name": {
+      "type": "string",
+      "description": "Name for this voice clone"
+    },
+    "voice_id": {
+      "type": "string",
+      "description": "Unique voice identifier from AI service"
+    },
+    "sample_audio_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Training audio samples (3-5 files)"
+    },
+    "voice_characteristics": {
+      "type": "object",
+      "properties": {
+        "gender": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female",
+            "neutral"
+          ]
+        },
+        "age": {
+          "type": "string",
+          "enum": [
+            "young",
+            "middle_aged",
+            "senior"
+          ]
+        },
+        "accent": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        },
+        "pace": {
+          "type": "string"
+        }
+      },
+      "description": "Voice profile"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "training",
+        "ready",
+        "failed"
+      ],
+      "default": "training",
+      "description": "Voice clone status"
+    },
+    "quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Voice quality rating"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false,
+      "description": "Default voice for user"
+    },
+    "usage_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times this voice was used"
+    },
+    "preview_url": {
+      "type": "string",
+      "description": "Sample output URL"
+    },
+    "trained_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "voice_name"
+  ]
+}

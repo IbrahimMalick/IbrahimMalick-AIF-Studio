@@ -1,0 +1,415 @@
+{
+  "name": "MultiChannelCampaign",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this campaign"
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Campaign title"
+    },
+    "campaign_description": {
+      "type": "string",
+      "description": "What this campaign does"
+    },
+    "campaign_type": {
+      "type": "string",
+      "enum": [
+        "onboarding",
+        "nurture",
+        "re_engagement",
+        "win_back",
+        "upsell",
+        "retention",
+        "custom"
+      ],
+      "default": "nurture",
+      "description": "Campaign category"
+    },
+    "trigger_config": {
+      "type": "object",
+      "properties": {
+        "trigger_type": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "lead_created",
+            "lead_score_change",
+            "call_completed",
+            "form_submitted",
+            "link_clicked",
+            "email_opened",
+            "sms_replied",
+            "crm_event",
+            "time_based",
+            "behavior"
+          ],
+          "description": "What triggers this campaign"
+        },
+        "trigger_conditions": {
+          "type": "object",
+          "properties": {
+            "lead_status": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "score_min": {
+              "type": "number"
+            },
+            "score_max": {
+              "type": "number"
+            },
+            "tags_required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "tags_excluded": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "call_disposition": {
+              "type": "string"
+            },
+            "crm_event_type": {
+              "type": "string"
+            },
+            "behavior_pattern": {
+              "type": "string"
+            },
+            "days_since_last_contact": {
+              "type": "number"
+            }
+          },
+          "description": "Conditions that must be met"
+        },
+        "cooldown_days": {
+          "type": "number",
+          "default": 30,
+          "description": "Days before re-triggering for same lead"
+        }
+      },
+      "description": "Campaign trigger configuration"
+    },
+    "flow_nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "node_type": {
+            "type": "string",
+            "enum": [
+              "sms",
+              "email",
+              "call",
+              "wait",
+              "condition",
+              "ab_split",
+              "ghl_action",
+              "score_update",
+              "tag_update",
+              "webhook"
+            ],
+            "description": "Type of action node"
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "template_id": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "subject": {
+                "type": "string"
+              },
+              "delay_hours": {
+                "type": "number"
+              },
+              "delay_days": {
+                "type": "number"
+              },
+              "condition_path": {
+                "type": "string"
+              },
+              "condition_operator": {
+                "type": "string"
+              },
+              "condition_value": {
+                "type": "string"
+              },
+              "webhook_url": {
+                "type": "string"
+              },
+              "ghl_workflow_id": {
+                "type": "string"
+              },
+              "score_change": {
+                "type": "number"
+              },
+              "tags_to_add": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tags_to_remove": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "connections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "to_node_id": {
+                  "type": "string"
+                },
+                "condition": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Connections to other nodes"
+          },
+          "ab_test_config": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "variants": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "variant_id": {
+                      "type": "string"
+                    },
+                    "variant_name": {
+                      "type": "string"
+                    },
+                    "traffic_percent": {
+                      "type": "number"
+                    },
+                    "config": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              "split_metric": {
+                "type": "string"
+              },
+              "auto_winner": {
+                "type": "boolean"
+              }
+            },
+            "description": "A/B test configuration for this node"
+          }
+        }
+      },
+      "description": "Visual flow nodes"
+    },
+    "flow_metadata": {
+      "type": "object",
+      "properties": {
+        "total_steps": {
+          "type": "number"
+        },
+        "total_branches": {
+          "type": "number"
+        },
+        "estimated_duration_days": {
+          "type": "number"
+        },
+        "channels_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "has_ab_tests": {
+          "type": "boolean"
+        }
+      },
+      "description": "Flow summary"
+    },
+    "exit_conditions": {
+      "type": "object",
+      "properties": {
+        "auto_exit_if_converted": {
+          "type": "boolean",
+          "default": true
+        },
+        "auto_exit_if_unsubscribed": {
+          "type": "boolean",
+          "default": true
+        },
+        "auto_exit_if_score_above": {
+          "type": "number"
+        },
+        "auto_exit_if_score_below": {
+          "type": "number"
+        },
+        "auto_exit_after_days": {
+          "type": "number"
+        },
+        "exit_on_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "When to exit campaign"
+    },
+    "ghl_integration": {
+      "type": "object",
+      "properties": {
+        "sync_to_pipeline": {
+          "type": "boolean",
+          "default": true
+        },
+        "pipeline_id": {
+          "type": "string"
+        },
+        "entry_stage_id": {
+          "type": "string"
+        },
+        "qualified_stage_id": {
+          "type": "string"
+        },
+        "won_stage_id": {
+          "type": "string"
+        },
+        "lost_stage_id": {
+          "type": "string"
+        },
+        "create_tasks": {
+          "type": "boolean",
+          "default": false
+        },
+        "add_notes": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "description": "GoHighLevel integration settings"
+    },
+    "ab_testing_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether A/B testing is active"
+    },
+    "ab_test_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Node IDs with A/B tests"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether campaign is running"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "paused",
+        "completed",
+        "archived"
+      ],
+      "default": "draft",
+      "description": "Campaign status"
+    },
+    "execution_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times campaign has been triggered"
+    },
+    "active_executions": {
+      "type": "number",
+      "default": 0,
+      "description": "Leads currently in this campaign"
+    },
+    "completed_executions": {
+      "type": "number",
+      "default": 0,
+      "description": "Completed campaign runs"
+    },
+    "conversion_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Leads that converted"
+    },
+    "conversion_rate": {
+      "type": "number",
+      "description": "Overall conversion rate %"
+    },
+    "avg_time_to_conversion_days": {
+      "type": "number",
+      "description": "Average conversion time"
+    },
+    "performance_by_node": {
+      "type": "object",
+      "description": "Performance metrics per node"
+    },
+    "canvas_state": {
+      "type": "object",
+      "properties": {
+        "zoom": {
+          "type": "number",
+          "default": 1
+        },
+        "pan_x": {
+          "type": "number",
+          "default": 0
+        },
+        "pan_y": {
+          "type": "number",
+          "default": 0
+        }
+      },
+      "description": "Visual editor state"
+    }
+  },
+  "required": [
+    "user_email",
+    "campaign_name",
+    "trigger_config",
+    "flow_nodes"
+  ]
+}

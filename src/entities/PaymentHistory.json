@@ -1,0 +1,64 @@
+{
+  "name": "PaymentHistory",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who made the payment"
+    },
+    "payment_provider": {
+      "type": "string",
+      "enum": [
+        "stripe",
+        "paypal",
+        "manual"
+      ],
+      "description": "Payment processor"
+    },
+    "transaction_id": {
+      "type": "string",
+      "description": "Provider's transaction ID"
+    },
+    "amount_usd": {
+      "type": "number",
+      "description": "Payment amount in USD"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "description": "Currency code"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "succeeded",
+        "pending",
+        "failed",
+        "refunded"
+      ],
+      "description": "Payment status"
+    },
+    "description": {
+      "type": "string",
+      "description": "Payment description"
+    },
+    "invoice_url": {
+      "type": "string",
+      "description": "URL to invoice"
+    },
+    "receipt_url": {
+      "type": "string",
+      "description": "URL to receipt"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional payment data"
+    }
+  },
+  "required": [
+    "user_email",
+    "payment_provider",
+    "amount_usd",
+    "status"
+  ]
+}

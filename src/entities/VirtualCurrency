@@ -1,0 +1,55 @@
+{
+  "name": "VirtualCurrency",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's wallet"
+    },
+    "total_coins": {
+      "type": "number",
+      "default": 0,
+      "description": "Total coins earned"
+    },
+    "coins_spent": {
+      "type": "number",
+      "default": 0,
+      "description": "Coins used"
+    },
+    "coins_available": {
+      "type": "number",
+      "default": 0,
+      "description": "Current balance"
+    },
+    "transaction_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "earned",
+              "spent",
+              "bonus",
+              "refund"
+            ]
+          },
+          "amount": {
+            "type": "number"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "All coin transactions"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

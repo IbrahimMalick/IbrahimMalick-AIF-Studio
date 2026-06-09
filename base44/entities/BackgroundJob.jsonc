@@ -1,0 +1,82 @@
+{
+  "name": "BackgroundJob",
+  "type": "object",
+  "properties": {
+    "job_id": {
+      "type": "string",
+      "description": "Unique job identifier"
+    },
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "video_render",
+        "data_export",
+        "email_batch",
+        "analytics_calculation",
+        "ai_generation",
+        "integration_sync"
+      ],
+      "description": "Type of background job"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "processing",
+        "completed",
+        "failed",
+        "canceled"
+      ],
+      "default": "queued"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User who initiated job"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Job configuration"
+    },
+    "progress_percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0
+    },
+    "result": {
+      "type": "object",
+      "description": "Job output"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0
+    },
+    "max_retries": {
+      "type": "number",
+      "default": 3
+    },
+    "priority": {
+      "type": "number",
+      "default": 5,
+      "description": "1=highest, 10=lowest"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "estimated_duration_seconds": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "job_id",
+    "job_type"
+  ]
+}

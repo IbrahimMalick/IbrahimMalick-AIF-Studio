@@ -1,0 +1,36 @@
+{
+  "name": "JsonProject",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "content": {
+      "type": "string",
+      "description": "JSON content as string"
+    },
+    "schema": {
+      "type": "string",
+      "description": "JSON schema if defined"
+    },
+    "is_valid": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_error": {
+      "type": "string",
+      "description": "Last validation error"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "content"
+  ]
+}

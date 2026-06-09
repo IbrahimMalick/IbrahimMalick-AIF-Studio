@@ -1,0 +1,128 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Lead's full name"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "call",
+        "sms",
+        "web",
+        "referral",
+        "ad",
+        "organic"
+      ],
+      "default": "call",
+      "description": "How lead came in"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0,
+      "description": "Lead quality score (0-100)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "qualified",
+        "nurture",
+        "won",
+        "lost",
+        "spam"
+      ],
+      "default": "new",
+      "description": "Lead status"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Lead tags",
+      "default": []
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes"
+    },
+    "budget": {
+      "type": "string",
+      "description": "Budget range"
+    },
+    "timeline": {
+      "type": "string",
+      "description": "Decision timeline"
+    },
+    "use_case": {
+      "type": "string",
+      "description": "Intended use case"
+    },
+    "pain_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Identified pain points"
+    },
+    "crm_external_id": {
+      "type": "string",
+      "description": "GoHighLevel contact ID"
+    },
+    "ghl_synced": {
+      "type": "boolean",
+      "default": false,
+      "description": "Synced to GHL"
+    },
+    "last_contact": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last interaction timestamp"
+    },
+    "call_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total calls with this lead"
+    },
+    "sms_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total SMS sent"
+    },
+    "email_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total emails sent"
+    },
+    "converted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether lead converted to customer"
+    },
+    "conversion_value": {
+      "type": "number",
+      "description": "Revenue from this lead"
+    }
+  },
+  "required": [
+    "phone"
+  ]
+}

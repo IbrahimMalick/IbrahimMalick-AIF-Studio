@@ -1,0 +1,65 @@
+{
+  "name": "GoHighLevelWebhook",
+  "type": "object",
+  "properties": {
+    "webhook_id": {
+      "type": "string",
+      "description": "Unique webhook ID"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User receiving webhook"
+    },
+    "ghl_location_id": {
+      "type": "string",
+      "description": "Source location"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "contact.create",
+        "contact.update",
+        "contact.delete",
+        "opportunity.create",
+        "opportunity.update",
+        "opportunity.statusChange",
+        "appointment.create",
+        "task.create",
+        "form.submit",
+        "workflow.complete"
+      ],
+      "description": "GHL event type"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Full webhook payload"
+    },
+    "processed": {
+      "type": "boolean",
+      "default": false
+    },
+    "processed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actions_taken": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What we did with this webhook"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "webhook_id",
+    "event_type",
+    "payload"
+  ]
+}

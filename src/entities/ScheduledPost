@@ -1,0 +1,163 @@
+{
+  "name": "ScheduledPost",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this post"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "image",
+        "carousel",
+        "story",
+        "reel",
+        "short",
+        "tweet",
+        "thread",
+        "ctv_video"
+      ],
+      "description": "Type of content to post"
+    },
+    "content_url": {
+      "type": "string",
+      "description": "URL to the media file"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail for video content"
+    },
+    "caption": {
+      "type": "string",
+      "description": "Post caption/text"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title for videos"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description for videos"
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Hashtags to include"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for videos"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which platforms to post to",
+      "default": [
+        "instagram",
+        "facebook_page",
+        "twitter",
+        "linkedin",
+        "tiktok",
+        "youtube",
+        "roku",
+        "apple_tv",
+        "fire_tv",
+        "android_tv",
+        "samsung_tv",
+        "vizio"
+      ]
+    },
+    "schedule_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When to post (null = post immediately)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "scheduled",
+        "posting",
+        "published",
+        "failed"
+      ],
+      "default": "draft",
+      "description": "Post status"
+    },
+    "published_urls": {
+      "type": "object",
+      "description": "URLs of published posts per platform"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if posting failed"
+    },
+    "youtube_privacy": {
+      "type": "string",
+      "enum": [
+        "public",
+        "unlisted",
+        "private"
+      ],
+      "default": "public",
+      "description": "YouTube video privacy setting"
+    },
+    "youtube_category": {
+      "type": "string",
+      "description": "YouTube video category ID"
+    },
+    "ctv_category": {
+      "type": "string",
+      "enum": [
+        "entertainment",
+        "news",
+        "sports",
+        "kids",
+        "music",
+        "documentary",
+        "lifestyle",
+        "education"
+      ],
+      "description": "CTV content category"
+    },
+    "ctv_rating": {
+      "type": "string",
+      "enum": [
+        "G",
+        "PG",
+        "PG-13",
+        "TV-14",
+        "TV-MA"
+      ],
+      "description": "Content rating for CTV platforms"
+    },
+    "source_entity_type": {
+      "type": "string",
+      "description": "What created this post (VideoProject, ArtGeneration, etc.)"
+    },
+    "source_entity_id": {
+      "type": "string",
+      "description": "ID of source entity"
+    },
+    "auto_generated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether post was auto-created by automation"
+    }
+  },
+  "required": [
+    "user_email",
+    "content_type",
+    "content_url",
+    "caption"
+  ]
+}

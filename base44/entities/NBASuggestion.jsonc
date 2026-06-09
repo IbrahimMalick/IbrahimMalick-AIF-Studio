@@ -1,0 +1,90 @@
+{
+  "name": "NBASuggestion",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User receiving suggestion"
+    },
+    "funnel_run_id": {
+      "type": "string",
+      "description": "FunnelRun being analyzed"
+    },
+    "issue": {
+      "type": "string",
+      "description": "Problem identified"
+    },
+    "hypothesis": {
+      "type": "string",
+      "description": "Why the issue exists"
+    },
+    "expected_gain": {
+      "type": "number",
+      "description": "Expected improvement % (e.g., +15 means 15% better)"
+    },
+    "effort": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "description": "Implementation difficulty"
+    },
+    "actionable_step": {
+      "type": "string",
+      "description": "Specific action to take"
+    },
+    "priority": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Priority ranking (1=highest)"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "ad_creative",
+        "targeting",
+        "landing_page",
+        "follow_up",
+        "pricing",
+        "offer"
+      ],
+      "description": "Area to optimize"
+    },
+    "accepted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user accepted suggestion"
+    },
+    "applied_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "result_impact": {
+      "type": "object",
+      "properties": {
+        "metric_before": {
+          "type": "number"
+        },
+        "metric_after": {
+          "type": "number"
+        },
+        "actual_gain_percentage": {
+          "type": "number"
+        }
+      },
+      "description": "Measured results after implementation"
+    }
+  },
+  "required": [
+    "user_email",
+    "funnel_run_id",
+    "issue",
+    "hypothesis",
+    "expected_gain",
+    "effort",
+    "actionable_step"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "UserSegment",
+  "type": "object",
+  "properties": {
+    "segment_name": {
+      "type": "string",
+      "description": "Segment name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "criteria": {
+      "type": "object",
+      "description": "Segmentation rules",
+      "properties": {
+        "plan_tier": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "signup_date_range": {
+          "type": "object"
+        },
+        "activity_level": {
+          "type": "string"
+        },
+        "revenue_range": {
+          "type": "object"
+        },
+        "custom_filters": {
+          "type": "object"
+        }
+      }
+    },
+    "users_count": {
+      "type": "number",
+      "default": 0
+    },
+    "avg_ltv": {
+      "type": "number",
+      "description": "Average lifetime value"
+    },
+    "avg_engagement": {
+      "type": "number"
+    },
+    "churn_rate": {
+      "type": "number"
+    },
+    "is_dynamic": {
+      "type": "boolean",
+      "default": true,
+      "description": "Auto-updates as criteria change"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "segment_name",
+    "criteria"
+  ]
+}

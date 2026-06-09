@@ -1,0 +1,68 @@
+{
+  "name": "AdAccountConnection",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this connection"
+    },
+    "business_id": {
+      "type": "string",
+      "description": "Meta Business Manager ID"
+    },
+    "ad_account_id": {
+      "type": "string",
+      "description": "Meta Ad Account ID (format: act_1234567890)"
+    },
+    "token_alias": {
+      "type": "string",
+      "description": "Encrypted reference to access token"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "Encrypted Meta access token"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "ERROR",
+        "EXPIRED",
+        "DISCONNECTED"
+      ],
+      "default": "ACTIVE",
+      "description": "Connection status"
+    },
+    "account_name": {
+      "type": "string",
+      "description": "Ad account display name"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "description": "Account currency"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Account timezone"
+    },
+    "spend_cap": {
+      "type": "number",
+      "description": "Account spend cap in cents"
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last successful sync"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Last error details"
+    }
+  },
+  "required": [
+    "user_email",
+    "ad_account_id",
+    "token_alias"
+  ]
+}

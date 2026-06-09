@@ -1,0 +1,193 @@
+{
+  "name": "LeadConversionPrediction",
+  "type": "object",
+  "properties": {
+    "lead_id": {
+      "type": "string",
+      "description": "Lead being analyzed"
+    },
+    "prediction_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When prediction was made"
+    },
+    "conversion_probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Likelihood of conversion (0-100%)"
+    },
+    "confidence_level": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI confidence in prediction"
+    },
+    "probability_category": {
+      "type": "string",
+      "enum": [
+        "very_high",
+        "high",
+        "medium",
+        "low",
+        "very_low"
+      ],
+      "description": "Probability category"
+    },
+    "predicted_conversion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When lead likely to convert"
+    },
+    "predicted_value": {
+      "type": "number",
+      "description": "Estimated conversion value USD"
+    },
+    "contributing_factors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "factor": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "impact": {
+            "type": "string",
+            "enum": [
+              "positive",
+              "negative",
+              "neutral"
+            ]
+          },
+          "current_value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Factors influencing prediction"
+    },
+    "engagement_signals": {
+      "type": "object",
+      "properties": {
+        "call_engagement": {
+          "type": "number"
+        },
+        "nurture_engagement": {
+          "type": "number"
+        },
+        "response_quality": {
+          "type": "number"
+        },
+        "timing_signals": {
+          "type": "number"
+        },
+        "budget_signals": {
+          "type": "number"
+        }
+      },
+      "description": "Engagement indicators"
+    },
+    "risk_factors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "risk": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "mitigation": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Conversion risks identified"
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "expected_impact": {
+            "type": "string"
+          },
+          "when_to_do": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Next best actions to increase conversion"
+    },
+    "similar_leads_analysis": {
+      "type": "object",
+      "properties": {
+        "similar_converted": {
+          "type": "number"
+        },
+        "similar_lost": {
+          "type": "number"
+        },
+        "avg_conversion_time_days": {
+          "type": "number"
+        },
+        "success_patterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Historical similar leads data"
+    },
+    "model_used": {
+      "type": "string",
+      "description": "ML model version"
+    },
+    "features_analyzed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Data points considered"
+    },
+    "actual_outcome": {
+      "type": "string",
+      "enum": [
+        "converted",
+        "lost",
+        "pending"
+      ],
+      "description": "What actually happened (for model training)"
+    },
+    "actual_conversion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When lead actually converted"
+    },
+    "prediction_accuracy": {
+      "type": "number",
+      "description": "How accurate was prediction (0-100)"
+    }
+  },
+  "required": [
+    "lead_id",
+    "conversion_probability",
+    "probability_category"
+  ]
+}

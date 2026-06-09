@@ -1,0 +1,88 @@
+{
+  "name": "WorkflowTemplate",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created (null for system templates)"
+    },
+    "workflow_name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "workflow_description": {
+      "type": "string",
+      "description": "What this workflow does"
+    },
+    "workflow_json": {
+      "type": "string",
+      "description": "JSON configuration with nodes and connections"
+    },
+    "trigger_type": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "schedule",
+        "event",
+        "webhook"
+      ],
+      "description": "How workflow starts"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "content_creation",
+        "publishing",
+        "marketing",
+        "analytics",
+        "automation"
+      ],
+      "description": "Workflow category"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Workflow nodes/steps",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "position": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": false,
+      "description": "Shared with community"
+    },
+    "is_system": {
+      "type": "boolean",
+      "default": false,
+      "description": "Official template"
+    },
+    "use_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times used"
+    },
+    "clone_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times cloned"
+    }
+  },
+  "required": [
+    "workflow_name",
+    "workflow_json"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "UsageTracking",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User being tracked"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Billing period start"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Billing period end"
+    },
+    "plan_tier": {
+      "type": "string",
+      "description": "Plan during this period"
+    },
+    "videos_created": {
+      "type": "number",
+      "default": 0
+    },
+    "videos_limit": {
+      "type": "number",
+      "description": "Plan limit"
+    },
+    "ai_images_generated": {
+      "type": "number",
+      "default": 0
+    },
+    "ai_images_limit": {
+      "type": "number"
+    },
+    "storage_used_mb": {
+      "type": "number",
+      "default": 0
+    },
+    "storage_limit_mb": {
+      "type": "number"
+    },
+    "api_calls": {
+      "type": "number",
+      "default": 0
+    },
+    "api_limit": {
+      "type": "number"
+    },
+    "team_members": {
+      "type": "number",
+      "default": 1
+    },
+    "team_members_limit": {
+      "type": "number"
+    },
+    "overage_charges": {
+      "type": "number",
+      "default": 0,
+      "description": "Additional charges for usage"
+    },
+    "warnings_sent": {
+      "type": "number",
+      "default": 0,
+      "description": "Limit warning emails sent"
+    }
+  },
+  "required": [
+    "user_email",
+    "period_start",
+    "period_end"
+  ]
+}

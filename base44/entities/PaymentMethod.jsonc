@@ -1,0 +1,91 @@
+{
+  "name": "PaymentMethod",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's email"
+    },
+    "provider_id": {
+      "type": "string",
+      "description": "Provider slug: stripe, paypal, affirm, sezzle, apple_pay, google_pay, afterpay, klarna, cashapp, venmo, crypto"
+    },
+    "provider_name": {
+      "type": "string",
+      "description": "Display name of the provider"
+    },
+    "credentials": {
+      "type": "object",
+      "description": "Encrypted provider credentials (API keys, client IDs, etc.)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this gateway is currently enabled"
+    },
+    "connected_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the gateway was connected"
+    },
+    "stripe_payment_method_id": {
+      "type": "string",
+      "description": "Stripe PM ID (legacy saved cards)"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "card",
+        "bank_account",
+        "paypal",
+        "gateway"
+      ],
+      "description": "Payment type"
+    },
+    "card_brand": {
+      "type": "string",
+      "description": "Visa, Mastercard, etc."
+    },
+    "card_last4": {
+      "type": "string",
+      "description": "Last 4 digits"
+    },
+    "card_exp_month": {
+      "type": "number"
+    },
+    "card_exp_year": {
+      "type": "number"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false
+    },
+    "billing_address": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "added_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

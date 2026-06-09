@@ -1,0 +1,58 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User to notify"
+    },
+    "title": {
+      "type": "string",
+      "description": "Notification title"
+    },
+    "message": {
+      "type": "string",
+      "description": "Notification message"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "info",
+        "success",
+        "warning",
+        "error"
+      ],
+      "default": "info",
+      "description": "Notification type"
+    },
+    "action_url": {
+      "type": "string",
+      "description": "URL to action button"
+    },
+    "action_label": {
+      "type": "string",
+      "description": "Action button text"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user has read notification"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "render_complete",
+        "cost_alert",
+        "limit_reached",
+        "system",
+        "collaboration"
+      ],
+      "description": "Notification category"
+    }
+  },
+  "required": [
+    "user_email",
+    "title",
+    "message"
+  ]
+}

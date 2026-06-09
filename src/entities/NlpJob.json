@@ -1,0 +1,48 @@
+{
+  "name": "NlpJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "summarize",
+        "rewrite",
+        "seo_brief",
+        "social_caption",
+        "translate",
+        "qa"
+      ],
+      "description": "Type of NLP operation"
+    },
+    "input_text": {
+      "type": "string",
+      "description": "Original input text"
+    },
+    "output_text": {
+      "type": "string",
+      "description": "Generated output"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Job parameters like language, tone, etc."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "tokens_used": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "job_type",
+    "input_text"
+  ]
+}

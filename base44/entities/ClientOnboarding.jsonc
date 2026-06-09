@@ -1,0 +1,132 @@
+{
+  "name": "ClientOnboarding",
+  "type": "object",
+  "properties": {
+    "agency_id": {
+      "type": "string",
+      "description": "Agency managing client"
+    },
+    "client_email": {
+      "type": "string",
+      "description": "Client email"
+    },
+    "client_company": {
+      "type": "string",
+      "description": "Client business name"
+    },
+    "onboarding_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "Current status"
+    },
+    "pricing_tier": {
+      "type": "string",
+      "description": "Selected pricing tier"
+    },
+    "monthly_price": {
+      "type": "number",
+      "description": "Agreed monthly price"
+    },
+    "setup_fee_paid": {
+      "type": "boolean",
+      "default": false
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "credit_card",
+        "invoice",
+        "ghl_payments"
+      ],
+      "description": "How client pays"
+    },
+    "contract_signed": {
+      "type": "boolean",
+      "default": false
+    },
+    "contract_signed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "account_created": {
+      "type": "boolean",
+      "default": false
+    },
+    "ghl_synced": {
+      "type": "boolean",
+      "default": false
+    },
+    "white_label_configured": {
+      "type": "boolean",
+      "default": false
+    },
+    "training_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "first_content_created": {
+      "type": "boolean",
+      "default": false
+    },
+    "go_live_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "onboarding_notes": {
+      "type": "string"
+    },
+    "assigned_account_manager": {
+      "type": "string"
+    },
+    "kickoff_call_scheduled": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "kickoff_call_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "automations_setup": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which automations are configured"
+    },
+    "integration_status": {
+      "type": "object",
+      "description": "Status of each integration"
+    },
+    "client_satisfaction_score": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "referral_source": {
+      "type": "string",
+      "description": "How they found you"
+    },
+    "estimated_lifetime_value": {
+      "type": "number"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "agency_id",
+    "client_email",
+    "pricing_tier"
+  ]
+}

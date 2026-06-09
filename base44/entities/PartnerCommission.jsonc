@@ -1,0 +1,111 @@
+{
+  "name": "PartnerCommission",
+  "type": "object",
+  "properties": {
+    "partner_id": {
+      "type": "string",
+      "description": "PartnerAffiliate ID"
+    },
+    "customer_email": {
+      "type": "string",
+      "description": "Customer who made purchase"
+    },
+    "commission_type": {
+      "type": "string",
+      "enum": [
+        "recurring",
+        "bounty",
+        "addon",
+        "setup_fee",
+        "revenue_share"
+      ],
+      "description": "Commission category"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "subscription.payment_succeeded",
+        "subscription.created",
+        "addon.purchased",
+        "setup.paid",
+        "client.onboarded"
+      ],
+      "description": "Event that triggered commission"
+    },
+    "transaction_id": {
+      "type": "string",
+      "description": "Payment transaction ID"
+    },
+    "subscription_id": {
+      "type": "string",
+      "description": "Stripe subscription ID"
+    },
+    "base_amount_usd": {
+      "type": "number",
+      "description": "Base transaction amount"
+    },
+    "commission_rate": {
+      "type": "number",
+      "description": "Commission % applied"
+    },
+    "commission_amount_usd": {
+      "type": "number",
+      "description": "Commission earned"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "paid",
+        "refunded",
+        "clawback"
+      ],
+      "default": "pending",
+      "description": "Commission status"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Billing period start"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Billing period end"
+    },
+    "payout_id": {
+      "type": "string",
+      "description": "PartnerPayout ID when paid"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Approval timestamp"
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Payment timestamp"
+    },
+    "refund_reason": {
+      "type": "string",
+      "description": "Why refunded/clawed back"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional commission data"
+    }
+  },
+  "required": [
+    "partner_id",
+    "customer_email",
+    "commission_type",
+    "base_amount_usd",
+    "commission_amount_usd"
+  ]
+}

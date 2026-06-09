@@ -1,0 +1,32 @@
+{
+  "name": "SlackIntegration",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who configured this integration"
+    },
+    "channel_id": {
+      "type": "string",
+      "description": "Slack channel ID for agent updates"
+    },
+    "channel_name": {
+      "type": "string",
+      "description": "Slack channel name for display"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to send updates to this channel"
+    },
+    "last_configured": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time this was configured"
+    }
+  },
+  "required": [
+    "user_email",
+    "channel_id"
+  ]
+}

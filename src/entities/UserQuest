@@ -1,0 +1,61 @@
+{
+  "name": "UserQuest",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User completing quest"
+    },
+    "quest_id": {
+      "type": "string",
+      "description": "Quest being completed"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "in_progress",
+        "completed",
+        "expired",
+        "abandoned"
+      ],
+      "default": "in_progress"
+    },
+    "progress": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_name": {
+            "type": "string"
+          },
+          "current_value": {
+            "type": "number"
+          },
+          "target_value": {
+            "type": "number"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Progress on each task"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rewards_claimed": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_email",
+    "quest_id"
+  ]
+}

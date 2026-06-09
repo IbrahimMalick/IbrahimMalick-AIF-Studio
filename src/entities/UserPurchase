@@ -1,0 +1,36 @@
+{
+  "name": "UserPurchase",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who purchased"
+    },
+    "item_id": {
+      "type": "string",
+      "description": "Item purchased"
+    },
+    "coins_spent": {
+      "type": "number",
+      "description": "Cost paid"
+    },
+    "purchased_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "activated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether item is in use"
+    },
+    "activated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "item_id",
+    "coins_spent"
+  ]
+}

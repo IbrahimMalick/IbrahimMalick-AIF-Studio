@@ -1,0 +1,148 @@
+{
+  "name": "AdCreativeDraft",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this draft"
+    },
+    "draft_name": {
+      "type": "string",
+      "description": "Creative name"
+    },
+    "objective": {
+      "type": "string",
+      "enum": [
+        "LEADS",
+        "SALES",
+        "TRAFFIC",
+        "AWARENESS",
+        "ENGAGEMENT",
+        "APP_INSTALLS"
+      ],
+      "description": "Campaign objective"
+    },
+    "primary_text": {
+      "type": "string",
+      "description": "Main ad copy (125 chars recommended)"
+    },
+    "headline": {
+      "type": "string",
+      "description": "Ad headline (40 chars max)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Ad description (30 chars max)"
+    },
+    "cta": {
+      "type": "string",
+      "enum": [
+        "LEARN_MORE",
+        "SHOP_NOW",
+        "SIGN_UP",
+        "DOWNLOAD",
+        "BOOK_NOW",
+        "CONTACT_US",
+        "GET_QUOTE",
+        "SUBSCRIBE",
+        "APPLY_NOW",
+        "GET_OFFER",
+        "WATCH_MORE"
+      ],
+      "default": "LEARN_MORE",
+      "description": "Call-to-action button"
+    },
+    "asset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AdAsset IDs to use"
+    },
+    "placements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ad placements",
+      "default": [
+        "facebook_feed",
+        "instagram_feed",
+        "facebook_reels",
+        "instagram_reels",
+        "instagram_stories",
+        "facebook_stories"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Ad language code"
+    },
+    "destination_url": {
+      "type": "string",
+      "description": "Landing page URL"
+    },
+    "utm_parameters": {
+      "type": "object",
+      "properties": {
+        "utm_source": {
+          "type": "string",
+          "default": "facebook"
+        },
+        "utm_medium": {
+          "type": "string",
+          "default": "cpc"
+        },
+        "utm_campaign": {
+          "type": "string"
+        },
+        "utm_content": {
+          "type": "string"
+        },
+        "utm_term": {
+          "type": "string"
+        }
+      },
+      "description": "UTM tracking parameters"
+    },
+    "score_pred": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI-predicted performance score"
+    },
+    "ai_generated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether AI generated this creative"
+    },
+    "generation_prompt": {
+      "type": "string",
+      "description": "Prompt used to generate this"
+    },
+    "policy_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Potential policy violations detected"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "validated",
+        "launched",
+        "archived"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "user_email",
+    "objective",
+    "primary_text",
+    "headline"
+  ]
+}

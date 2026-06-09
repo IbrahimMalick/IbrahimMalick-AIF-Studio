@@ -1,0 +1,44 @@
+{
+  "name": "AIUsageLog",
+  "type": "object",
+  "properties": {
+    "operation_type": {
+      "type": "string",
+      "enum": [
+        "gpt4_call",
+        "gpt35_call",
+        "dalle_generation",
+        "document_analysis"
+      ],
+      "description": "Type of AI operation"
+    },
+    "prompt_hash": {
+      "type": "string",
+      "description": "Hash of prompt for cache lookup"
+    },
+    "tokens_used": {
+      "type": "number",
+      "description": "Tokens consumed"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Estimated cost"
+    },
+    "response_time_ms": {
+      "type": "number",
+      "description": "Response time in milliseconds"
+    },
+    "model_used": {
+      "type": "string",
+      "description": "AI model used"
+    },
+    "cache_hit": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether response came from cache"
+    }
+  },
+  "required": [
+    "operation_type"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "name": "SnapshotDeployment",
+  "type": "object",
+  "properties": {
+    "deployment_id": {
+      "type": "string",
+      "description": "Unique deployment ID"
+    },
+    "agency_email": {
+      "type": "string",
+      "description": "Agency deploying snapshot"
+    },
+    "client_email": {
+      "type": "string",
+      "description": "Client receiving deployment"
+    },
+    "ghl_location_id": {
+      "type": "string",
+      "description": "GHL Location/Sub-account ID"
+    },
+    "snapshot_name": {
+      "type": "string",
+      "description": "Name of deployed snapshot"
+    },
+    "deployment_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "deploying",
+        "configuring",
+        "completed",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "white_label_applied": {
+      "type": "boolean",
+      "default": false
+    },
+    "features_enabled": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which features were enabled"
+    },
+    "sample_content_created": {
+      "type": "boolean",
+      "default": false,
+      "description": "Demo videos/posts created"
+    },
+    "client_trained": {
+      "type": "boolean",
+      "default": false,
+      "description": "Training completed"
+    },
+    "deployment_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "in_progress",
+              "completed",
+              "failed"
+            ]
+          },
+          "completed_at": {
+            "type": "string"
+          },
+          "error_message": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Deployment progress"
+    },
+    "deployed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deployment_duration_seconds": {
+      "type": "number"
+    },
+    "deployed_by": {
+      "type": "string"
+    },
+    "error_log": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "deployment_id",
+    "agency_email",
+    "client_email"
+  ]
+}

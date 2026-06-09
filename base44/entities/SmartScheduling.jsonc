@@ -1,0 +1,116 @@
+{
+  "name": "SmartScheduling",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's schedule"
+    },
+    "platform": {
+      "type": "string",
+      "description": "Social platform"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "image",
+        "text",
+        "story",
+        "reel"
+      ],
+      "description": "Type of content"
+    },
+    "audience_analysis": {
+      "type": "object",
+      "properties": {
+        "peak_hours": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "peak_days": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "demographics": {
+          "type": "object"
+        }
+      },
+      "description": "When audience is most active"
+    },
+    "optimal_posting_times": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "datetime": {
+            "type": "string"
+          },
+          "expected_reach": {
+            "type": "number"
+          },
+          "expected_engagement": {
+            "type": "number"
+          },
+          "competition_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      },
+      "description": "Best times to post"
+    },
+    "posting_frequency": {
+      "type": "object",
+      "properties": {
+        "recommended_per_day": {
+          "type": "number"
+        },
+        "recommended_per_week": {
+          "type": "number"
+        },
+        "spacing_hours": {
+          "type": "number"
+        }
+      },
+      "description": "How often to post"
+    },
+    "content_mix": {
+      "type": "object",
+      "properties": {
+        "educational": {
+          "type": "number"
+        },
+        "entertainment": {
+          "type": "number"
+        },
+        "promotional": {
+          "type": "number"
+        },
+        "community": {
+          "type": "number"
+        }
+      },
+      "description": "Recommended content balance %"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "platform"
+  ]
+}

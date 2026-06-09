@@ -1,0 +1,92 @@
+{
+  "name": "PartnerFraudSignal",
+  "type": "object",
+  "properties": {
+    "signal_type": {
+      "type": "string",
+      "enum": [
+        "velocity_spike",
+        "geo_mismatch",
+        "refund_cluster",
+        "coupon_abuse",
+        "duplicate_device",
+        "suspicious_email",
+        "bin_mismatch",
+        "chargeback"
+      ],
+      "description": "Type of fraud signal"
+    },
+    "subject_type": {
+      "type": "string",
+      "enum": [
+        "partner",
+        "customer",
+        "transaction"
+      ],
+      "description": "What entity is flagged"
+    },
+    "subject_id": {
+      "type": "string",
+      "description": "ID of flagged entity"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium",
+      "description": "Fraud severity"
+    },
+    "details": {
+      "type": "object",
+      "description": "Signal details and evidence"
+    },
+    "auto_action_taken": {
+      "type": "string",
+      "enum": [
+        "none",
+        "flag_for_review",
+        "pause_partner",
+        "suspend_partner",
+        "block_transaction"
+      ],
+      "description": "Automated action"
+    },
+    "reviewed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Human reviewed"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Admin who reviewed"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Review timestamp"
+    },
+    "resolution": {
+      "type": "string",
+      "enum": [
+        "false_positive",
+        "confirmed_fraud",
+        "investigation_ongoing",
+        "resolved"
+      ],
+      "description": "Review outcome"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Investigation notes"
+    }
+  },
+  "required": [
+    "signal_type",
+    "subject_type",
+    "subject_id"
+  ]
+}

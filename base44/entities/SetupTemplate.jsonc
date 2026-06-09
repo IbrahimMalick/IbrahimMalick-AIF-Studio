@@ -1,0 +1,157 @@
+{
+  "name": "SetupTemplate",
+  "type": "object",
+  "properties": {
+    "template_id": {
+      "type": "string",
+      "description": "Unique template identifier"
+    },
+    "template_name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "industry": {
+      "type": "string",
+      "enum": [
+        "coach",
+        "agency",
+        "ecommerce",
+        "saas",
+        "creator",
+        "consultant",
+        "real_estate",
+        "fitness"
+      ],
+      "description": "Target industry"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this template sets up"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview image"
+    },
+    "demo_video_url": {
+      "type": "string",
+      "description": "Walkthrough video"
+    },
+    "estimated_setup_time": {
+      "type": "number",
+      "default": 10,
+      "description": "Minutes to complete"
+    },
+    "integrations_included": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Pre-configured integrations"
+    },
+    "automations_included": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Default automations"
+    },
+    "demo_content": {
+      "type": "object",
+      "description": "Sample content to create",
+      "properties": {
+        "videos": {
+          "type": "number"
+        },
+        "posts": {
+          "type": "number"
+        },
+        "emails": {
+          "type": "number"
+        },
+        "funnels": {
+          "type": "number"
+        }
+      }
+    },
+    "recommended_plan": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio",
+        "enterprise"
+      ],
+      "description": "Suggested subscription"
+    },
+    "onboarding_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_name": {
+            "type": "string"
+          },
+          "ai_prompt": {
+            "type": "string"
+          },
+          "validation_required": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Wizard steps for this template"
+    },
+    "success_metrics": {
+      "type": "object",
+      "properties": {
+        "typical_roi": {
+          "type": "string"
+        },
+        "time_saved": {
+          "type": "string"
+        },
+        "automation_rate": {
+          "type": "number"
+        }
+      }
+    },
+    "use_count": {
+      "type": "number",
+      "default": 0
+    },
+    "success_rate": {
+      "type": "number",
+      "description": "% who complete setup"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "template_id",
+    "template_name",
+    "industry"
+  ]
+}

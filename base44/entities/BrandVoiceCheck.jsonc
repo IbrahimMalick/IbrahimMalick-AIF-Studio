@@ -1,0 +1,215 @@
+{
+  "name": "BrandVoiceCheck",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who ran the check"
+    },
+    "brand_voice_profile_id": {
+      "type": "string",
+      "description": "Brand voice used for checking"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "social_post",
+        "email_copy",
+        "blog_post",
+        "seo_metadata",
+        "ad_copy",
+        "script"
+      ],
+      "description": "Type of content checked"
+    },
+    "content_text": {
+      "type": "string",
+      "description": "Content being analyzed"
+    },
+    "source_generation_id": {
+      "type": "string",
+      "description": "AIContentGeneration or ContentRepurposing ID"
+    },
+    "consistency_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall brand voice consistency score"
+    },
+    "score_breakdown": {
+      "type": "object",
+      "properties": {
+        "tone_match": {
+          "type": "number",
+          "description": "How well tone matches (0-100)"
+        },
+        "vocabulary_match": {
+          "type": "number",
+          "description": "Word choice alignment (0-100)"
+        },
+        "structure_match": {
+          "type": "number",
+          "description": "Sentence structure similarity (0-100)"
+        },
+        "style_match": {
+          "type": "number",
+          "description": "Overall style alignment (0-100)"
+        },
+        "emotional_match": {
+          "type": "number",
+          "description": "Emotional tone match (0-100)"
+        },
+        "guideline_adherence": {
+          "type": "number",
+          "description": "Follows manual guidelines (0-100)"
+        }
+      }
+    },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "major",
+              "minor",
+              "suggestion"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "issue": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "current_text": {
+            "type": "string"
+          },
+          "suggested_fix": {
+            "type": "string"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Brand voice violations found"
+    },
+    "strengths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "aspect": {
+            "type": "string"
+          },
+          "example": {
+            "type": "string"
+          },
+          "why_it_works": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "What the content does well"
+    },
+    "improvement_suggestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priority": {
+            "type": "number"
+          },
+          "suggestion": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "before": {
+            "type": "string"
+          },
+          "after": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Ranked improvement suggestions"
+    },
+    "rewritten_content": {
+      "type": "string",
+      "description": "AI-rewritten version aligned to brand voice"
+    },
+    "rewritten_score": {
+      "type": "number",
+      "description": "Expected score of rewritten version"
+    },
+    "comparison": {
+      "type": "object",
+      "properties": {
+        "similar_past_content": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content_text": {
+                "type": "string"
+              },
+              "similarity_score": {
+                "type": "number"
+              },
+              "performance": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "voice_drift_analysis": {
+          "type": "object",
+          "properties": {
+            "drift_score": {
+              "type": "number"
+            },
+            "drift_direction": {
+              "type": "string"
+            },
+            "recommendation": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "auto_approved": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether content passed auto-approval threshold"
+    },
+    "user_accepted": {
+      "type": "boolean",
+      "description": "Whether user accepted the content"
+    },
+    "user_used_rewrite": {
+      "type": "boolean",
+      "description": "Whether user used AI rewrite"
+    },
+    "user_feedback": {
+      "type": "string",
+      "description": "User's feedback on the analysis"
+    }
+  },
+  "required": [
+    "user_email",
+    "brand_voice_profile_id",
+    "content_type",
+    "content_text",
+    "consistency_score"
+  ]
+}

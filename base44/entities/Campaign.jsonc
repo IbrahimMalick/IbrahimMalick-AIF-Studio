@@ -1,0 +1,485 @@
+{
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this campaign"
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Campaign title"
+    },
+    "campaign_goal": {
+      "type": "string",
+      "enum": [
+        "product_launch",
+        "lead_generation",
+        "brand_awareness",
+        "event_promotion",
+        "course_launch",
+        "webinar",
+        "sales_promo",
+        "re_engagement",
+        "seasonal_campaign",
+        "custom"
+      ],
+      "description": "Primary campaign objective"
+    },
+    "description": {
+      "type": "string",
+      "description": "Campaign description and context"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Who this campaign targets"
+    },
+    "key_message": {
+      "type": "string",
+      "description": "Core message/value proposition"
+    },
+    "duration_days": {
+      "type": "number",
+      "default": 14,
+      "description": "Campaign length in days"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Campaign end date"
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Channels included (social, email, blog, ads)"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific platforms (Instagram, Facebook, etc.)"
+    },
+    "brand_voice_profile_id": {
+      "type": "string",
+      "description": "Brand voice used for all content"
+    },
+    "budget_usd": {
+      "type": "number",
+      "description": "Total campaign budget"
+    },
+    "budget_allocation": {
+      "type": "object",
+      "properties": {
+        "social_ads_percent": {
+          "type": "number"
+        },
+        "email_percent": {
+          "type": "number"
+        },
+        "content_creation_percent": {
+          "type": "number"
+        },
+        "influencer_percent": {
+          "type": "number"
+        }
+      },
+      "description": "Budget split across channels"
+    },
+    "content_plan": {
+      "type": "object",
+      "properties": {
+        "social_posts_count": {
+          "type": "number"
+        },
+        "emails_count": {
+          "type": "number"
+        },
+        "blog_posts_count": {
+          "type": "number"
+        },
+        "ad_creatives_count": {
+          "type": "number"
+        },
+        "videos_count": {
+          "type": "number"
+        }
+      },
+      "description": "Planned content volume"
+    },
+    "generated_assets": {
+      "type": "object",
+      "properties": {
+        "social_posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scheduled_post_id": {
+                "type": "string"
+              },
+              "calendar_event_id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "scheduled_date": {
+                "type": "string"
+              },
+              "copy": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "email_campaign_id": {
+                "type": "string"
+              },
+              "calendar_event_id": {
+                "type": "string"
+              },
+              "subject": {
+                "type": "string"
+              },
+              "scheduled_date": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "blogs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "calendar_event_id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "scheduled_date": {
+                "type": "string"
+              },
+              "seo_metadata_id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ads": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ad_creative_id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "headline": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "All generated content assets"
+    },
+    "orchestration_schedule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "number"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "content_type": {
+            "type": "string"
+          },
+          "scheduled_time": {
+            "type": "string"
+          },
+          "asset_id": {
+            "type": "string"
+          },
+          "reasoning": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "AI-generated posting schedule"
+    },
+    "campaign_phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phase_name": {
+            "type": "string"
+          },
+          "start_day": {
+            "type": "number"
+          },
+          "end_day": {
+            "type": "number"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "tactics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "kpis": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Campaign broken into strategic phases"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "generating_content",
+        "ready",
+        "scheduled",
+        "active",
+        "completed",
+        "paused",
+        "cancelled"
+      ],
+      "default": "planning",
+      "description": "Campaign lifecycle status"
+    },
+    "generation_progress": {
+      "type": "number",
+      "default": 0,
+      "description": "Content generation progress 0-100"
+    },
+    "auto_schedule_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to auto-schedule all content"
+    },
+    "auto_publish_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to auto-publish scheduled content"
+    },
+    "performance_metrics": {
+      "type": "object",
+      "properties": {
+        "total_impressions": {
+          "type": "number",
+          "default": 0
+        },
+        "total_reach": {
+          "type": "number",
+          "default": 0
+        },
+        "total_engagement": {
+          "type": "number",
+          "default": 0
+        },
+        "total_clicks": {
+          "type": "number",
+          "default": 0
+        },
+        "total_conversions": {
+          "type": "number",
+          "default": 0
+        },
+        "total_revenue": {
+          "type": "number",
+          "default": 0
+        },
+        "total_spend": {
+          "type": "number",
+          "default": 0
+        },
+        "roas": {
+          "type": "number",
+          "description": "Return on ad spend"
+        },
+        "engagement_rate": {
+          "type": "number",
+          "description": "Overall engagement rate"
+        },
+        "conversion_rate": {
+          "type": "number",
+          "description": "Overall conversion rate"
+        }
+      },
+      "description": "Aggregated campaign performance"
+    },
+    "performance_by_channel": {
+      "type": "object",
+      "description": "Performance breakdown by channel",
+      "properties": {
+        "social": {
+          "type": "object"
+        },
+        "email": {
+          "type": "object"
+        },
+        "blog": {
+          "type": "object"
+        },
+        "ads": {
+          "type": "object"
+        }
+      }
+    },
+    "kpis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "metric_name": {
+            "type": "string"
+          },
+          "target_value": {
+            "type": "number"
+          },
+          "current_value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Key performance indicators"
+    },
+    "ai_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priority": {
+            "type": "number"
+          },
+          "recommendation": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "expected_impact": {
+            "type": "string"
+          },
+          "implemented": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "AI optimization recommendations"
+    },
+    "content_themes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Content themes/topics for variety"
+    },
+    "hooks_and_angles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hook": {
+            "type": "string"
+          },
+          "angle": {
+            "type": "string"
+          },
+          "target_segment": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Different angles for content variety"
+    },
+    "collaboration_team": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Team member emails with campaign access"
+    },
+    "approval_required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Require approval before publishing"
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "User who approved campaign"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_assets_generated": {
+      "type": "number",
+      "default": 0,
+      "description": "Total content pieces created"
+    },
+    "total_assets_deployed": {
+      "type": "number",
+      "default": 0,
+      "description": "Content pieces published"
+    },
+    "generation_cost_usd": {
+      "type": "number",
+      "description": "AI generation cost"
+    },
+    "estimated_time_saved_hours": {
+      "type": "number",
+      "description": "Time saved vs manual creation"
+    }
+  },
+  "required": [
+    "user_email",
+    "campaign_name",
+    "campaign_goal",
+    "start_date",
+    "end_date"
+  ]
+}

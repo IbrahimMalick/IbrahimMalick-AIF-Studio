@@ -1,0 +1,86 @@
+{
+  "name": "SocialMediaPost",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who posted"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "instagram",
+        "facebook_page",
+        "twitter",
+        "linkedin",
+        "tiktok",
+        "youtube",
+        "roku",
+        "apple_tv",
+        "fire_tv",
+        "android_tv",
+        "samsung_tv",
+        "vizio"
+      ],
+      "description": "Platform posted to"
+    },
+    "platform_post_id": {
+      "type": "string",
+      "description": "Post ID from the platform"
+    },
+    "post_url": {
+      "type": "string",
+      "description": "URL to view the post"
+    },
+    "content_url": {
+      "type": "string",
+      "description": "Media file URL"
+    },
+    "caption": {
+      "type": "string",
+      "description": "Post caption"
+    },
+    "title": {
+      "type": "string",
+      "description": "Post title"
+    },
+    "likes_count": {
+      "type": "number",
+      "default": 0
+    },
+    "comments_count": {
+      "type": "number",
+      "default": 0
+    },
+    "shares_count": {
+      "type": "number",
+      "default": 0
+    },
+    "views_count": {
+      "type": "number",
+      "default": 0
+    },
+    "retweets_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Twitter retweets"
+    },
+    "watch_time_minutes": {
+      "type": "number",
+      "description": "Total watch time"
+    },
+    "engagement_rate": {
+      "type": "number",
+      "description": "Calculated engagement percentage"
+    },
+    "posted_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "platform",
+    "content_url"
+  ]
+}

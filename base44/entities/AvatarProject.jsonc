@@ -1,0 +1,340 @@
+{
+  "name": "AvatarProject",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this project"
+    },
+    "project_name": {
+      "type": "string",
+      "description": "Project title"
+    },
+    "avatar_id": {
+      "type": "string",
+      "description": "Avatar used"
+    },
+    "voice_profile_id": {
+      "type": "string",
+      "description": "Voice profile used"
+    },
+    "script": {
+      "type": "string",
+      "description": "Full script with prosody tags"
+    },
+    "script_type": {
+      "type": "string",
+      "enum": [
+        "reel",
+        "short",
+        "explainer",
+        "vsl",
+        "onboarding",
+        "faq",
+        "testimonial",
+        "ad",
+        "coach_reply"
+      ],
+      "description": "Type of content"
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Primary language"
+    },
+    "additional_languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Additional languages for dubbing"
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "mentor",
+        "analyst",
+        "hype",
+        "luxury",
+        "friendly",
+        "authoritative",
+        "casual"
+      ],
+      "default": "friendly",
+      "description": "Script tone"
+    },
+    "emotion": {
+      "type": "string",
+      "enum": [
+        "calm",
+        "energetic",
+        "empathetic",
+        "urgent",
+        "professional",
+        "friendly"
+      ],
+      "default": "professional",
+      "description": "Voice emotion"
+    },
+    "duration_target_seconds": {
+      "type": "number",
+      "description": "Target video length"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "9:16",
+        "1:1",
+        "16:9",
+        "4:5"
+      ],
+      "default": "9:16",
+      "description": "Aspect ratio"
+    },
+    "template_id": {
+      "type": "string",
+      "description": "Motion template used"
+    },
+    "template_pack": {
+      "type": "string",
+      "enum": [
+        "vertical_reels",
+        "explainer",
+        "vsl",
+        "faq_support",
+        "real_estate",
+        "fitness",
+        "ecommerce",
+        "coaching"
+      ],
+      "description": "Template pack category"
+    },
+    "background_config": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "blur_amount": {
+          "type": "number"
+        }
+      },
+      "description": "Background settings"
+    },
+    "caption_config": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "style": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "burn_in": {
+          "type": "boolean"
+        },
+        "srt_url": {
+          "type": "string"
+        },
+        "vtt_url": {
+          "type": "string"
+        }
+      },
+      "description": "Caption settings"
+    },
+    "lower_thirds_config": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number"
+        }
+      },
+      "description": "Lower thirds overlay"
+    },
+    "cta_config": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "qr_code": {
+          "type": "boolean"
+        },
+        "button_style": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        }
+      },
+      "description": "Call-to-action overlay"
+    },
+    "render_quality": {
+      "type": "string",
+      "enum": [
+        "fast_path",
+        "standard",
+        "high_quality",
+        "ultra_4k"
+      ],
+      "default": "standard",
+      "description": "Render quality mode"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "generating_voice",
+        "generating_video",
+        "rendering",
+        "completed",
+        "failed"
+      ],
+      "default": "draft",
+      "description": "Project status"
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "audio_url": {
+            "type": "string"
+          },
+          "srt_url": {
+            "type": "string"
+          },
+          "thumbnail_url": {
+            "type": "string"
+          },
+          "duration_seconds": {
+            "type": "number"
+          },
+          "file_size_mb": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Rendered outputs per language"
+    },
+    "lipsync_quality": {
+      "type": "object",
+      "properties": {
+        "offset_ms": {
+          "type": "number",
+          "description": "Audio-visual sync offset"
+        },
+        "accuracy_score": {
+          "type": "number",
+          "description": "Lip-sync accuracy 0-100"
+        },
+        "validated": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "description": "Lip-sync validation data"
+    },
+    "compliance_check": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rewritten_script": {
+          "type": "string"
+        },
+        "policy_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Policy compliance validation"
+    },
+    "auto_publish_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-publish after render"
+    },
+    "publish_targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Platforms to auto-publish to"
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "views": {
+          "type": "number",
+          "default": 0
+        },
+        "watch_through_rate": {
+          "type": "number"
+        },
+        "ctr": {
+          "type": "number"
+        },
+        "hook_retention": {
+          "type": "number"
+        },
+        "avg_watch_time": {
+          "type": "number"
+        }
+      },
+      "description": "Performance metrics"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Rendering cost"
+    }
+  },
+  "required": [
+    "user_email",
+    "project_name",
+    "avatar_id",
+    "script"
+  ]
+}

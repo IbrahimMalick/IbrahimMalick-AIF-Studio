@@ -1,0 +1,91 @@
+{
+  "name": "EmailCampaign",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Campaign name"
+    },
+    "campaign_type": {
+      "type": "string",
+      "enum": [
+        "welcome",
+        "onboarding",
+        "nurture",
+        "upgrade",
+        "retention",
+        "winback",
+        "product_update"
+      ],
+      "description": "Type of email campaign"
+    },
+    "trigger_event": {
+      "type": "string",
+      "enum": [
+        "user_signup",
+        "video_created",
+        "limit_reached",
+        "inactive_7_days",
+        "inactive_30_days",
+        "trial_ending",
+        "subscription_canceled"
+      ],
+      "description": "Event that triggers this campaign"
+    },
+    "emails": {
+      "type": "array",
+      "description": "Sequence of emails",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "number"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "cta_text": {
+            "type": "string"
+          },
+          "cta_url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether campaign is running"
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "sent": {
+          "type": "number",
+          "default": 0
+        },
+        "opened": {
+          "type": "number",
+          "default": 0
+        },
+        "clicked": {
+          "type": "number",
+          "default": 0
+        },
+        "converted": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "campaign_type",
+    "trigger_event"
+  ]
+}

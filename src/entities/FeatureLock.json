@@ -1,0 +1,46 @@
+{
+  "name": "FeatureLock",
+  "type": "object",
+  "properties": {
+    "feature_id": {
+      "type": "string",
+      "description": "Unique feature identifier"
+    },
+    "feature_name": {
+      "type": "string",
+      "description": "Human-readable feature name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Feature description"
+    },
+    "min_tier": {
+      "type": "string",
+      "enum": ["free", "starter", "professional", "enterprise"],
+      "default": "free",
+      "description": "Minimum tier to access"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["agents", "integrations", "analytics", "video", "automation", "api"],
+      "description": "Feature category"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "upgrade_prompt": {
+      "type": "string",
+      "description": "CTA text for upgrade"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon name for UI"
+    }
+  },
+  "required": [
+    "feature_id",
+    "feature_name",
+    "min_tier"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "AvatarVideo",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this"
+    },
+    "avatar_id": {
+      "type": "string",
+      "description": "Avatar used"
+    },
+    "script": {
+      "type": "string",
+      "description": "What avatar says"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Generated video URL"
+    },
+    "audio_url": {
+      "type": "string",
+      "description": "Generated audio URL"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Video duration"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "completed",
+        "failed"
+      ],
+      "default": "generating",
+      "description": "Generation status"
+    },
+    "video_type": {
+      "type": "string",
+      "enum": [
+        "greeting",
+        "coaching",
+        "reply",
+        "presentation",
+        "announcement"
+      ],
+      "description": "Purpose of video"
+    },
+    "recipient_email": {
+      "type": "string",
+      "description": "If video is for specific person"
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times viewed"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Video thumbnail"
+    }
+  },
+  "required": [
+    "user_email",
+    "avatar_id",
+    "script"
+  ]
+}

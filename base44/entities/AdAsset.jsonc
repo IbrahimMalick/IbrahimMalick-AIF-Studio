@@ -1,0 +1,101 @@
+{
+  "name": "AdAsset",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this asset"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video"
+      ],
+      "description": "Type of ad asset"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "ArtLab",
+        "VideoStudio",
+        "upload",
+        "ai_generated"
+      ],
+      "description": "Where asset came from"
+    },
+    "url": {
+      "type": "string",
+      "description": "Asset URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview thumbnail"
+    },
+    "hash": {
+      "type": "string",
+      "description": "Meta image/video hash for API"
+    },
+    "width": {
+      "type": "number",
+      "description": "Asset width in pixels"
+    },
+    "height": {
+      "type": "number",
+      "description": "Asset height in pixels"
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": [
+        "1:1",
+        "4:5",
+        "9:16",
+        "16:9"
+      ],
+      "description": "Aspect ratio"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Video duration"
+    },
+    "file_size_mb": {
+      "type": "number",
+      "description": "File size"
+    },
+    "source_entity_id": {
+      "type": "string",
+      "description": "VideoProject or ArtGeneration ID"
+    },
+    "placements_compatible": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which placements this works for",
+      "default": [
+        "facebook_feed",
+        "instagram_feed",
+        "facebook_reels",
+        "instagram_reels",
+        "instagram_stories"
+      ]
+    },
+    "used_in_campaigns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Campaign IDs using this asset"
+    },
+    "performance_score": {
+      "type": "number",
+      "description": "Average CTR across campaigns (0-100)"
+    }
+  },
+  "required": [
+    "user_email",
+    "asset_type",
+    "source",
+    "url"
+  ]
+}

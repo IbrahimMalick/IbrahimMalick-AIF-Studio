@@ -1,0 +1,64 @@
+{
+  "name": "GoHighLevelOpportunity",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "App user"
+    },
+    "ghl_opportunity_id": {
+      "type": "string",
+      "description": "Opportunity ID in GHL"
+    },
+    "ghl_contact_id": {
+      "type": "string",
+      "description": "Related contact"
+    },
+    "ghl_pipeline_id": {
+      "type": "string",
+      "description": "Pipeline ID"
+    },
+    "ghl_stage_id": {
+      "type": "string",
+      "description": "Current stage"
+    },
+    "name": {
+      "type": "string",
+      "description": "Opportunity name"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "won",
+        "lost",
+        "abandoned"
+      ]
+    },
+    "monetary_value": {
+      "type": "number",
+      "description": "Deal value"
+    },
+    "source": {
+      "type": "string",
+      "description": "Lead source"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "GHL user assigned"
+    },
+    "created_in_ghl": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_synced": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "ghl_opportunity_id",
+    "name"
+  ]
+}

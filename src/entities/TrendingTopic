@@ -1,0 +1,98 @@
+{
+  "name": "TrendingTopic",
+  "type": "object",
+  "properties": {
+    "topic_name": {
+      "type": "string",
+      "description": "Trending topic/keyword"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "technology",
+        "business",
+        "entertainment",
+        "sports",
+        "politics",
+        "health",
+        "education",
+        "lifestyle"
+      ],
+      "description": "Topic category"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where it's trending"
+    },
+    "trend_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "How hot the trend is"
+    },
+    "trend_velocity": {
+      "type": "string",
+      "enum": [
+        "rising",
+        "peak",
+        "declining"
+      ],
+      "description": "Trend trajectory"
+    },
+    "search_volume": {
+      "type": "number",
+      "description": "Monthly searches"
+    },
+    "competition_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "estimated_lifespan": {
+      "type": "string",
+      "description": "How long trend will last"
+    },
+    "related_keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "top_content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "views": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Top performing content on this topic"
+    },
+    "opportunity_score": {
+      "type": "number",
+      "description": "How good for content creation"
+    },
+    "detected_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "topic_name",
+    "trend_score"
+  ]
+}

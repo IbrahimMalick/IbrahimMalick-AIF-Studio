@@ -1,0 +1,79 @@
+{
+  "name": "TemplateVersion",
+  "type": "object",
+  "properties": {
+    "template_id": {
+      "type": "string",
+      "description": "ID of the ContentTemplate this version belongs to"
+    },
+    "version_number": {
+      "type": "number",
+      "description": "Sequential version number"
+    },
+    "saved_by": {
+      "type": "string",
+      "description": "Email of the user who saved this version"
+    },
+    "change_summary": {
+      "type": "string",
+      "description": "Auto or manual description of what changed"
+    },
+    "snapshot": {
+      "type": "object",
+      "description": "Full snapshot of ContentTemplate fields at this version",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "generation_type": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        },
+        "brand_voice_id": {
+          "type": "string"
+        },
+        "brand_voice_name": {
+          "type": "string"
+        },
+        "target_platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prompt_template": {
+          "type": "string"
+        },
+        "custom_instructions": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "triggered_by": {
+      "type": "string",
+      "enum": [
+        "manual_save",
+        "approval_rejected",
+        "auto_share"
+      ],
+      "description": "What triggered this version snapshot"
+    }
+  },
+  "required": [
+    "template_id",
+    "version_number",
+    "saved_by",
+    "snapshot"
+  ]
+}

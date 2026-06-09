@@ -1,0 +1,331 @@
+{
+  "name": "LeadMagnet",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this"
+    },
+    "magnet_name": {
+      "type": "string",
+      "description": "Lead magnet title"
+    },
+    "magnet_type": {
+      "type": "string",
+      "enum": [
+        "ebook",
+        "checklist",
+        "guide",
+        "template",
+        "cheatsheet",
+        "workbook",
+        "report",
+        "course",
+        "swipe_file",
+        "toolkit"
+      ],
+      "description": "Type of lead magnet"
+    },
+    "topic": {
+      "type": "string",
+      "description": "What it's about"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Who it's for"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Keywords used for generation"
+    },
+    "key_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Main topics covered"
+    },
+    "generated_content": {
+      "type": "string",
+      "description": "AI-generated text content"
+    },
+    "pdf_url": {
+      "type": "string",
+      "description": "Final PDF file URL"
+    },
+    "cover_image_url": {
+      "type": "string",
+      "description": "Cover design"
+    },
+    "page_count": {
+      "type": "number",
+      "description": "Number of pages"
+    },
+    "design_template": {
+      "type": "string",
+      "enum": [
+        "modern",
+        "professional",
+        "minimalist",
+        "colorful",
+        "corporate",
+        "luxury",
+        "bold"
+      ],
+      "default": "modern"
+    },
+    "brand_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Colors used in design"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "completed",
+        "failed",
+        "published"
+      ],
+      "default": "generating"
+    },
+    "personalization_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether personalization is active"
+    },
+    "personalization_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Fields to personalize: name, company, industry, etc.",
+      "default": [
+        "first_name",
+        "company",
+        "industry"
+      ]
+    },
+    "multilingual_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-translate to multiple languages"
+    },
+    "available_languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages available",
+      "default": [
+        "en"
+      ]
+    },
+    "language_versions": {
+      "type": "object",
+      "description": "PDF URLs per language"
+    },
+    "ab_testing_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "ab_variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variant_id": {
+            "type": "string"
+          },
+          "variant_name": {
+            "type": "string"
+          },
+          "cover_image_url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "cta_text": {
+            "type": "string"
+          },
+          "downloads": {
+            "type": "number"
+          },
+          "conversions": {
+            "type": "number"
+          },
+          "conversion_rate": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "A/B test variants"
+    },
+    "winning_variant": {
+      "type": "string",
+      "description": "Variant ID with best performance"
+    },
+    "viral_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Predicted viral potential"
+    },
+    "engagement_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Content quality score"
+    },
+    "download_count": {
+      "type": "number",
+      "default": 0
+    },
+    "unique_downloads": {
+      "type": "number",
+      "default": 0
+    },
+    "conversion_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Users who upgraded after downloading"
+    },
+    "conversion_rate": {
+      "type": "number",
+      "description": "Conversion %"
+    },
+    "revenue_generated": {
+      "type": "number",
+      "default": 0,
+      "description": "Revenue attributed to this lead magnet"
+    },
+    "roi": {
+      "type": "number",
+      "description": "Return on investment"
+    },
+    "traffic_sources": {
+      "type": "object",
+      "description": "UTM source breakdown",
+      "properties": {
+        "organic": {
+          "type": "number"
+        },
+        "paid": {
+          "type": "number"
+        },
+        "social": {
+          "type": "number"
+        },
+        "email": {
+          "type": "number"
+        },
+        "direct": {
+          "type": "number"
+        }
+      }
+    },
+    "ghl_integrated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Connected to GoHighLevel"
+    },
+    "ghl_form_url": {
+      "type": "string",
+      "description": "GHL form for delivery"
+    },
+    "ghl_workflow_id": {
+      "type": "string",
+      "description": "GHL workflow triggered on download"
+    },
+    "email_integration": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "list_id": {
+          "type": "string"
+        },
+        "tag_on_download": {
+          "type": "string"
+        },
+        "autoresponder_enabled": {
+          "type": "boolean"
+        }
+      },
+      "description": "Email platform integration"
+    },
+    "deployment_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where this is published",
+      "default": []
+    },
+    "landing_page_url": {
+      "type": "string",
+      "description": "Dedicated landing page"
+    },
+    "popup_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show as website popup"
+    },
+    "popup_trigger": {
+      "type": "object",
+      "properties": {
+        "trigger_type": {
+          "type": "string",
+          "enum": [
+            "exit_intent",
+            "scroll_depth",
+            "time_delay",
+            "click"
+          ]
+        },
+        "delay_seconds": {
+          "type": "number"
+        },
+        "scroll_percentage": {
+          "type": "number"
+        }
+      }
+    },
+    "social_posts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "ScheduledPost IDs promoting this"
+    },
+    "last_optimized": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last AI optimization run"
+    },
+    "optimization_suggestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AI recommendations to improve performance"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "magnet_name",
+    "magnet_type",
+    "topic"
+  ]
+}

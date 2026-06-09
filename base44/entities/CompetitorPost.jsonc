@@ -1,0 +1,82 @@
+{
+  "name": "CompetitorPost",
+  "type": "object",
+  "properties": {
+    "competitor_id": {
+      "type": "string",
+      "description": "Which competitor this is from"
+    },
+    "platform": {
+      "type": "string",
+      "description": "Where it was posted"
+    },
+    "post_url": {
+      "type": "string",
+      "description": "Direct link to post"
+    },
+    "post_text": {
+      "type": "string",
+      "description": "Caption/description"
+    },
+    "media_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Images/videos"
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "posted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "likes_count": {
+      "type": "number",
+      "default": 0
+    },
+    "comments_count": {
+      "type": "number",
+      "default": 0
+    },
+    "shares_count": {
+      "type": "number",
+      "default": 0
+    },
+    "views_count": {
+      "type": "number",
+      "default": 0
+    },
+    "engagement_rate": {
+      "type": "number",
+      "description": "Calculated engagement %"
+    },
+    "is_viral": {
+      "type": "boolean",
+      "default": false,
+      "description": "AI detected viral content"
+    },
+    "is_ad": {
+      "type": "boolean",
+      "default": false,
+      "description": "Detected as paid ad"
+    },
+    "analyzed": {
+      "type": "boolean",
+      "default": false
+    },
+    "insights": {
+      "type": "string",
+      "description": "AI analysis of why it performed well"
+    }
+  },
+  "required": [
+    "competitor_id",
+    "platform",
+    "post_url"
+  ]
+}

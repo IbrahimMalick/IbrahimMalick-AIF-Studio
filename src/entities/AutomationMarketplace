@@ -1,0 +1,111 @@
+{
+  "name": "AutomationMarketplace",
+  "type": "object",
+  "properties": {
+    "seller_email": {
+      "type": "string",
+      "description": "User selling the automation"
+    },
+    "automation_name": {
+      "type": "string",
+      "description": "Name of automation"
+    },
+    "automation_type": {
+      "type": "string",
+      "enum": [
+        "funnel",
+        "video_script",
+        "posting_workflow",
+        "email_sequence",
+        "ad_campaign",
+        "content_calendar",
+        "engagement_bot"
+      ],
+      "description": "Type of automation"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this automation does"
+    },
+    "preview_image_url": {
+      "type": "string",
+      "description": "Preview screenshot"
+    },
+    "demo_video_url": {
+      "type": "string",
+      "description": "Demo video URL"
+    },
+    "automation_json": {
+      "type": "string",
+      "description": "JSON configuration of automation"
+    },
+    "price_usd": {
+      "type": "number",
+      "description": "Price in USD"
+    },
+    "commission_rate": {
+      "type": "number",
+      "default": 15,
+      "description": "Platform commission percentage"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "social_media",
+        "email_marketing",
+        "video_creation",
+        "ads",
+        "seo",
+        "analytics"
+      ],
+      "description": "Automation category"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Search tags"
+    },
+    "is_approved": {
+      "type": "boolean",
+      "default": false,
+      "description": "Admin approval status"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Featured on marketplace"
+    },
+    "sales_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total sales"
+    },
+    "revenue_generated": {
+      "type": "number",
+      "default": 0,
+      "description": "Total revenue"
+    },
+    "rating": {
+      "type": "number",
+      "description": "Average rating 1-5"
+    },
+    "review_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of reviews"
+    },
+    "installation_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times installed"
+    }
+  },
+  "required": [
+    "seller_email",
+    "automation_name",
+    "automation_type",
+    "price_usd"
+  ]
+}

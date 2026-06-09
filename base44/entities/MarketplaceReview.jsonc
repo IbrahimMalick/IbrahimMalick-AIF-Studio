@@ -1,0 +1,52 @@
+{
+  "name": "MarketplaceReview",
+  "type": "object",
+  "properties": {
+    "reviewer_email": {
+      "type": "string",
+      "description": "User who left review"
+    },
+    "automation_id": {
+      "type": "string",
+      "description": "Automation being reviewed"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Star rating 1-5"
+    },
+    "review_text": {
+      "type": "string",
+      "description": "Review content"
+    },
+    "pros": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What user liked"
+    },
+    "cons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What could be improved"
+    },
+    "would_recommend": {
+      "type": "boolean",
+      "description": "Whether user recommends"
+    },
+    "helpful_count": {
+      "type": "number",
+      "default": 0,
+      "description": "How many found this helpful"
+    }
+  },
+  "required": [
+    "reviewer_email",
+    "automation_id",
+    "rating"
+  ]
+}

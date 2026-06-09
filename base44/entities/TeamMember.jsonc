@@ -1,0 +1,91 @@
+{
+  "name": "TeamMember",
+  "type": "object",
+  "properties": {
+    "team_owner_email": {
+      "type": "string",
+      "description": "Team owner's email"
+    },
+    "member_email": {
+      "type": "string",
+      "description": "Team member's email"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "editor",
+        "viewer",
+        "coach"
+      ],
+      "default": "editor",
+      "description": "Member's role"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific permissions",
+      "default": [
+        "view_projects",
+        "create_content"
+      ]
+    },
+    "coaching_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this member gets AI coaching"
+    },
+    "coaching_focus": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What coaching topics to focus on"
+    },
+    "performance_metrics": {
+      "type": "object",
+      "description": "Team member's performance",
+      "properties": {
+        "content_created": {
+          "type": "number",
+          "default": 0
+        },
+        "quality_score": {
+          "type": "number",
+          "default": 0
+        },
+        "engagement_generated": {
+          "type": "number",
+          "default": 0
+        },
+        "revenue_contributed": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    },
+    "joined_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_active": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "invited",
+        "inactive"
+      ],
+      "default": "invited"
+    }
+  },
+  "required": [
+    "team_owner_email",
+    "member_email"
+  ]
+}

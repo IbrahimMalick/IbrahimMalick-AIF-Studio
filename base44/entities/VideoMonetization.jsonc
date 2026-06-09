@@ -1,0 +1,295 @@
+{
+  "name": "VideoMonetization",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this monetization data"
+    },
+    "video_project_id": {
+      "type": "string",
+      "description": "Related VideoProject ID"
+    },
+    "ad_placements": {
+      "type": "object",
+      "description": "AI-generated ad placement recommendations",
+      "properties": {
+        "optimal_ad_count": {
+          "type": "number",
+          "description": "Recommended number of ads"
+        },
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp_seconds": {
+                "type": "number"
+              },
+              "ad_type": {
+                "type": "string",
+                "enum": [
+                  "pre_roll",
+                  "mid_roll",
+                  "post_roll",
+                  "overlay",
+                  "sponsored_segment"
+                ]
+              },
+              "duration_seconds": {
+                "type": "number"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "engagement_score": {
+                "type": "number"
+              },
+              "skip_probability": {
+                "type": "number"
+              },
+              "revenue_potential": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "engagement_prediction": {
+          "type": "object",
+          "properties": {
+            "with_ads": {
+              "type": "number"
+            },
+            "without_ads": {
+              "type": "number"
+            }
+          }
+        },
+        "estimated_revenue": {
+          "type": "object",
+          "properties": {
+            "min_usd": {
+              "type": "number"
+            },
+            "max_usd": {
+              "type": "number"
+            },
+            "per_1000_views": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "pricing_model": {
+      "type": "object",
+      "description": "Dynamic pricing recommendations",
+      "properties": {
+        "content_value_score": {
+          "type": "number",
+          "description": "AI-assessed content value (0-100)"
+        },
+        "pricing_strategy": {
+          "type": "string",
+          "enum": [
+            "free_with_ads",
+            "premium_only",
+            "freemium",
+            "pay_per_view",
+            "subscription",
+            "sponsored"
+          ]
+        },
+        "recommended_prices": {
+          "type": "object",
+          "properties": {
+            "pay_per_view_usd": {
+              "type": "number"
+            },
+            "rental_price_usd": {
+              "type": "number"
+            },
+            "purchase_price_usd": {
+              "type": "number"
+            },
+            "sponsorship_min_usd": {
+              "type": "number"
+            },
+            "sponsorship_max_usd": {
+              "type": "number"
+            }
+          }
+        },
+        "market_analysis": {
+          "type": "object",
+          "properties": {
+            "competitor_avg_price": {
+              "type": "number"
+            },
+            "demand_level": {
+              "type": "string"
+            },
+            "price_sensitivity": {
+              "type": "string"
+            }
+          }
+        },
+        "revenue_projections": {
+          "type": "object",
+          "properties": {
+            "monthly_free_with_ads": {
+              "type": "number"
+            },
+            "monthly_premium": {
+              "type": "number"
+            },
+            "monthly_sponsorship": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "subscription_tiers": {
+      "type": "object",
+      "description": "AI-recommended subscription structure",
+      "properties": {
+        "recommended_tier_count": {
+          "type": "number",
+          "description": "Optimal number of tiers (2-4)"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tier_name": {
+                "type": "string"
+              },
+              "monthly_price_usd": {
+                "type": "number"
+              },
+              "annual_price_usd": {
+                "type": "number"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "content_access": {
+                "type": "string"
+              },
+              "ad_experience": {
+                "type": "string"
+              },
+              "target_audience": {
+                "type": "string"
+              },
+              "expected_conversion_rate": {
+                "type": "number"
+              },
+              "value_proposition": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "feature_gating": {
+          "type": "object",
+          "properties": {
+            "free_tier_limits": {
+              "type": "object"
+            },
+            "premium_features": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "exclusive_content": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "bundle_opportunities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "bundle_name": {
+                "type": "string"
+              },
+              "included_tiers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "bundle_price_usd": {
+                "type": "number"
+              },
+              "savings_percentage": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "audience_segmentation": {
+      "type": "object",
+      "description": "Target audience segments for monetization",
+      "properties": {
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "segment_name": {
+                "type": "string"
+              },
+              "size_percentage": {
+                "type": "number"
+              },
+              "willingness_to_pay": {
+                "type": "string"
+              },
+              "preferred_model": {
+                "type": "string"
+              },
+              "characteristics": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When recommendations were generated"
+    },
+    "applied_strategy": {
+      "type": "string",
+      "description": "Which strategy user chose to implement"
+    },
+    "actual_revenue": {
+      "type": "number",
+      "default": 0,
+      "description": "Actual revenue generated (for tracking accuracy)"
+    }
+  },
+  "required": [
+    "user_email",
+    "video_project_id"
+  ]
+}

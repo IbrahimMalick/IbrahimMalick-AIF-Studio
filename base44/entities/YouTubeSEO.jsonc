@@ -1,0 +1,106 @@
+{
+  "name": "YouTubeSEO",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this"
+    },
+    "video_project_id": {
+      "type": "string",
+      "description": "Related VideoProject"
+    },
+    "target_keyword": {
+      "type": "string",
+      "description": "Main keyword to rank for"
+    },
+    "suggested_title": {
+      "type": "string",
+      "description": "AI-optimized title"
+    },
+    "suggested_description": {
+      "type": "string",
+      "description": "AI-optimized description"
+    },
+    "suggested_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recommended tags"
+    },
+    "keyword_research": {
+      "type": "array",
+      "description": "Related keywords",
+      "items": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string"
+          },
+          "search_volume": {
+            "type": "number"
+          },
+          "competition": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "relevance_score": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "thumbnail_suggestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AI-generated thumbnail ideas"
+    },
+    "best_post_time": {
+      "type": "string",
+      "description": "Optimal posting time based on audience"
+    },
+    "estimated_views": {
+      "type": "number",
+      "description": "Predicted view count"
+    },
+    "competitor_analysis": {
+      "type": "array",
+      "description": "Top ranking videos for keyword",
+      "items": {
+        "type": "object",
+        "properties": {
+          "video_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "views": {
+            "type": "number"
+          },
+          "likes": {
+            "type": "number"
+          },
+          "published_date": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "seo_score": {
+      "type": "number",
+      "description": "SEO quality score 0-100"
+    }
+  },
+  "required": [
+    "user_email",
+    "target_keyword"
+  ]
+}

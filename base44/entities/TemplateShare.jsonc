@@ -1,0 +1,79 @@
+{
+  "name": "TemplateShare",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "description": "Email of the user who shared this"
+    },
+    "shared_with_email": {
+      "type": "string",
+      "description": "Email of the recipient"
+    },
+    "share_type": {
+      "type": "string",
+      "enum": [
+        "template",
+        "collection",
+        "brand_voice"
+      ],
+      "description": "What is being shared"
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "ID of the shared resource (template, generation, or brand voice profile)"
+    },
+    "resource_name": {
+      "type": "string",
+      "description": "Display name of the shared resource"
+    },
+    "permission": {
+      "type": "string",
+      "enum": [
+        "view",
+        "edit"
+      ],
+      "default": "view",
+      "description": "Access level granted"
+    },
+    "message": {
+      "type": "string",
+      "description": "Optional note from the sharer"
+    },
+    "accepted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the recipient has accepted the share"
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending",
+      "description": "Manager approval status"
+    },
+    "approval_comment": {
+      "type": "string",
+      "description": "Manager's comment on approval or rejection"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Email of the manager who reviewed"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the review was completed"
+    }
+  },
+  "required": [
+    "owner_email",
+    "shared_with_email",
+    "share_type",
+    "resource_id",
+    "resource_name"
+  ]
+}

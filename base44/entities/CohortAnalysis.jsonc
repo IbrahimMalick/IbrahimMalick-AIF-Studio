@@ -1,0 +1,82 @@
+{
+  "name": "CohortAnalysis",
+  "type": "object",
+  "properties": {
+    "cohort_name": {
+      "type": "string",
+      "description": "Cohort identifier"
+    },
+    "cohort_type": {
+      "type": "string",
+      "enum": [
+        "signup_date",
+        "first_purchase",
+        "plan_tier",
+        "custom"
+      ],
+      "description": "How cohort is defined"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Cohort start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "users_count": {
+      "type": "number",
+      "description": "Users in cohort"
+    },
+    "retention_data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "number"
+          },
+          "retained_users": {
+            "type": "number"
+          },
+          "retention_rate": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Retention by period"
+    },
+    "revenue_data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "number"
+          },
+          "revenue": {
+            "type": "number"
+          },
+          "ltv": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Revenue metrics"
+    },
+    "engagement_data": {
+      "type": "object",
+      "description": "Engagement metrics"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "cohort_name",
+    "cohort_type",
+    "start_date"
+  ]
+}

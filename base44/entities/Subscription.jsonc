@@ -1,0 +1,100 @@
+{
+  "name": "Subscription",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this subscription"
+    },
+    "plan_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio",
+        "enterprise"
+      ],
+      "default": "free",
+      "description": "Current plan level"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "canceled",
+        "past_due",
+        "trialing",
+        "paused"
+      ],
+      "default": "active",
+      "description": "Subscription status"
+    },
+    "payment_provider": {
+      "type": "string",
+      "enum": [
+        "stripe",
+        "paypal",
+        "manual"
+      ],
+      "description": "Payment processor used"
+    },
+    "stripe_subscription_id": {
+      "type": "string",
+      "description": "Stripe subscription ID"
+    },
+    "stripe_customer_id": {
+      "type": "string",
+      "description": "Stripe customer ID"
+    },
+    "paypal_subscription_id": {
+      "type": "string",
+      "description": "PayPal subscription ID"
+    },
+    "paypal_payer_id": {
+      "type": "string",
+      "description": "PayPal payer ID"
+    },
+    "billing_cycle": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "yearly"
+      ],
+      "default": "monthly",
+      "description": "Billing frequency"
+    },
+    "amount_usd": {
+      "type": "number",
+      "description": "Subscription amount in USD"
+    },
+    "trial_ends_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When trial period ends"
+    },
+    "current_period_start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start of current billing period"
+    },
+    "current_period_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End of current billing period"
+    },
+    "cancel_at_period_end": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether subscription cancels at end of period"
+    },
+    "canceled_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When subscription was canceled"
+    }
+  },
+  "required": [
+    "user_email",
+    "plan_tier"
+  ]
+}

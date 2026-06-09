@@ -1,0 +1,73 @@
+{
+  "name": "Affiliate",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Affiliate user email"
+    },
+    "affiliate_code": {
+      "type": "string",
+      "description": "Unique affiliate tracking code"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "active",
+        "suspended",
+        "banned"
+      ],
+      "default": "pending",
+      "description": "Affiliate account status"
+    },
+    "commission_rate": {
+      "type": "number",
+      "default": 30,
+      "description": "Commission percentage (30% default)"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "paypal",
+        "stripe",
+        "bank_transfer",
+        "crypto"
+      ],
+      "description": "How affiliate gets paid"
+    },
+    "payment_details": {
+      "type": "object",
+      "description": "Payment account details"
+    },
+    "total_referrals": {
+      "type": "number",
+      "default": 0,
+      "description": "Total number of referrals"
+    },
+    "total_conversions": {
+      "type": "number",
+      "default": 0,
+      "description": "Referrals that converted to paid"
+    },
+    "total_earned_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Total commissions earned"
+    },
+    "total_paid_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Total commissions paid out"
+    },
+    "pending_balance_usd": {
+      "type": "number",
+      "default": 0,
+      "description": "Unpaid commission balance"
+    }
+  },
+  "required": [
+    "user_email",
+    "affiliate_code"
+  ]
+}

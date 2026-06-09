@@ -1,0 +1,103 @@
+{
+  "name": "PartnerContent",
+  "type": "object",
+  "properties": {
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "image",
+        "video",
+        "link",
+        "email_swipe",
+        "ad_creative",
+        "landing_page",
+        "case_study"
+      ],
+      "description": "Type of content asset"
+    },
+    "title": {
+      "type": "string",
+      "description": "Asset title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Asset description"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "logos",
+        "ads",
+        "emails",
+        "scripts",
+        "proposals",
+        "comparisons",
+        "case_studies",
+        "training"
+      ],
+      "default": "ads",
+      "description": "Asset category"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "File URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview thumbnail"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Search tags",
+      "default": []
+    },
+    "partner_type_access": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which partner types can access",
+      "default": [
+        "affiliate",
+        "reseller",
+        "strategic"
+      ]
+    },
+    "tier_required": {
+      "type": "string",
+      "enum": [
+        "bronze",
+        "silver",
+        "gold",
+        "premier",
+        "all"
+      ],
+      "default": "all",
+      "description": "Minimum tier to access"
+    },
+    "download_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times downloaded"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Featured in partner hub"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Visible to partners"
+    }
+  },
+  "required": [
+    "content_type",
+    "title",
+    "file_url"
+  ]
+}

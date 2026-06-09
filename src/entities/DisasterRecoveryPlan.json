@@ -1,0 +1,57 @@
+{
+  "name": "DisasterRecoveryPlan",
+  "type": "object",
+  "properties": {
+    "plan_name": {
+      "type": "string",
+      "description": "Name of DR plan"
+    },
+    "rto_minutes": {
+      "type": "number",
+      "description": "Recovery Time Objective (minutes)"
+    },
+    "rpo_minutes": {
+      "type": "number",
+      "description": "Recovery Point Objective (minutes)"
+    },
+    "failover_strategy": {
+      "type": "string",
+      "enum": ["hot_standby", "warm_standby", "cold_standby"],
+      "description": "Strategy for failover"
+    },
+    "backup_frequency": {
+      "type": "string",
+      "enum": ["hourly", "daily", "weekly"],
+      "default": "daily"
+    },
+    "replication_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether real-time replication is active"
+    },
+    "replication_lag_seconds": {
+      "type": "number",
+      "description": "Current replication lag"
+    },
+    "last_tested": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "test_interval_days": {
+      "type": "number",
+      "default": 30,
+      "description": "How often to test DR plan"
+    },
+    "escalation_contacts": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Email addresses to notify on disaster"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "testing", "recovery_in_progress", "paused"],
+      "default": "active"
+    }
+  },
+  "required": ["plan_name", "rto_minutes", "rpo_minutes"]
+}

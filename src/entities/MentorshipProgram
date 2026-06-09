@@ -1,0 +1,163 @@
+{
+  "name": "MentorshipProgram",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User in mentorship program"
+    },
+    "program_name": {
+      "type": "string",
+      "description": "Name of mentorship track"
+    },
+    "program_type": {
+      "type": "string",
+      "enum": [
+        "content_creator",
+        "entrepreneur",
+        "coach",
+        "marketer",
+        "influencer"
+      ],
+      "description": "Mentorship track"
+    },
+    "mentor_avatar_id": {
+      "type": "string",
+      "description": "AI mentor assigned"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "completed",
+        "dropped"
+      ],
+      "default": "active",
+      "description": "Program status"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When mentorship started"
+    },
+    "target_completion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expected end date"
+    },
+    "current_phase": {
+      "type": "string",
+      "enum": [
+        "foundation",
+        "growth",
+        "scaling",
+        "mastery"
+      ],
+      "default": "foundation",
+      "description": "Current learning phase"
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "milestone_name": {
+            "type": "string"
+          },
+          "target_date": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "completed_date": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Major achievements to unlock"
+    },
+    "skills_learned": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills acquired"
+    },
+    "skills_in_progress": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Currently learning"
+    },
+    "total_sessions": {
+      "type": "number",
+      "default": 0,
+      "description": "Total coaching sessions completed"
+    },
+    "accountability_score": {
+      "type": "number",
+      "default": 0,
+      "description": "How well user follows through (0-100)"
+    },
+    "growth_metrics": {
+      "type": "object",
+      "description": "Progress tracking",
+      "properties": {
+        "videos_created": {
+          "type": "number",
+          "default": 0
+        },
+        "revenue_generated": {
+          "type": "number",
+          "default": 0
+        },
+        "followers_gained": {
+          "type": "number",
+          "default": 0
+        },
+        "engagement_rate": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    },
+    "personalized_curriculum": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "module_name": {
+            "type": "string"
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Custom learning path"
+    },
+    "mentor_feedback": {
+      "type": "string",
+      "description": "Latest feedback from AI mentor"
+    },
+    "next_check_in": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Next scheduled mentorship session"
+    }
+  },
+  "required": [
+    "user_email",
+    "program_name",
+    "program_type"
+  ]
+}

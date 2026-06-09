@@ -1,0 +1,72 @@
+{
+  "name": "ProjectCollaborator",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "description": "VideoProject ID"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Collaborator's email"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "editor",
+        "reviewer",
+        "viewer"
+      ],
+      "default": "viewer",
+      "description": "Collaboration role"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific permissions",
+      "default": [
+        "view",
+        "comment"
+      ]
+    },
+    "invited_by": {
+      "type": "string",
+      "description": "Who sent the invitation"
+    },
+    "invited_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "accepted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "invited",
+        "active",
+        "removed"
+      ],
+      "default": "invited"
+    },
+    "last_active": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time user accessed project"
+    },
+    "is_currently_editing": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user is currently in the project"
+    }
+  },
+  "required": [
+    "project_id",
+    "user_email",
+    "role"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "UserProgress",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's progress"
+    },
+    "module_id": {
+      "type": "string",
+      "description": "Learning module ID"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "completed"
+      ],
+      "default": "not_started",
+      "description": "Progress status"
+    },
+    "progress_percentage": {
+      "type": "number",
+      "default": 0,
+      "description": "Completion percentage"
+    },
+    "lessons_completed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Completed lesson IDs"
+    },
+    "current_lesson": {
+      "type": "string",
+      "description": "Current lesson ID"
+    },
+    "time_spent_minutes": {
+      "type": "number",
+      "default": 0,
+      "description": "Time invested"
+    },
+    "quiz_scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "quiz_id": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "attempts": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Quiz results"
+    },
+    "project_submitted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether practical project was submitted"
+    },
+    "project_url": {
+      "type": "string",
+      "description": "Link to submitted project"
+    },
+    "coach_review": {
+      "type": "string",
+      "description": "AI coach feedback on project"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "certificate_earned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user earned certificate"
+    },
+    "certificate_url": {
+      "type": "string",
+      "description": "Certificate link"
+    }
+  },
+  "required": [
+    "user_email",
+    "module_id"
+  ]
+}

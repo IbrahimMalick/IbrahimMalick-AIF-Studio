@@ -1,0 +1,119 @@
+{
+  "name": "ViralScorePrediction",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User requesting prediction"
+    },
+    "content_id": {
+      "type": "string",
+      "description": "VideoProject or ScriptGeneration ID"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "script",
+        "post",
+        "image"
+      ],
+      "description": "Type of content analyzed"
+    },
+    "viral_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Predicted viral potential (0-100)"
+    },
+    "confidence_level": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "AI confidence in prediction"
+    },
+    "analysis": {
+      "type": "object",
+      "properties": {
+        "hook_strength": {
+          "type": "number",
+          "description": "Opening hook score"
+        },
+        "pacing_score": {
+          "type": "number"
+        },
+        "emotional_appeal": {
+          "type": "number"
+        },
+        "shareability": {
+          "type": "number"
+        },
+        "trending_alignment": {
+          "type": "number"
+        }
+      },
+      "description": "Breakdown of score factors"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "How to improve viral potential"
+    },
+    "predicted_metrics": {
+      "type": "object",
+      "properties": {
+        "estimated_views": {
+          "type": "number"
+        },
+        "estimated_shares": {
+          "type": "number"
+        },
+        "estimated_engagement_rate": {
+          "type": "number"
+        }
+      },
+      "description": "Predicted performance"
+    },
+    "actual_performance": {
+      "type": "object",
+      "properties": {
+        "actual_views": {
+          "type": "number"
+        },
+        "actual_shares": {
+          "type": "number"
+        },
+        "actual_engagement_rate": {
+          "type": "number"
+        }
+      },
+      "description": "Real results (for training model)"
+    },
+    "similar_viral_content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "views": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Examples of viral content in same niche"
+    }
+  },
+  "required": [
+    "user_email",
+    "content_id",
+    "content_type",
+    "viral_score"
+  ]
+}

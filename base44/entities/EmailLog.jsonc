@@ -1,0 +1,60 @@
+{
+  "name": "EmailLog",
+  "type": "object",
+  "properties": {
+    "campaign_id": {
+      "type": "string",
+      "description": "Campaign this email belongs to"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Recipient email"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Email subject line"
+    },
+    "body": {
+      "type": "string",
+      "description": "Email body HTML"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "sent",
+        "delivered",
+        "opened",
+        "clicked",
+        "bounced",
+        "failed"
+      ],
+      "default": "queued",
+      "description": "Email delivery status"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When email was sent"
+    },
+    "opened_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When email was opened"
+    },
+    "clicked_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When link was clicked"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional tracking data"
+    }
+  },
+  "required": [
+    "user_email",
+    "subject",
+    "body"
+  ]
+}

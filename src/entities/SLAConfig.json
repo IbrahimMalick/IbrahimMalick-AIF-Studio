@@ -1,0 +1,53 @@
+{
+  "name": "SLAConfig",
+  "type": "object",
+  "properties": {
+    "service_name": {
+      "type": "string",
+      "description": "Service this SLA applies to (e.g., 'Video Rendering', 'API Gateway')"
+    },
+    "uptime_target": {
+      "type": "number",
+      "description": "Target uptime percentage (e.g., 99.9)"
+    },
+    "latency_target_ms": {
+      "type": "number",
+      "description": "Max acceptable latency in milliseconds"
+    },
+    "error_rate_target": {
+      "type": "number",
+      "description": "Max acceptable error rate percentage (e.g., 0.5)"
+    },
+    "response_time_sla": {
+      "type": "number",
+      "description": "Support response time in minutes"
+    },
+    "resolution_time_sla": {
+      "type": "number",
+      "description": "Issue resolution time in hours"
+    },
+    "monitoring_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "alert_on_breach": {
+      "type": "boolean",
+      "default": true
+    },
+    "email_notifications": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Emails to notify on SLA breach"
+    },
+    "slack_channel": {
+      "type": "string",
+      "description": "Slack channel for SLA alerts"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "paused", "inactive"],
+      "default": "active"
+    }
+  },
+  "required": ["service_name", "uptime_target"]
+}

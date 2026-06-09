@@ -1,0 +1,121 @@
+{
+  "name": "AnalyticsReport",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Report owner"
+    },
+    "report_name": {
+      "type": "string",
+      "description": "Report title"
+    },
+    "report_type": {
+      "type": "string",
+      "enum": [
+        "content_performance",
+        "audience_growth",
+        "revenue_analysis",
+        "engagement_metrics",
+        "conversion_funnel",
+        "custom"
+      ],
+      "description": "Type of report"
+    },
+    "date_range": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "description": "Report period"
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Metrics included in report"
+    },
+    "data": {
+      "type": "object",
+      "description": "Report data and calculations"
+    },
+    "visualizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "line",
+              "bar",
+              "pie",
+              "area",
+              "funnel"
+            ]
+          },
+          "data": {
+            "type": "object"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      },
+      "description": "Charts and graphs"
+    },
+    "schedule": {
+      "type": "string",
+      "enum": [
+        "none",
+        "daily",
+        "weekly",
+        "monthly"
+      ],
+      "default": "none",
+      "description": "Auto-generate frequency"
+    },
+    "recipients": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email recipients"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "excel",
+        "csv",
+        "json"
+      ],
+      "default": "pdf"
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": false
+    },
+    "public_url": {
+      "type": "string",
+      "description": "Shareable link"
+    },
+    "last_generated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "report_name",
+    "report_type"
+  ]
+}

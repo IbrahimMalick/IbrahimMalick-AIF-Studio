@@ -1,0 +1,41 @@
+{
+  "name": "PromptCache",
+  "type": "object",
+  "properties": {
+    "prompt_hash": {
+      "type": "string",
+      "description": "MD5 hash of prompt"
+    },
+    "prompt_text": {
+      "type": "string",
+      "description": "Original prompt"
+    },
+    "response": {
+      "type": "string",
+      "description": "Cached AI response"
+    },
+    "operation_type": {
+      "type": "string",
+      "description": "Type of operation"
+    },
+    "hit_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times this cache was used"
+    },
+    "last_used": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last cache hit"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When cache expires"
+    }
+  },
+  "required": [
+    "prompt_hash",
+    "response"
+  ]
+}

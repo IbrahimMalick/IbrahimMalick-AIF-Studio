@@ -1,0 +1,123 @@
+{
+  "name": "EngagementBot",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this bot"
+    },
+    "bot_name": {
+      "type": "string",
+      "description": "Bot name"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which platforms bot is active on"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether bot is running"
+    },
+    "response_rules": {
+      "type": "array",
+      "description": "Rules for responding",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger_pattern": {
+            "type": "string"
+          },
+          "response_template": {
+            "type": "string"
+          },
+          "action_type": {
+            "type": "string",
+            "enum": [
+              "reply",
+              "like",
+              "dm",
+              "ignore"
+            ]
+          }
+        }
+      }
+    },
+    "auto_reply_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "auto_like_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "auto_dm_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "response_delay_seconds": {
+      "type": "number",
+      "default": 60,
+      "description": "Delay before responding"
+    },
+    "daily_limit": {
+      "type": "number",
+      "default": 100,
+      "description": "Max responses per day"
+    },
+    "tone_style": {
+      "type": "string",
+      "enum": [
+        "professional",
+        "friendly",
+        "casual",
+        "enthusiastic",
+        "minimal"
+      ],
+      "default": "friendly"
+    },
+    "use_creator_dna": {
+      "type": "boolean",
+      "default": true,
+      "description": "Use AI personalization"
+    },
+    "blacklist_keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Keywords to ignore"
+    },
+    "whitelist_accounts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Always respond to these accounts"
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "total_responses": {
+          "type": "number",
+          "default": 0
+        },
+        "successful_engagements": {
+          "type": "number",
+          "default": 0
+        },
+        "dm_conversions": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    }
+  },
+  "required": [
+    "user_email",
+    "bot_name"
+  ]
+}

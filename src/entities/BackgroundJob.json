@@ -1,0 +1,66 @@
+{
+  "name": "BackgroundJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string",
+      "enum": ["email_send", "report_generation", "cache_cleanup", "export_data", "webhook_retry", "batch_process", "analytics_compute"],
+      "description": "Type of background job"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User who triggered job"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Job input data"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "processing", "completed", "failed", "cancelled"],
+      "default": "queued",
+      "description": "Job status"
+    },
+    "priority": {
+      "type": "number",
+      "default": 5,
+      "description": "Priority level (1=highest, 10=lowest)"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of retry attempts"
+    },
+    "max_retries": {
+      "type": "number",
+      "default": 3,
+      "description": "Max retry attempts before failure"
+    },
+    "result": {
+      "type": "object",
+      "description": "Job result/output"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "estimated_duration_seconds": {
+      "type": "number",
+      "description": "Estimated time to complete"
+    },
+    "progress_percent": {
+      "type": "number",
+      "default": 0,
+      "description": "Current progress (0-100)"
+    }
+  },
+  "required": ["job_type", "user_email", "payload"]
+}

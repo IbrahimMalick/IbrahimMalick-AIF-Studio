@@ -1,0 +1,54 @@
+{
+  "name": "LanguagePreference",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User's language settings"
+    },
+    "interface_language": {
+      "type": "string",
+      "default": "en",
+      "description": "UI language code (ISO 639-1)"
+    },
+    "content_language": {
+      "type": "string",
+      "default": "en",
+      "description": "Preferred content language"
+    },
+    "voice_language": {
+      "type": "string",
+      "default": "en-US",
+      "description": "Voice assistant language"
+    },
+    "auto_translate": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-translate content"
+    },
+    "subtitle_language": {
+      "type": "string",
+      "description": "Preferred subtitle language"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "America/New_York"
+    },
+    "date_format": {
+      "type": "string",
+      "enum": [
+        "MM/DD/YYYY",
+        "DD/MM/YYYY",
+        "YYYY-MM-DD"
+      ],
+      "default": "MM/DD/YYYY"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

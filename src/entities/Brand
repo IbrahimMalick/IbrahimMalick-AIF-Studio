@@ -1,0 +1,72 @@
+{
+  "name": "Brand",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "description": "User who owns this brand"
+    },
+    "brand_name": {
+      "type": "string",
+      "description": "Brand/business name"
+    },
+    "brand_slug": {
+      "type": "string",
+      "description": "URL-friendly identifier"
+    },
+    "brand_logo_url": {
+      "type": "string",
+      "description": "Brand logo"
+    },
+    "brand_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Brand color palette"
+    },
+    "brand_fonts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Brand fonts"
+    },
+    "brand_voice": {
+      "type": "string",
+      "description": "Brand voice description"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Target audience description"
+    },
+    "industry": {
+      "type": "string",
+      "description": "Industry/niche"
+    },
+    "social_accounts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Connected social account IDs"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether brand is active"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Brand-specific settings"
+    },
+    "creator_dna_id": {
+      "type": "string",
+      "description": "Reference to brand's Creator DNA"
+    }
+  },
+  "required": [
+    "owner_email",
+    "brand_name"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "ContentTemplate",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Owner of this template"
+    },
+    "name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of when to use this template"
+    },
+    "generation_type": {
+      "type": "string",
+      "enum": [
+        "social_post",
+        "email_copy",
+        "seo_metadata",
+        "blog_post",
+        "ad_copy"
+      ],
+      "description": "Type of content this template generates"
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "professional",
+        "casual",
+        "enthusiastic",
+        "educational",
+        "witty",
+        "luxury",
+        "urgent",
+        "friendly"
+      ],
+      "description": "Content tone"
+    },
+    "brand_voice_id": {
+      "type": "string",
+      "description": "Linked BrandVoiceProfile ID"
+    },
+    "brand_voice_name": {
+      "type": "string",
+      "description": "Display name of linked brand voice"
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Target platforms (e.g. instagram, linkedin)"
+    },
+    "prompt_template": {
+      "type": "string",
+      "description": "The base prompt/instructions for this template"
+    },
+    "custom_instructions": {
+      "type": "string",
+      "description": "Additional custom instructions appended to generations"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for filtering/search"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false,
+      "description": "Pinned as favorite"
+    },
+    "times_used": {
+      "type": "number",
+      "default": 0,
+      "description": "How many times template has been applied"
+    },
+    "last_used_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time template was applied"
+    }
+  },
+  "required": [
+    "user_email",
+    "name",
+    "generation_type"
+  ]
+}

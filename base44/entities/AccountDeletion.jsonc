@@ -1,0 +1,56 @@
+{
+  "name": "AccountDeletion",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User requesting deletion"
+    },
+    "deletion_reason": {
+      "type": "string",
+      "description": "Why user is leaving"
+    },
+    "feedback": {
+      "type": "string",
+      "description": "Additional comments"
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scheduled_deletion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When account will be deleted (30 days)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "requested",
+        "pending",
+        "completed",
+        "cancelled"
+      ],
+      "default": "requested"
+    },
+    "data_exported": {
+      "type": "boolean",
+      "default": false
+    },
+    "export_url": {
+      "type": "string"
+    },
+    "deleted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_gdpr_request": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_email",
+    "deletion_reason"
+  ]
+}

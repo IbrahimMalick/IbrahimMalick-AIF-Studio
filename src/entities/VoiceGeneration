@@ -1,0 +1,51 @@
+{
+  "name": "VoiceGeneration",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who generated audio"
+    },
+    "voice_clone_id": {
+      "type": "string",
+      "description": "Which voice was used"
+    },
+    "script_text": {
+      "type": "string",
+      "description": "Text to convert to speech"
+    },
+    "audio_url": {
+      "type": "string",
+      "description": "Generated audio file URL"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Audio length"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "completed",
+        "failed"
+      ],
+      "default": "generating"
+    },
+    "used_in_project": {
+      "type": "string",
+      "description": "VideoProject ID if used"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "Generation cost"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "script_text"
+  ]
+}

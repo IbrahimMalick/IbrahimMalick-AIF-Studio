@@ -1,0 +1,37 @@
+{
+  "name": "AutomationEvent",
+  "type": "object",
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "user_signup",
+        "video_created",
+        "art_generated",
+        "research_completed",
+        "plan_upgraded",
+        "limit_reached"
+      ],
+      "description": "Type of event"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User who triggered event"
+    },
+    "event_data": {
+      "type": "object",
+      "description": "Event payload"
+    },
+    "sent_to_ghl": {
+      "type": "boolean",
+      "default": false
+    },
+    "ghl_response": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_type",
+    "user_email"
+  ]
+}

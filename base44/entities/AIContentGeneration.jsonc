@@ -1,0 +1,272 @@
+{
+  "name": "AIContentGeneration",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who generated this content"
+    },
+    "generation_type": {
+      "type": "string",
+      "enum": [
+        "social_post",
+        "email_copy",
+        "seo_metadata",
+        "blog_post",
+        "ad_copy",
+        "product_description"
+      ],
+      "description": "Type of content generated"
+    },
+    "input_type": {
+      "type": "string",
+      "enum": [
+        "product_update",
+        "news",
+        "promotion",
+        "blog_topic",
+        "manual_prompt",
+        "url_scrape"
+      ],
+      "description": "What triggered the generation"
+    },
+    "input_data": {
+      "type": "object",
+      "description": "Source data used for generation",
+      "properties": {
+        "topic": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        },
+        "key_features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_audience": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "custom_prompt": {
+          "type": "string"
+        }
+      }
+    },
+    "generated_content": {
+      "type": "object",
+      "description": "AI-generated outputs",
+      "properties": {
+        "social_posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "string"
+              },
+              "copy": {
+                "type": "string"
+              },
+              "hashtags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "emoji_style": {
+                "type": "string"
+              },
+              "character_count": {
+                "type": "number"
+              },
+              "optimal_posting_time": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "email_variations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "campaign_type": {
+                "type": "string"
+              },
+              "subject_line": {
+                "type": "string"
+              },
+              "preview_text": {
+                "type": "string"
+              },
+              "body_html": {
+                "type": "string"
+              },
+              "body_text": {
+                "type": "string"
+              },
+              "cta_text": {
+                "type": "string"
+              },
+              "cta_url": {
+                "type": "string"
+              },
+              "personalization_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "seo_variations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "meta_description": {
+                "type": "string"
+              },
+              "focus_keyword": {
+                "type": "string"
+              },
+              "additional_keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "seo_score": {
+                "type": "number"
+              },
+              "improvements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "professional",
+        "casual",
+        "enthusiastic",
+        "educational",
+        "witty",
+        "luxury",
+        "urgent",
+        "friendly"
+      ],
+      "default": "professional",
+      "description": "Content tone/voice"
+    },
+    "brand_voice_id": {
+      "type": "string",
+      "description": "CreatorDNA ID for personalization"
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Target social platforms or channels"
+    },
+    "quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI-assessed content quality"
+    },
+    "engagement_prediction": {
+      "type": "object",
+      "properties": {
+        "estimated_reach": {
+          "type": "number"
+        },
+        "estimated_engagement_rate": {
+          "type": "number"
+        },
+        "viral_probability": {
+          "type": "number"
+        },
+        "confidence_level": {
+          "type": "number"
+        }
+      }
+    },
+    "used_in_entity_id": {
+      "type": "string",
+      "description": "If deployed, the ID of created entity (ScheduledPost, EmailCampaign, etc.)"
+    },
+    "used_in_entity_type": {
+      "type": "string",
+      "description": "Type of entity created (ScheduledPost, EmailCampaign, SEOMetadata)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "reviewed",
+        "deployed",
+        "archived"
+      ],
+      "default": "draft",
+      "description": "Content status"
+    },
+    "user_rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "User's rating of generated content"
+    },
+    "user_edits": {
+      "type": "string",
+      "description": "User's edited version for AI learning"
+    },
+    "ab_test_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to create A/B test variants"
+    },
+    "variants_count": {
+      "type": "number",
+      "default": 3,
+      "description": "Number of variations generated"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "AI generation cost"
+    },
+    "tokens_used": {
+      "type": "number",
+      "description": "AI tokens consumed"
+    },
+    "generation_time_seconds": {
+      "type": "number",
+      "description": "Time to generate"
+    }
+  },
+  "required": [
+    "user_email",
+    "generation_type",
+    "input_type",
+    "input_data"
+  ]
+}

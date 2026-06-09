@@ -1,0 +1,100 @@
+{
+  "name": "PartnerAttribution",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Customer email"
+    },
+    "customer_id": {
+      "type": "string",
+      "description": "Customer user ID"
+    },
+    "partner_id": {
+      "type": "string",
+      "description": "PartnerAffiliate ID"
+    },
+    "attribution_model": {
+      "type": "string",
+      "enum": [
+        "coupon",
+        "last_click",
+        "first_click",
+        "deal_reg"
+      ],
+      "description": "Attribution method used"
+    },
+    "coupon_code": {
+      "type": "string",
+      "description": "Coupon code used"
+    },
+    "click_id": {
+      "type": "string",
+      "description": "Tracking click ID"
+    },
+    "deal_registration_id": {
+      "type": "string",
+      "description": "Deal reg ID (for resellers)"
+    },
+    "referrer_url": {
+      "type": "string",
+      "description": "Where user came from"
+    },
+    "landing_page": {
+      "type": "string",
+      "description": "First page visited"
+    },
+    "utm_source": {
+      "type": "string",
+      "description": "UTM source"
+    },
+    "utm_medium": {
+      "type": "string",
+      "description": "UTM medium"
+    },
+    "utm_campaign": {
+      "type": "string",
+      "description": "UTM campaign"
+    },
+    "device_fingerprint": {
+      "type": "string",
+      "description": "Device ID for fraud detection"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "IP address"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "Browser/device info"
+    },
+    "converted_to_paid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether customer converted"
+    },
+    "converted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Conversion timestamp"
+    },
+    "plan_tier": {
+      "type": "string",
+      "description": "Plan customer subscribed to"
+    },
+    "subscription_value_usd": {
+      "type": "number",
+      "description": "Monthly subscription value"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Attribution window expiration (90 days default)"
+    }
+  },
+  "required": [
+    "user_email",
+    "partner_id",
+    "attribution_model"
+  ]
+}

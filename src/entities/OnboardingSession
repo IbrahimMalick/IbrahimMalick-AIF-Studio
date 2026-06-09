@@ -1,0 +1,159 @@
+{
+  "name": "OnboardingSession",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User being onboarded"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "in_progress",
+        "completed",
+        "paused",
+        "abandoned"
+      ],
+      "default": "in_progress",
+      "description": "Session status"
+    },
+    "current_step": {
+      "type": "number",
+      "default": 1,
+      "description": "Current onboarding step (1-7)"
+    },
+    "avatar_host_id": {
+      "type": "string",
+      "description": "Avatar acting as onboarding host"
+    },
+    "conversation_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Chat + video history"
+    },
+    "collected_data": {
+      "type": "object",
+      "description": "Data collected during onboarding",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "business_name": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "use_case": {
+          "type": "string"
+        },
+        "team_size": {
+          "type": "string"
+        },
+        "budget": {
+          "type": "object"
+        },
+        "preferred_platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "content_style": {
+          "type": "string"
+        },
+        "posting_frequency": {
+          "type": "string"
+        }
+      }
+    },
+    "personality_assessment": {
+      "type": "object",
+      "description": "AI-detected personality traits",
+      "properties": {
+        "tone_preference": {
+          "type": "string"
+        },
+        "communication_style": {
+          "type": "string"
+        },
+        "energy_level": {
+          "type": "string"
+        },
+        "tech_savviness": {
+          "type": "number"
+        }
+      }
+    },
+    "recommended_plan": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio"
+      ],
+      "description": "AI-recommended subscription plan"
+    },
+    "setup_actions_completed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actions completed (created_avatar, connected_social, etc.)"
+    },
+    "next_suggested_action": {
+      "type": "string",
+      "description": "What user should do next"
+    },
+    "engagement_score": {
+      "type": "number",
+      "default": 0,
+      "description": "How engaged user is (0-100)"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When onboarding started"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When onboarding finished"
+    },
+    "time_spent_seconds": {
+      "type": "number",
+      "default": 0,
+      "description": "Total time in onboarding"
+    }
+  },
+  "required": [
+    "user_email",
+    "session_id"
+  ]
+}

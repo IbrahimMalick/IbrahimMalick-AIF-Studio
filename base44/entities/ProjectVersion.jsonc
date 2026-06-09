@@ -1,0 +1,98 @@
+{
+  "name": "ProjectVersion",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "description": "VideoProject ID"
+    },
+    "version_number": {
+      "type": "number",
+      "description": "Version number (1, 2, 3...)"
+    },
+    "version_name": {
+      "type": "string",
+      "description": "Version label (v1.0, Draft 2, Final, etc.)"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Who created this version"
+    },
+    "snapshot_data": {
+      "type": "string",
+      "description": "Full project state JSON"
+    },
+    "changes_summary": {
+      "type": "string",
+      "description": "What changed in this version"
+    },
+    "changes_details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "old_value": {
+            "type": "string"
+          },
+          "new_value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Detailed change log"
+    },
+    "scenes_snapshot": {
+      "type": "array",
+      "description": "Scene configuration at this version"
+    },
+    "export_settings_snapshot": {
+      "type": "object",
+      "description": "Export settings at this version"
+    },
+    "ai_features_snapshot": {
+      "type": "object",
+      "description": "AI features applied at this version"
+    },
+    "is_autosave": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-saved vs manual save"
+    },
+    "is_milestone": {
+      "type": "boolean",
+      "default": false,
+      "description": "Important version (Draft Final, Client Review, etc.)"
+    },
+    "milestone_type": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "review",
+        "approved",
+        "final",
+        "published"
+      ],
+      "description": "Milestone category"
+    },
+    "restored_from": {
+      "type": "string",
+      "description": "If restored, which version ID"
+    },
+    "file_size_mb": {
+      "type": "number",
+      "description": "Version file size"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview thumbnail"
+    }
+  },
+  "required": [
+    "project_id",
+    "version_number",
+    "snapshot_data"
+  ]
+}

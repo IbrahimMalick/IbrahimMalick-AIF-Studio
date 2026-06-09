@@ -1,0 +1,98 @@
+{
+  "name": "StockMedia",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who saved this media"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "unsplash",
+        "pexels",
+        "pixabay",
+        "giphy"
+      ],
+      "description": "Stock media source"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video",
+        "gif"
+      ],
+      "description": "Type of media"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "ID from source platform"
+    },
+    "title": {
+      "type": "string",
+      "description": "Media title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Media description"
+    },
+    "author": {
+      "type": "string",
+      "description": "Creator name"
+    },
+    "author_url": {
+      "type": "string",
+      "description": "Creator profile URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview thumbnail"
+    },
+    "full_url": {
+      "type": "string",
+      "description": "Full resolution URL"
+    },
+    "download_url": {
+      "type": "string",
+      "description": "Direct download URL"
+    },
+    "width": {
+      "type": "number",
+      "description": "Media width in pixels"
+    },
+    "height": {
+      "type": "number",
+      "description": "Media height in pixels"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Search tags"
+    },
+    "license": {
+      "type": "string",
+      "description": "License type"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false,
+      "description": "User bookmarked this"
+    },
+    "used_in_projects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Project IDs where this was used"
+    }
+  },
+  "required": [
+    "user_email",
+    "source",
+    "media_type",
+    "full_url"
+  ]
+}

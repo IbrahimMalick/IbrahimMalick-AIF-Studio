@@ -1,0 +1,37 @@
+{
+  "name": "Integration",
+  "type": "object",
+  "properties": {
+    "service_name": {
+      "type": "string",
+      "enum": [
+        "openai",
+        "gohighlevel"
+      ],
+      "description": "Integration service"
+    },
+    "api_key": {
+      "type": "string",
+      "description": "API key (encrypted)"
+    },
+    "webhook_url": {
+      "type": "string",
+      "description": "Webhook URL for events"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Service-specific settings"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_sync": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "service_name"
+  ]
+}

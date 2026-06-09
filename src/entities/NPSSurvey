@@ -1,0 +1,55 @@
+{
+  "name": "NPSSurvey",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Survey respondent"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "NPS score 0-10"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "detractor",
+        "passive",
+        "promoter"
+      ],
+      "description": "0-6=detractor, 7-8=passive, 9-10=promoter"
+    },
+    "feedback": {
+      "type": "string",
+      "description": "Open-ended feedback"
+    },
+    "survey_trigger": {
+      "type": "string",
+      "enum": [
+        "post_signup",
+        "post_upgrade",
+        "quarterly",
+        "post_support"
+      ],
+      "description": "When survey was sent"
+    },
+    "responded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "follow_up_sent": {
+      "type": "boolean",
+      "default": false
+    },
+    "follow_up_action": {
+      "type": "string",
+      "description": "Action taken based on feedback"
+    }
+  },
+  "required": [
+    "user_email",
+    "score"
+  ]
+}

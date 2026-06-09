@@ -1,0 +1,232 @@
+{
+  "name": "FunnelRun",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who deployed this funnel"
+    },
+    "offer_id": {
+      "type": "string",
+      "description": "OfferBlueprint ID"
+    },
+    "funnel_name": {
+      "type": "string",
+      "description": "Funnel campaign name"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "meta",
+          "tiktok",
+          "youtube",
+          "google",
+          "linkedin"
+        ]
+      },
+      "description": "Ad platforms used"
+    },
+    "budget_total": {
+      "type": "number",
+      "description": "Total campaign budget USD"
+    },
+    "daily_budget": {
+      "type": "number",
+      "description": "Daily budget USD"
+    },
+    "landing_url": {
+      "type": "string",
+      "description": "Landing page URL"
+    },
+    "landing_domain": {
+      "type": "string",
+      "description": "Custom domain used"
+    },
+    "landing_path": {
+      "type": "string",
+      "description": "URL path"
+    },
+    "ad_account_ids": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "string"
+        },
+        "tiktok": {
+          "type": "string"
+        },
+        "google": {
+          "type": "string"
+        }
+      }
+    },
+    "campaign_ids": {
+      "type": "object",
+      "properties": {
+        "meta_campaign_id": {
+          "type": "string"
+        },
+        "tiktok_campaign_id": {
+          "type": "string"
+        },
+        "google_campaign_id": {
+          "type": "string"
+        }
+      }
+    },
+    "ad_creative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AdCreativeDraft IDs used"
+    },
+    "sequence_id": {
+      "type": "string",
+      "description": "FollowUpSequence ID"
+    },
+    "ghl_assets": {
+      "type": "object",
+      "properties": {
+        "funnel_id": {
+          "type": "string"
+        },
+        "workflow_id": {
+          "type": "string"
+        },
+        "form_id": {
+          "type": "string"
+        },
+        "pipeline_id": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "launching",
+        "learning",
+        "scaling",
+        "paused",
+        "completed",
+        "failed"
+      ],
+      "default": "draft",
+      "description": "Funnel lifecycle status"
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "ad_ctr": {
+          "type": "number",
+          "description": "Ad click-through rate %"
+        },
+        "lp_cvr": {
+          "type": "number",
+          "description": "Landing page conversion rate %"
+        },
+        "opt_in_to_booking": {
+          "type": "number",
+          "description": "Opt-in to booking rate %"
+        },
+        "show_rate": {
+          "type": "number",
+          "description": "Call show-up rate %"
+        },
+        "close_rate": {
+          "type": "number",
+          "description": "Sales close rate %"
+        },
+        "impressions": {
+          "type": "number",
+          "default": 0
+        },
+        "clicks": {
+          "type": "number",
+          "default": 0
+        },
+        "leads": {
+          "type": "number",
+          "default": 0
+        },
+        "bookings": {
+          "type": "number",
+          "default": 0
+        },
+        "sales": {
+          "type": "number",
+          "default": 0
+        },
+        "spend": {
+          "type": "number",
+          "default": 0
+        },
+        "revenue": {
+          "type": "number",
+          "default": 0
+        },
+        "cpl": {
+          "type": "number",
+          "description": "Cost per lead"
+        },
+        "cpa": {
+          "type": "number",
+          "description": "Cost per acquisition"
+        },
+        "roas": {
+          "type": "number",
+          "description": "Return on ad spend"
+        }
+      }
+    },
+    "optimization_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "object"
+          }
+        }
+      },
+      "description": "AI optimization history"
+    },
+    "nba_suggestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Current next-best-action suggestions"
+    },
+    "last_optimized": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "offer_id",
+    "funnel_name"
+  ]
+}

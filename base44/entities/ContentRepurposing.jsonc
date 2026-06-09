@@ -1,0 +1,410 @@
+{
+  "name": "ContentRepurposing",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who initiated repurposing"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "video_project",
+        "uploaded_video",
+        "youtube_url",
+        "podcast_audio"
+      ],
+      "description": "Source content type"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "VideoProject ID or source identifier"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "URL to source video/audio file"
+    },
+    "source_title": {
+      "type": "string",
+      "description": "Title of source content"
+    },
+    "source_duration_seconds": {
+      "type": "number",
+      "description": "Duration of source content"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "analyzing",
+        "generating_clips",
+        "generating_posts",
+        "generating_emails",
+        "generating_blog",
+        "completed",
+        "failed"
+      ],
+      "default": "analyzing",
+      "description": "Repurposing status"
+    },
+    "progress_percentage": {
+      "type": "number",
+      "default": 0,
+      "description": "Overall progress 0-100"
+    },
+    "transcript": {
+      "type": "string",
+      "description": "Full transcript of source content"
+    },
+    "key_moments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "number"
+          },
+          "moment_type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "viral_potential": {
+            "type": "number"
+          },
+          "quote": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "AI-detected key moments for clips"
+    },
+    "generated_assets": {
+      "type": "object",
+      "properties": {
+        "short_clips": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "clip_id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "start_time": {
+                "type": "number"
+              },
+              "end_time": {
+                "type": "number"
+              },
+              "duration_seconds": {
+                "type": "number"
+              },
+              "video_url": {
+                "type": "string"
+              },
+              "thumbnail_url": {
+                "type": "string"
+              },
+              "caption_srt_url": {
+                "type": "string"
+              },
+              "hook": {
+                "type": "string"
+              },
+              "platform_optimized_for": {
+                "type": "string"
+              },
+              "aspect_ratio": {
+                "type": "string"
+              },
+              "viral_score": {
+                "type": "number"
+              },
+              "engagement_prediction": {
+                "type": "number"
+              },
+              "deployed_to": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "social_posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "string"
+              },
+              "copy": {
+                "type": "string"
+              },
+              "hashtags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "linked_clip_id": {
+                "type": "string"
+              },
+              "post_type": {
+                "type": "string"
+              },
+              "optimal_time": {
+                "type": "string"
+              },
+              "deployed": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "email_sequences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sequence_name": {
+                "type": "string"
+              },
+              "subject_line": {
+                "type": "string"
+              },
+              "body_html": {
+                "type": "string"
+              },
+              "body_text": {
+                "type": "string"
+              },
+              "linked_clip_id": {
+                "type": "string"
+              },
+              "day_in_sequence": {
+                "type": "number"
+              },
+              "cta_text": {
+                "type": "string"
+              },
+              "deployed": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "blog_post": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "meta_description": {
+              "type": "string"
+            },
+            "content_html": {
+              "type": "string"
+            },
+            "content_markdown": {
+              "type": "string"
+            },
+            "seo_keywords": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "focus_keyword": {
+              "type": "string"
+            },
+            "reading_time_minutes": {
+              "type": "number"
+            },
+            "embedded_clips": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "seo_score": {
+              "type": "number"
+            },
+            "deployed": {
+              "type": "boolean"
+            }
+          }
+        },
+        "quote_graphics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "quote_text": {
+                "type": "string"
+              },
+              "speaker": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "number"
+              },
+              "image_url": {
+                "type": "string"
+              },
+              "style": {
+                "type": "string"
+              },
+              "deployed": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "audiograms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "clip_id": {
+                "type": "string"
+              },
+              "audio_url": {
+                "type": "string"
+              },
+              "waveform_video_url": {
+                "type": "string"
+              },
+              "duration_seconds": {
+                "type": "number"
+              },
+              "deployed": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "teaser_trailers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "trailer_type": {
+                "type": "string"
+              },
+              "duration_seconds": {
+                "type": "number"
+              },
+              "video_url": {
+                "type": "string"
+              },
+              "hook_style": {
+                "type": "string"
+              },
+              "deployed": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "generation_settings": {
+      "type": "object",
+      "properties": {
+        "clip_count": {
+          "type": "number",
+          "default": 10
+        },
+        "post_count_per_platform": {
+          "type": "number",
+          "default": 4
+        },
+        "email_sequence_count": {
+          "type": "number",
+          "default": 5
+        },
+        "generate_blog": {
+          "type": "boolean",
+          "default": true
+        },
+        "generate_quotes": {
+          "type": "boolean",
+          "default": true
+        },
+        "generate_audiograms": {
+          "type": "boolean",
+          "default": true
+        },
+        "target_platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "brand_voice_id": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        }
+      }
+    },
+    "total_assets_generated": {
+      "type": "number",
+      "default": 0,
+      "description": "Total pieces of content created"
+    },
+    "total_deployed": {
+      "type": "number",
+      "default": 0,
+      "description": "Assets deployed to platforms"
+    },
+    "estimated_reach": {
+      "type": "number",
+      "description": "Predicted total reach across all assets"
+    },
+    "estimated_engagement": {
+      "type": "number",
+      "description": "Predicted total engagement"
+    },
+    "time_saved_hours": {
+      "type": "number",
+      "description": "Manual time this would have taken"
+    },
+    "cost_usd": {
+      "type": "number",
+      "description": "AI generation cost"
+    },
+    "processing_time_seconds": {
+      "type": "number",
+      "description": "Total time to generate all assets"
+    },
+    "error_log": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Any errors during generation"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "source_type",
+    "source_url",
+    "source_title"
+  ]
+}

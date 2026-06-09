@@ -1,0 +1,57 @@
+{
+  "name": "Referral",
+  "type": "object",
+  "properties": {
+    "referrer_email": {
+      "type": "string",
+      "description": "User who sent the referral"
+    },
+    "referee_email": {
+      "type": "string",
+      "description": "User who was referred"
+    },
+    "referral_code": {
+      "type": "string",
+      "description": "Unique referral code"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "signed_up",
+        "converted",
+        "rewarded"
+      ],
+      "default": "pending",
+      "description": "Referral status"
+    },
+    "reward_type": {
+      "type": "string",
+      "enum": [
+        "credits",
+        "discount",
+        "free_month",
+        "cash"
+      ],
+      "description": "Type of reward"
+    },
+    "reward_amount": {
+      "type": "number",
+      "description": "Reward amount/value"
+    },
+    "conversion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When referee converted to paid"
+    },
+    "reward_claimed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether reward was claimed"
+    }
+  },
+  "required": [
+    "referrer_email",
+    "referral_code"
+  ]
+}

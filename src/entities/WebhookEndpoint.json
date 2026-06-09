@@ -1,0 +1,59 @@
+{
+  "name": "WebhookEndpoint",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook endpoint URL"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Owner of webhook"
+    },
+    "event_types": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Events to subscribe to (e.g., job.completed, alert.fired)"
+    },
+    "secret": {
+      "type": "string",
+      "description": "HMAC secret for verification (encrypted)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether webhook is active"
+    },
+    "retry_policy": {
+      "type": "object",
+      "properties": {
+        "max_retries": {"type": "number", "default": 5},
+        "backoff_multiplier": {"type": "number", "default": 2},
+        "initial_delay_seconds": {"type": "number", "default": 10}
+      }
+    },
+    "failure_threshold": {
+      "type": "number",
+      "default": 5,
+      "description": "Consecutive failures before auto-disable"
+    },
+    "consecutive_failures": {
+      "type": "number",
+      "default": 0
+    },
+    "last_triggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_failed": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "delivery_success_rate": {
+      "type": "number",
+      "description": "% of successful deliveries"
+    }
+  },
+  "required": ["url", "user_email", "event_types", "secret"]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "WebhookDebugLog",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this webhook"
+    },
+    "webhook_url": {
+      "type": "string",
+      "description": "The webhook endpoint URL"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Type of event (agent.created, task.completed, etc.)"
+    },
+    "request_body": {
+      "type": "object",
+      "description": "Full request payload sent"
+    },
+    "request_headers": {
+      "type": "object",
+      "description": "HTTP headers sent"
+    },
+    "response_status": {
+      "type": "number",
+      "description": "HTTP response status code"
+    },
+    "response_body": {
+      "type": "string",
+      "description": "Response body received"
+    },
+    "response_time_ms": {
+      "type": "number",
+      "description": "Response time in milliseconds"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether request succeeded"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "webhook_url",
+    "event_type"
+  ]
+}

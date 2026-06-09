@@ -1,0 +1,644 @@
+{
+  "name": "CampaignInsights",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this campaign"
+    },
+    "campaign_id": {
+      "type": "string",
+      "description": "Campaign being analyzed"
+    },
+    "analysis_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When analysis was performed"
+    },
+    "overall_health_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall campaign health (0-100)"
+    },
+    "health_trend": {
+      "type": "string",
+      "enum": [
+        "improving",
+        "stable",
+        "declining",
+        "critical"
+      ],
+      "description": "Health trajectory"
+    },
+    "channel_performance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "performance_score": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "exceeding",
+              "on_track",
+              "underperforming",
+              "failing"
+            ]
+          },
+          "key_wins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "key_issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "string"
+                },
+                "expected_impact": {
+                  "type": "string"
+                },
+                "effort": {
+                  "type": "string"
+                },
+                "impact_prediction": {
+                  "type": "object",
+                  "properties": {
+                    "metric_affected": {
+                      "type": "string"
+                    },
+                    "current_value": {
+                      "type": "number"
+                    },
+                    "predicted_value": {
+                      "type": "number"
+                    },
+                    "improvement_percentage": {
+                      "type": "number"
+                    },
+                    "confidence_level": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "Performance breakdown by channel"
+    },
+    "content_performance_analysis": {
+      "type": "object",
+      "properties": {
+        "top_performers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              },
+              "asset_type": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "engagement_rate": {
+                "type": "number"
+              },
+              "reach": {
+                "type": "number"
+              },
+              "why_it_worked": {
+                "type": "string"
+              },
+              "replicate_elements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "underperformers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              },
+              "asset_type": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "engagement_rate": {
+                "type": "number"
+              },
+              "why_it_failed": {
+                "type": "string"
+              },
+              "specific_fixes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "issue": {
+                      "type": "string"
+                    },
+                    "current": {
+                      "type": "string"
+                    },
+                    "suggested": {
+                      "type": "string"
+                    },
+                    "expected_improvement": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ab_test_opportunities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "test_name": {
+            "type": "string"
+          },
+          "test_type": {
+            "type": "string",
+            "enum": [
+              "headline",
+              "cta",
+              "image",
+              "copy",
+              "timing",
+              "platform",
+              "audience"
+            ]
+          },
+          "current_variant": {
+            "type": "string"
+          },
+          "suggested_variants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "variant_name": {
+                  "type": "string"
+                },
+                "variant_content": {
+                  "type": "string"
+                },
+                "hypothesis": {
+                  "type": "string"
+                },
+                "expected_lift": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "priority": {
+            "type": "number"
+          },
+          "estimated_roi": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A/B testing opportunities ranked by potential impact"
+    },
+    "messaging_analysis": {
+      "type": "object",
+      "properties": {
+        "effective_hooks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hook_text": {
+                "type": "string"
+              },
+              "used_in": {
+                "type": "string"
+              },
+              "engagement_rate": {
+                "type": "number"
+              },
+              "why_effective": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "weak_hooks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hook_text": {
+                "type": "string"
+              },
+              "used_in": {
+                "type": "string"
+              },
+              "engagement_rate": {
+                "type": "number"
+              },
+              "why_ineffective": {
+                "type": "string"
+              },
+              "rewrite_suggestions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "cta_analysis": {
+          "type": "object",
+          "properties": {
+            "most_effective_ctas": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "cta_text": {
+                    "type": "string"
+                  },
+                  "click_rate": {
+                    "type": "number"
+                  },
+                  "used_in": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "underperforming_ctas": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "cta_text": {
+                    "type": "string"
+                  },
+                  "click_rate": {
+                    "type": "number"
+                  },
+                  "rewrite_options": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "expected_improvement": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tone_consistency": {
+          "type": "object",
+          "properties": {
+            "consistency_score": {
+              "type": "number"
+            },
+            "tone_drift_detected": {
+              "type": "boolean"
+            },
+            "inconsistencies": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "timing_insights": {
+      "type": "object",
+      "properties": {
+        "best_performing_times": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "string"
+              },
+              "time": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "avg_engagement": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "worst_performing_times": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "string"
+              },
+              "time": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "avg_engagement": {
+                "type": "number"
+              },
+              "recommendation": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "optimal_frequency": {
+          "type": "object",
+          "properties": {
+            "current_frequency": {
+              "type": "string"
+            },
+            "recommended_frequency": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "audience_insights": {
+      "type": "object",
+      "properties": {
+        "engagement_patterns": {
+          "type": "object",
+          "properties": {
+            "most_engaged_segment": {
+              "type": "string"
+            },
+            "least_engaged_segment": {
+              "type": "string"
+            },
+            "demographic_breakdown": {
+              "type": "object"
+            }
+          }
+        },
+        "content_preferences": {
+          "type": "object",
+          "properties": {
+            "preferred_content_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "preferred_topics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "engagement_triggers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "predictive_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recommendation_id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "content_optimization",
+              "budget_reallocation",
+              "timing_adjustment",
+              "platform_expansion",
+              "audience_targeting",
+              "creative_refresh"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "specific_actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "step": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "string"
+                },
+                "before_example": {
+                  "type": "string"
+                },
+                "after_example": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "impact_prediction": {
+            "type": "object",
+            "properties": {
+              "reach_impact": {
+                "type": "string"
+              },
+              "engagement_impact": {
+                "type": "string"
+              },
+              "conversion_impact": {
+                "type": "string"
+              },
+              "revenue_impact": {
+                "type": "string"
+              },
+              "confidence_percentage": {
+                "type": "number"
+              }
+            }
+          },
+          "effort_required": {
+            "type": "string",
+            "enum": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "roi_score": {
+            "type": "number",
+            "description": "Return on investment score (0-100)"
+          },
+          "urgency": {
+            "type": "string",
+            "enum": [
+              "immediate",
+              "this_week",
+              "this_month",
+              "optional"
+            ]
+          },
+          "implemented": {
+            "type": "boolean",
+            "default": false
+          },
+          "implemented_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actual_impact": {
+            "type": "object",
+            "properties": {
+              "reach_change": {
+                "type": "number"
+              },
+              "engagement_change": {
+                "type": "number"
+              },
+              "conversion_change": {
+                "type": "number"
+              },
+              "revenue_change": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "description": "Ranked AI recommendations with impact predictions"
+    },
+    "competitive_analysis": {
+      "type": "object",
+      "properties": {
+        "benchmark_comparison": {
+          "type": "object",
+          "properties": {
+            "your_engagement_rate": {
+              "type": "number"
+            },
+            "industry_avg_engagement": {
+              "type": "number"
+            },
+            "top_performer_engagement": {
+              "type": "number"
+            },
+            "your_percentile": {
+              "type": "number"
+            }
+          }
+        },
+        "gaps_to_leader": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "your_value": {
+                "type": "number"
+              },
+              "leader_value": {
+                "type": "number"
+              },
+              "gap_percentage": {
+                "type": "number"
+              },
+              "how_to_close_gap": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ai_confidence_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI's confidence in these insights"
+    },
+    "data_quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Quality/completeness of data analyzed"
+    },
+    "next_analysis_recommended": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When to run next analysis"
+    }
+  },
+  "required": [
+    "user_email",
+    "campaign_id",
+    "overall_health_score"
+  ]
+}

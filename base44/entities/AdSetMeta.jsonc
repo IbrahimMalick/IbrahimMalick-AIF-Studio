@@ -1,0 +1,189 @@
+{
+  "name": "AdSetMeta",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this ad set"
+    },
+    "campaign_run_id": {
+      "type": "string",
+      "description": "Parent CampaignRun ID"
+    },
+    "meta_adset_id": {
+      "type": "string",
+      "description": "Ad Set ID from Meta API"
+    },
+    "adset_name": {
+      "type": "string",
+      "description": "Ad set name"
+    },
+    "optimization_goal": {
+      "type": "string",
+      "enum": [
+        "LEADS",
+        "LINK_CLICKS",
+        "OFFSITE_CONVERSIONS",
+        "IMPRESSIONS",
+        "REACH",
+        "LANDING_PAGE_VIEWS"
+      ],
+      "default": "LINK_CLICKS",
+      "description": "What to optimize for"
+    },
+    "bid_strategy": {
+      "type": "string",
+      "enum": [
+        "LOWEST_COST",
+        "COST_CAP",
+        "BID_CAP"
+      ],
+      "default": "LOWEST_COST",
+      "description": "Bidding strategy"
+    },
+    "cost_cap_cents": {
+      "type": "number",
+      "description": "Cost cap in cents (for COST_CAP strategy)"
+    },
+    "bid_amount_cents": {
+      "type": "number",
+      "description": "Bid amount in cents (for BID_CAP strategy)"
+    },
+    "daily_budget_cents": {
+      "type": "number",
+      "description": "Daily budget in cents"
+    },
+    "targeting": {
+      "type": "object",
+      "properties": {
+        "geo_locations": {
+          "type": "object",
+          "properties": {
+            "countries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "cities": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "regions": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "age_min": {
+          "type": "number",
+          "minimum": 18,
+          "maximum": 65
+        },
+        "age_max": {
+          "type": "number",
+          "minimum": 18,
+          "maximum": 65
+        },
+        "genders": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "0=all, 1=male, 2=female"
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "behaviors": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "life_events": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "custom_audiences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_custom_audiences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lookalike_audience_id": {
+          "type": "string"
+        },
+        "flexible_spec": {
+          "type": "array",
+          "description": "Advanced targeting combinations"
+        }
+      },
+      "description": "Audience targeting configuration"
+    },
+    "placements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ad placements",
+      "default": [
+        "facebook_feed",
+        "instagram_feed",
+        "facebook_reels",
+        "instagram_reels"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PAUSED",
+        "DELETED",
+        "ARCHIVED"
+      ],
+      "default": "PAUSED"
+    },
+    "billing_event": {
+      "type": "string",
+      "enum": [
+        "IMPRESSIONS",
+        "LINK_CLICKS"
+      ],
+      "default": "IMPRESSIONS"
+    },
+    "estimated_audience_size": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "description": "Estimated reach"
+    }
+  },
+  "required": [
+    "user_email",
+    "campaign_run_id",
+    "adset_name",
+    "optimization_goal"
+  ]
+}

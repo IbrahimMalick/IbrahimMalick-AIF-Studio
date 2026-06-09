@@ -1,0 +1,40 @@
+{
+  "name": "UserAchievement",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who unlocked achievement"
+    },
+    "achievement_id": {
+      "type": "string",
+      "description": "Achievement unlocked"
+    },
+    "unlocked_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When unlocked"
+    },
+    "progress": {
+      "type": "number",
+      "default": 0,
+      "description": "Progress towards achievement (0-100)"
+    },
+    "notification_sent": {
+      "type": "boolean",
+      "default": false
+    },
+    "reward_claimed": {
+      "type": "boolean",
+      "default": false
+    },
+    "claimed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "achievement_id"
+  ]
+}

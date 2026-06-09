@@ -1,0 +1,94 @@
+{
+  "name": "PredictiveAnalytics",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User being analyzed"
+    },
+    "prediction_type": {
+      "type": "string",
+      "enum": [
+        "content_performance",
+        "churn_risk",
+        "revenue_forecast",
+        "viral_probability",
+        "optimal_posting_time",
+        "audience_growth"
+      ],
+      "description": "What we're predicting"
+    },
+    "prediction_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When prediction was made"
+    },
+    "prediction_target_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date prediction is for"
+    },
+    "predicted_value": {
+      "type": "number",
+      "description": "Numerical prediction"
+    },
+    "confidence_interval": {
+      "type": "object",
+      "properties": {
+        "lower_bound": {
+          "type": "number"
+        },
+        "upper_bound": {
+          "type": "number"
+        },
+        "confidence_level": {
+          "type": "number",
+          "default": 0.95
+        }
+      },
+      "description": "Prediction uncertainty"
+    },
+    "factors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "factor_name": {
+            "type": "string"
+          },
+          "importance": {
+            "type": "number"
+          },
+          "current_value": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Contributing factors"
+    },
+    "model_used": {
+      "type": "string",
+      "description": "ML model type"
+    },
+    "accuracy_score": {
+      "type": "number",
+      "description": "Historical accuracy of this model"
+    },
+    "actual_value": {
+      "type": "number",
+      "description": "What actually happened (for training)"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actions to improve prediction"
+    }
+  },
+  "required": [
+    "user_email",
+    "prediction_type",
+    "predicted_value"
+  ]
+}

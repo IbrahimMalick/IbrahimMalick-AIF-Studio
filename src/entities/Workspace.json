@@ -1,0 +1,64 @@
+{
+  "name": "Workspace",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Workspace name"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly workspace identifier"
+    },
+    "owner_email": {
+      "type": "string",
+      "description": "Workspace owner (creator)"
+    },
+    "plan_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio",
+        "enterprise"
+      ],
+      "default": "free",
+      "description": "Workspace plan level"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Workspace logo"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Workspace-level settings",
+      "properties": {
+        "allow_member_invites": {
+          "type": "boolean",
+          "default": true
+        },
+        "default_video_resolution": {
+          "type": "string"
+        },
+        "shared_asset_library": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "storage_limit_mb": {
+      "type": "number",
+      "default": 1000,
+      "description": "Total storage limit for workspace"
+    },
+    "storage_used_mb": {
+      "type": "number",
+      "default": 0,
+      "description": "Storage currently used"
+    }
+  },
+  "required": [
+    "name",
+    "owner_email"
+  ]
+}

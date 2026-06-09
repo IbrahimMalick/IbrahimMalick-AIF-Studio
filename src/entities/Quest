@@ -1,0 +1,98 @@
+{
+  "name": "Quest",
+  "type": "object",
+  "properties": {
+    "quest_id": {
+      "type": "string",
+      "description": "Unique quest identifier"
+    },
+    "quest_name": {
+      "type": "string",
+      "description": "Quest title"
+    },
+    "description": {
+      "type": "string",
+      "description": "What user needs to do"
+    },
+    "quest_type": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "special_event",
+        "onboarding"
+      ],
+      "description": "Quest category"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string"
+          },
+          "target": {
+            "type": "number"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Steps to complete quest"
+    },
+    "xp_reward": {
+      "type": "number",
+      "description": "XP for completing"
+    },
+    "bonus_rewards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reward_type": {
+            "type": "string"
+          },
+          "reward_value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Extra rewards (credits, badges, etc.)"
+    },
+    "starts_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "medium",
+        "hard",
+        "legendary"
+      ],
+      "default": "medium"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "completion_count": {
+      "type": "number",
+      "default": 0,
+      "description": "How many users completed"
+    }
+  },
+  "required": [
+    "quest_id",
+    "quest_name",
+    "xp_reward"
+  ]
+}

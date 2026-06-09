@@ -1,0 +1,179 @@
+{
+  "name": "FollowUpSequence",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this sequence"
+    },
+    "offer_id": {
+      "type": "string",
+      "description": "Related OfferBlueprint ID"
+    },
+    "sequence_name": {
+      "type": "string",
+      "description": "Sequence name"
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "email",
+          "sms",
+          "dm",
+          "voice"
+        ]
+      },
+      "description": "Communication channels used"
+    },
+    "touches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "number"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "cta": {
+            "type": "string"
+          },
+          "cta_url": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Individual touchpoints in sequence"
+    },
+    "branching": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "if": {
+            "type": "string"
+          },
+          "then": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Conditional logic for personalized paths"
+    },
+    "goals": {
+      "type": "object",
+      "properties": {
+        "bookings": {
+          "type": "boolean"
+        },
+        "sales": {
+          "type": "boolean"
+        },
+        "engagement": {
+          "type": "boolean"
+        }
+      }
+    },
+    "objections_addressed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Common objections this sequence handles"
+    },
+    "brand_voice": {
+      "type": "string",
+      "enum": [
+        "mentor",
+        "hustler",
+        "analyst",
+        "creator"
+      ],
+      "description": "Voice/tone used"
+    },
+    "timeframe_days": {
+      "type": "number",
+      "default": 14,
+      "description": "Total sequence duration"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "paused",
+        "completed"
+      ],
+      "default": "draft"
+    },
+    "performance_metrics": {
+      "type": "object",
+      "properties": {
+        "total_sent": {
+          "type": "number",
+          "default": 0
+        },
+        "total_opened": {
+          "type": "number",
+          "default": 0
+        },
+        "total_clicked": {
+          "type": "number",
+          "default": 0
+        },
+        "total_replied": {
+          "type": "number",
+          "default": 0
+        },
+        "total_bookings": {
+          "type": "number",
+          "default": 0
+        },
+        "total_sales": {
+          "type": "number",
+          "default": 0
+        },
+        "conversion_rate": {
+          "type": "number"
+        }
+      }
+    },
+    "email_provider_ids": {
+      "type": "object",
+      "properties": {
+        "mailchimp_campaign_id": {
+          "type": "string"
+        },
+        "aweber_campaign_id": {
+          "type": "string"
+        },
+        "convertkit_sequence_id": {
+          "type": "string"
+        }
+      }
+    },
+    "ghl_workflow_id": {
+      "type": "string",
+      "description": "GoHighLevel workflow ID"
+    }
+  },
+  "required": [
+    "user_email",
+    "offer_id",
+    "sequence_name",
+    "channels",
+    "touches"
+  ]
+}

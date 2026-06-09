@@ -1,0 +1,49 @@
+{
+  "name": "AssetPublishingConfig",
+  "type": "object",
+  "properties": {
+    "config_name": {
+      "type": "string",
+      "description": "Name of publishing configuration"
+    },
+    "asset_types": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Types of assets to auto-publish (video, image, audio, document)"
+    },
+    "auto_publish_on_approval": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically publish when approved"
+    },
+    "auto_tag_templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tag_name": {"type": "string"},
+          "apply_condition": {"type": "string"}
+        }
+      },
+      "description": "Tags to auto-apply during publishing"
+    },
+    "destination_channels": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Where to publish (library, marketplace, distribution, archive)"
+    },
+    "enable_notifications": {
+      "type": "boolean",
+      "default": true
+    },
+    "slack_channel": {
+      "type": "string",
+      "description": "Slack channel for publishing notifications"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": ["config_name", "asset_types"]
+}

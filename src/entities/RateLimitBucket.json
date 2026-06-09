@@ -1,0 +1,52 @@
+{
+  "name": "RateLimitBucket",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User email"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "API endpoint being limited"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["free", "starter", "professional", "enterprise"],
+      "description": "User's tier"
+    },
+    "requests_per_minute": {
+      "type": "number",
+      "description": "RPM limit for tier"
+    },
+    "requests_per_hour": {
+      "type": "number",
+      "description": "RPH limit for tier"
+    },
+    "current_minute_count": {
+      "type": "number",
+      "default": 0
+    },
+    "current_hour_count": {
+      "type": "number",
+      "default": 0
+    },
+    "minute_window_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hour_window_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_rate_limited": {
+      "type": "boolean",
+      "default": false
+    },
+    "reset_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["user_email", "endpoint", "tier"]
+}

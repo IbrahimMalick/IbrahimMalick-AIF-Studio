@@ -1,0 +1,79 @@
+{
+  "name": "LanguageSupport",
+  "type": "object",
+  "properties": {
+    "language_code": {
+      "type": "string",
+      "description": "ISO language code (e.g., en-US, es-ES)"
+    },
+    "language_name": {
+      "type": "string",
+      "description": "Display name (e.g., English, Spanish)"
+    },
+    "native_name": {
+      "type": "string",
+      "description": "Native language name (e.g., English, Espa\u00f1ol)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether language is live"
+    },
+    "is_beta": {
+      "type": "boolean",
+      "default": false,
+      "description": "Beta language support"
+    },
+    "translation_progress": {
+      "type": "number",
+      "default": 0,
+      "description": "% of UI translated"
+    },
+    "voice_support": {
+      "type": "boolean",
+      "default": false,
+      "description": "Text-to-speech available"
+    },
+    "speech_recognition": {
+      "type": "boolean",
+      "default": false,
+      "description": "Speech-to-text available"
+    },
+    "rtl": {
+      "type": "boolean",
+      "default": false,
+      "description": "Right-to-left language"
+    },
+    "locale_data": {
+      "type": "object",
+      "description": "Formatting rules",
+      "properties": {
+        "date_format": {
+          "type": "string"
+        },
+        "currency_symbol": {
+          "type": "string"
+        },
+        "decimal_separator": {
+          "type": "string"
+        },
+        "thousands_separator": {
+          "type": "string"
+        }
+      }
+    },
+    "user_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Users using this language"
+    },
+    "ai_translation_quality": {
+      "type": "number",
+      "description": "Translation accuracy score"
+    }
+  },
+  "required": [
+    "language_code",
+    "language_name"
+  ]
+}

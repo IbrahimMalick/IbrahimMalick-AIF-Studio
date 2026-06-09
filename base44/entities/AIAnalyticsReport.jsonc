@@ -1,0 +1,469 @@
+{
+  "name": "AIAnalyticsReport",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Report owner"
+    },
+    "report_type": {
+      "type": "string",
+      "enum": [
+        "daily_digest",
+        "weekly_summary",
+        "monthly_review",
+        "call_outcomes",
+        "nurture_performance",
+        "ab_test_results",
+        "conversion_funnel",
+        "roi_analysis",
+        "lead_health",
+        "custom"
+      ],
+      "description": "Type of report"
+    },
+    "report_title": {
+      "type": "string",
+      "description": "Report title"
+    },
+    "report_period": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "days_covered": {
+          "type": "number"
+        }
+      },
+      "description": "Date range covered"
+    },
+    "executive_summary": {
+      "type": "string",
+      "description": "AI-generated high-level summary"
+    },
+    "key_insights": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "insight_type": {
+            "type": "string",
+            "enum": [
+              "opportunity",
+              "warning",
+              "achievement",
+              "trend"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "impact_level": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "recommended_action": {
+            "type": "string"
+          },
+          "metrics_supporting": {
+            "type": "object"
+          }
+        }
+      },
+      "description": "Key findings from AI analysis"
+    },
+    "call_analytics": {
+      "type": "object",
+      "properties": {
+        "total_calls": {
+          "type": "number"
+        },
+        "inbound_calls": {
+          "type": "number"
+        },
+        "outbound_calls": {
+          "type": "number"
+        },
+        "avg_duration_seconds": {
+          "type": "number"
+        },
+        "disposition_breakdown": {
+          "type": "object",
+          "properties": {
+            "qualified": {
+              "type": "number"
+            },
+            "booked": {
+              "type": "number"
+            },
+            "callback_requested": {
+              "type": "number"
+            },
+            "not_interested": {
+              "type": "number"
+            },
+            "spam": {
+              "type": "number"
+            }
+          }
+        },
+        "intent_breakdown": {
+          "type": "object",
+          "description": "Calls by detected intent"
+        },
+        "sentiment_analysis": {
+          "type": "object",
+          "properties": {
+            "positive_calls": {
+              "type": "number"
+            },
+            "neutral_calls": {
+              "type": "number"
+            },
+            "negative_calls": {
+              "type": "number"
+            },
+            "avg_sentiment": {
+              "type": "number"
+            }
+          }
+        },
+        "conversion_metrics": {
+          "type": "object",
+          "properties": {
+            "calls_to_appointments": {
+              "type": "number"
+            },
+            "conversion_rate": {
+              "type": "number"
+            },
+            "avg_lead_score": {
+              "type": "number"
+            }
+          }
+        },
+        "peak_call_times": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "string"
+              },
+              "hour": {
+                "type": "number"
+              },
+              "call_count": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "nurture_analytics": {
+      "type": "object",
+      "properties": {
+        "active_sequences": {
+          "type": "number"
+        },
+        "completed_sequences": {
+          "type": "number"
+        },
+        "conversion_rate": {
+          "type": "number"
+        },
+        "avg_engagement_score": {
+          "type": "number"
+        },
+        "avg_response_time_hours": {
+          "type": "number"
+        },
+        "channel_performance": {
+          "type": "object",
+          "properties": {
+            "sms": {
+              "type": "object",
+              "properties": {
+                "sent": {
+                  "type": "number"
+                },
+                "delivered": {
+                  "type": "number"
+                },
+                "response_rate": {
+                  "type": "number"
+                }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "sent": {
+                  "type": "number"
+                },
+                "open_rate": {
+                  "type": "number"
+                },
+                "click_rate": {
+                  "type": "number"
+                },
+                "response_rate": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "top_performing_sequences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sequence_id": {
+                "type": "string"
+              },
+              "rule_name": {
+                "type": "string"
+              },
+              "conversion_rate": {
+                "type": "number"
+              },
+              "avg_time_to_conversion": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ab_test_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "test_id": {
+            "type": "string"
+          },
+          "test_name": {
+            "type": "string"
+          },
+          "winner": {
+            "type": "string"
+          },
+          "lift_percentage": {
+            "type": "number"
+          },
+          "statistical_significance": {
+            "type": "number"
+          },
+          "confidence_level": {
+            "type": "number"
+          },
+          "sample_size": {
+            "type": "number"
+          },
+          "recommendation": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A/B test summaries"
+    },
+    "roi_analysis": {
+      "type": "object",
+      "properties": {
+        "total_investment": {
+          "type": "number"
+        },
+        "total_revenue": {
+          "type": "number"
+        },
+        "roi_percentage": {
+          "type": "number"
+        },
+        "cost_per_lead": {
+          "type": "number"
+        },
+        "cost_per_qualified_lead": {
+          "type": "number"
+        },
+        "cost_per_conversion": {
+          "type": "number"
+        },
+        "lifetime_value_avg": {
+          "type": "number"
+        }
+      }
+    },
+    "trend_analysis": {
+      "type": "object",
+      "properties": {
+        "lead_volume_trend": {
+          "type": "string",
+          "enum": [
+            "increasing",
+            "stable",
+            "decreasing"
+          ]
+        },
+        "quality_trend": {
+          "type": "string",
+          "enum": [
+            "improving",
+            "stable",
+            "declining"
+          ]
+        },
+        "conversion_trend": {
+          "type": "string",
+          "enum": [
+            "improving",
+            "stable",
+            "declining"
+          ]
+        },
+        "engagement_trend": {
+          "type": "string",
+          "enum": [
+            "increasing",
+            "stable",
+            "decreasing"
+          ]
+        },
+        "cost_trend": {
+          "type": "string",
+          "enum": [
+            "increasing",
+            "stable",
+            "decreasing"
+          ]
+        }
+      }
+    },
+    "predictions": {
+      "type": "object",
+      "properties": {
+        "next_7_days_leads": {
+          "type": "number"
+        },
+        "next_30_days_conversions": {
+          "type": "number"
+        },
+        "predicted_revenue_30d": {
+          "type": "number"
+        },
+        "predicted_roi": {
+          "type": "number"
+        },
+        "confidence_level": {
+          "type": "number"
+        }
+      },
+      "description": "AI predictions for next period"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priority": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "expected_impact": {
+            "type": "string"
+          },
+          "effort_required": {
+            "type": "string"
+          },
+          "action_steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "AI-generated action items"
+    },
+    "visualizations": {
+      "type": "object",
+      "properties": {
+        "chart_data": {
+          "type": "object"
+        },
+        "chart_configs": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "description": "Data for charts"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When report was generated"
+    },
+    "generation_time_seconds": {
+      "type": "number",
+      "description": "Time to generate report"
+    },
+    "auto_generated": {
+      "type": "boolean",
+      "default": true,
+      "description": "Auto-generated on schedule"
+    },
+    "schedule": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "manual"
+      ],
+      "description": "Report frequency"
+    },
+    "sent_to_emails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recipients if auto-sent"
+    },
+    "pdf_url": {
+      "type": "string",
+      "description": "Generated PDF report URL"
+    }
+  },
+  "required": [
+    "user_email",
+    "report_type",
+    "report_title",
+    "report_period"
+  ]
+}

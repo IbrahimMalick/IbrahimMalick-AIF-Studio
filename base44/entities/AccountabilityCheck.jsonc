@@ -1,0 +1,102 @@
+{
+  "name": "AccountabilityCheck",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User being checked on"
+    },
+    "check_type": {
+      "type": "string",
+      "enum": [
+        "daily_standup",
+        "weekly_review",
+        "goal_progress",
+        "habit_check",
+        "milestone_review"
+      ],
+      "description": "Type of accountability check"
+    },
+    "scheduled_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When check was scheduled"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user responded"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When user completed check-in"
+    },
+    "user_response": {
+      "type": "object",
+      "description": "User's check-in answers",
+      "properties": {
+        "what_i_did": {
+          "type": "string"
+        },
+        "challenges_faced": {
+          "type": "string"
+        },
+        "what_i_learned": {
+          "type": "string"
+        },
+        "next_actions": {
+          "type": "string"
+        },
+        "support_needed": {
+          "type": "string"
+        }
+      }
+    },
+    "coach_feedback": {
+      "type": "string",
+      "description": "AI coach's response and guidance"
+    },
+    "approved_by_coach": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the coach has approved this check-in"
+    },
+    "mood_score": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "User's self-reported mood (1-10)"
+    },
+    "productivity_score": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "User's self-reported productivity (1-10)"
+    },
+    "goals_referenced": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Goal IDs this check relates to"
+    },
+    "action_items_assigned": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "New tasks assigned by coach"
+    },
+    "streak_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Consecutive check-ins completed"
+    }
+  },
+  "required": [
+    "user_email",
+    "check_type",
+    "scheduled_time"
+  ]
+}

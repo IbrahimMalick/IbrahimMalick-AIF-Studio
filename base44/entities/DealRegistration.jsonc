@@ -1,0 +1,114 @@
+{
+  "name": "DealRegistration",
+  "type": "object",
+  "properties": {
+    "partner_id": {
+      "type": "string",
+      "description": "Reseller/Strategic partner ID"
+    },
+    "company_name": {
+      "type": "string",
+      "description": "Prospect company name"
+    },
+    "contact_name": {
+      "type": "string",
+      "description": "Primary contact name"
+    },
+    "contact_email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "contact_phone": {
+      "type": "string",
+      "description": "Contact phone"
+    },
+    "estimated_value_usd": {
+      "type": "number",
+      "description": "Estimated deal value"
+    },
+    "estimated_users": {
+      "type": "number",
+      "description": "Expected user count"
+    },
+    "expected_close_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Estimated close date"
+    },
+    "industry": {
+      "type": "string",
+      "description": "Prospect industry"
+    },
+    "use_case": {
+      "type": "string",
+      "description": "How they'll use platform"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "expired",
+        "won",
+        "lost",
+        "duplicate"
+      ],
+      "default": "active",
+      "description": "Deal status"
+    },
+    "protection_window_days": {
+      "type": "number",
+      "default": 60,
+      "description": "Days protected (60-90)"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Protection expiration"
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Registration timestamp"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Deal notes"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "discovery",
+        "demo",
+        "proposal",
+        "negotiation",
+        "closed_won",
+        "closed_lost"
+      ],
+      "default": "discovery",
+      "description": "Deal stage"
+    },
+    "last_activity": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last deal update"
+    },
+    "won_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deal close date"
+    },
+    "actual_value_usd": {
+      "type": "number",
+      "description": "Actual closed deal value"
+    },
+    "internal_notes": {
+      "type": "string",
+      "description": "Admin notes (not visible to partner)"
+    }
+  },
+  "required": [
+    "partner_id",
+    "company_name",
+    "contact_email"
+  ]
+}

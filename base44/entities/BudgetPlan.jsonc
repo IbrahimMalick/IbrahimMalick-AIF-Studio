@@ -1,0 +1,245 @@
+{
+  "name": "BudgetPlan",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who created this budget"
+    },
+    "plan_name": {
+      "type": "string",
+      "description": "Budget plan name"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Total budget amount USD"
+    },
+    "period": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "quarterly",
+        "annual"
+      ],
+      "default": "monthly",
+      "description": "Budget period"
+    },
+    "goal": {
+      "type": "string",
+      "enum": [
+        "lead_generation",
+        "brand_awareness",
+        "sales",
+        "engagement",
+        "traffic"
+      ],
+      "description": "Primary campaign goal"
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "meta",
+          "tiktok",
+          "youtube",
+          "google",
+          "linkedin",
+          "email",
+          "sms"
+        ]
+      },
+      "description": "Marketing channels included"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "active",
+        "paused",
+        "completed",
+        "exceeded"
+      ],
+      "default": "planning",
+      "description": "Budget status"
+    },
+    "allocation": {
+      "type": "object",
+      "description": "Budget split across channels",
+      "properties": {
+        "meta_percent": {
+          "type": "number"
+        },
+        "tiktok_percent": {
+          "type": "number"
+        },
+        "youtube_percent": {
+          "type": "number"
+        },
+        "google_percent": {
+          "type": "number"
+        },
+        "linkedin_percent": {
+          "type": "number"
+        },
+        "email_percent": {
+          "type": "number"
+        },
+        "sms_percent": {
+          "type": "number"
+        }
+      }
+    },
+    "spend_tracking": {
+      "type": "object",
+      "description": "Actual spend per channel",
+      "properties": {
+        "meta_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "tiktok_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "youtube_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "google_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "linkedin_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "email_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "sms_spent": {
+          "type": "number",
+          "default": 0
+        },
+        "total_spent": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "description": "Performance metrics",
+      "properties": {
+        "total_impressions": {
+          "type": "number",
+          "default": 0
+        },
+        "total_clicks": {
+          "type": "number",
+          "default": 0
+        },
+        "total_leads": {
+          "type": "number",
+          "default": 0
+        },
+        "total_sales": {
+          "type": "number",
+          "default": 0
+        },
+        "total_revenue": {
+          "type": "number",
+          "default": 0
+        },
+        "cpl": {
+          "type": "number",
+          "description": "Cost per lead"
+        },
+        "cpa": {
+          "type": "number",
+          "description": "Cost per acquisition"
+        },
+        "roas": {
+          "type": "number",
+          "description": "Return on ad spend"
+        }
+      }
+    },
+    "optimization_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_name": {
+            "type": "string"
+          },
+          "condition": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Auto-optimization rules"
+    },
+    "alerts": {
+      "type": "object",
+      "properties": {
+        "alert_at_50_percent": {
+          "type": "boolean",
+          "default": true
+        },
+        "alert_at_75_percent": {
+          "type": "boolean",
+          "default": true
+        },
+        "alert_at_90_percent": {
+          "type": "boolean",
+          "default": true
+        },
+        "daily_digest": {
+          "type": "boolean",
+          "default": false
+        },
+        "low_roas_threshold": {
+          "type": "number",
+          "default": 2
+        }
+      }
+    },
+    "linked_funnel_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "FunnelRun IDs using this budget"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_optimized": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "plan_name",
+    "amount",
+    "period",
+    "goal",
+    "channels"
+  ]
+}

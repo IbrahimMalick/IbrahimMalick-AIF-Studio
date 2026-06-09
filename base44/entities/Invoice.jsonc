@@ -1,0 +1,114 @@
+{
+  "name": "Invoice",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Customer email"
+    },
+    "invoice_number": {
+      "type": "string",
+      "description": "Unique invoice ID"
+    },
+    "stripe_invoice_id": {
+      "type": "string",
+      "description": "Stripe invoice ID"
+    },
+    "amount_due": {
+      "type": "number",
+      "description": "Total amount"
+    },
+    "amount_paid": {
+      "type": "number",
+      "description": "Amount paid"
+    },
+    "amount_remaining": {
+      "type": "number",
+      "description": "Balance"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "open",
+        "paid",
+        "void",
+        "uncollectible"
+      ],
+      "description": "Invoice status"
+    },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unit_amount": {
+            "type": "number"
+          },
+          "amount": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Invoice line items"
+    },
+    "tax_amount": {
+      "type": "number",
+      "default": 0
+    },
+    "subtotal": {
+      "type": "number"
+    },
+    "total": {
+      "type": "number"
+    },
+    "invoice_pdf_url": {
+      "type": "string",
+      "description": "PDF download link"
+    },
+    "hosted_invoice_url": {
+      "type": "string",
+      "description": "Stripe hosted page"
+    },
+    "payment_intent_id": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "billing_reason": {
+      "type": "string",
+      "enum": [
+        "subscription_create",
+        "subscription_cycle",
+        "subscription_update",
+        "manual"
+      ]
+    },
+    "attempt_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "user_email",
+    "invoice_number",
+    "amount_due",
+    "total"
+  ]
+}

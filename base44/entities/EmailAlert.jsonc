@@ -1,0 +1,83 @@
+{
+  "name": "EmailAlert",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User receiving alert"
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "integration_failed",
+        "setup_incomplete",
+        "health_check_failed",
+        "token_expiring",
+        "quota_exceeded",
+        "system_update",
+        "security_alert"
+      ],
+      "description": "Type of alert"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Email subject line"
+    },
+    "body_html": {
+      "type": "string",
+      "description": "HTML email body"
+    },
+    "body_text": {
+      "type": "string",
+      "description": "Plain text fallback"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "critical"
+      ],
+      "default": "info",
+      "description": "Alert severity"
+    },
+    "action_url": {
+      "type": "string",
+      "description": "Link to fix the issue"
+    },
+    "action_label": {
+      "type": "string",
+      "description": "CTA button text"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When alert was sent"
+    },
+    "opened_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When user opened email"
+    },
+    "clicked_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When user clicked CTA"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When issue was resolved"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional alert data"
+    }
+  },
+  "required": [
+    "user_email",
+    "alert_type",
+    "subject",
+    "body_html"
+  ]
+}

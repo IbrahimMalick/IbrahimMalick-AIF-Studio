@@ -1,0 +1,85 @@
+{
+  "name": "CaptionGeneration",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who generated captions"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Source video URL"
+    },
+    "video_project_id": {
+      "type": "string",
+      "description": "Related VideoProject"
+    },
+    "captions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start_time": {
+            "type": "number"
+          },
+          "end_time": {
+            "type": "number"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Timestamped captions"
+    },
+    "srt_url": {
+      "type": "string",
+      "description": "SRT file URL"
+    },
+    "vtt_url": {
+      "type": "string",
+      "description": "WebVTT file URL"
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Caption language"
+    },
+    "style": {
+      "type": "string",
+      "enum": [
+        "minimal",
+        "bold",
+        "outlined",
+        "shadow",
+        "animated"
+      ],
+      "default": "bold",
+      "description": "Caption style"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "default": "processing"
+    },
+    "accuracy_score": {
+      "type": "number",
+      "description": "AI transcription accuracy"
+    },
+    "word_count": {
+      "type": "number"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "video_url"
+  ]
+}

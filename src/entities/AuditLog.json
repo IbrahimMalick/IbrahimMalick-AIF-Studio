@@ -1,0 +1,53 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who performed action"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["create", "read", "update", "delete", "execute", "export", "share", "login", "api_call"],
+      "description": "Action type"
+    },
+    "resource_type": {
+      "type": "string",
+      "description": "What was affected (Agent, Project, Webhook, etc.)"
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "ID of affected resource"
+    },
+    "resource_name": {
+      "type": "string",
+      "description": "Name of affected resource"
+    },
+    "changes": {
+      "type": "object",
+      "description": "What changed (before/after)"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "User's IP address"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "Browser/client info"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["success", "failed", "denied"],
+      "default": "success"
+    },
+    "error_reason": {
+      "type": "string",
+      "description": "Reason for failure/denial"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["user_email", "action", "resource_type"]
+}

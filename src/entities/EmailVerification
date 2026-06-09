@@ -1,0 +1,36 @@
+{
+  "name": "EmailVerification",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Email to verify"
+    },
+    "token": {
+      "type": "string",
+      "description": "Verification token"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resent_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times resent"
+    }
+  },
+  "required": [
+    "user_email",
+    "token",
+    "expires_at"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "ActivityLog",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who performed action"
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "render",
+        "export",
+        "share",
+        "login"
+      ],
+      "description": "Type of action"
+    },
+    "entity_type": {
+      "type": "string",
+      "description": "Type of entity affected (VideoProject, Asset, etc.)"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "ID of affected entity"
+    },
+    "entity_name": {
+      "type": "string",
+      "description": "Name/title of affected entity"
+    },
+    "details": {
+      "type": "object",
+      "description": "Additional details about the action"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "User's IP address"
+    }
+  },
+  "required": [
+    "user_email",
+    "action_type"
+  ]
+}

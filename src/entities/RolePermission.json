@@ -1,0 +1,30 @@
+{
+  "name": "RolePermission",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": ["owner", "admin", "manager", "member", "viewer"],
+      "description": "Role name"
+    },
+    "resource": {
+      "type": "string",
+      "enum": ["agents", "projects", "billing", "analytics", "team", "integrations", "webhooks", "settings"],
+      "description": "Resource type"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["create", "read", "update", "delete", "execute"],
+      "description": "Allowed action"
+    },
+    "is_allowed": {
+      "type": "boolean",
+      "default": true
+    },
+    "conditions": {
+      "type": "object",
+      "description": "Optional conditions (e.g., owned_by_user, within_budget)"
+    }
+  },
+  "required": ["role", "resource", "action"]
+}

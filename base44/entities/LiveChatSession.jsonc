@@ -1,0 +1,119 @@
+{
+  "name": "LiveChatSession",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User in chat"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique chat session"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "queued",
+        "resolved",
+        "transferred",
+        "closed"
+      ],
+      "default": "queued",
+      "description": "Chat status"
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "Support agent handling chat (null for AI only)"
+    },
+    "is_ai_handled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether AI is responding"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "setup_help",
+        "technical_issue",
+        "billing",
+        "feature_request",
+        "general"
+      ],
+      "description": "Chat topic"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "urgent"
+      ],
+      "default": "medium"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Chat message history"
+    },
+    "ai_confidence": {
+      "type": "number",
+      "description": "AI's confidence it can resolve (0-1)"
+    },
+    "escalated_to_human": {
+      "type": "boolean",
+      "default": false
+    },
+    "escalation_reason": {
+      "type": "string"
+    },
+    "resolution_time_seconds": {
+      "type": "number",
+      "description": "Time to resolve"
+    },
+    "user_satisfaction": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Rating 1-5 stars"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "session_id"
+  ]
+}

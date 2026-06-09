@@ -1,0 +1,248 @@
+{
+  "name": "VideoPerformanceAnalytics",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this analytics data"
+    },
+    "video_project_id": {
+      "type": "string",
+      "description": "Related VideoProject ID"
+    },
+    "export_preset_used": {
+      "type": "string",
+      "description": "Which export preset was used"
+    },
+    "export_settings": {
+      "type": "object",
+      "description": "Complete export settings used",
+      "properties": {
+        "codec": {
+          "type": "string"
+        },
+        "bitrate_kbps": {
+          "type": "number"
+        },
+        "resolution": {
+          "type": "string"
+        },
+        "framerate": {
+          "type": "number"
+        }
+      }
+    },
+    "platforms_published": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which platforms video was published to"
+    },
+    "platform_metrics": {
+      "type": "object",
+      "description": "Performance data per platform",
+      "properties": {
+        "youtube": {
+          "type": "object",
+          "properties": {
+            "views": {
+              "type": "number"
+            },
+            "watch_time_minutes": {
+              "type": "number"
+            },
+            "average_view_duration": {
+              "type": "number"
+            },
+            "audience_retention_percentage": {
+              "type": "number"
+            },
+            "likes": {
+              "type": "number"
+            },
+            "comments": {
+              "type": "number"
+            },
+            "shares": {
+              "type": "number"
+            },
+            "click_through_rate": {
+              "type": "number"
+            }
+          }
+        },
+        "instagram": {
+          "type": "object",
+          "properties": {
+            "views": {
+              "type": "number"
+            },
+            "reach": {
+              "type": "number"
+            },
+            "engagement_rate": {
+              "type": "number"
+            },
+            "saves": {
+              "type": "number"
+            },
+            "shares": {
+              "type": "number"
+            }
+          }
+        },
+        "tiktok": {
+          "type": "object",
+          "properties": {
+            "views": {
+              "type": "number"
+            },
+            "average_watch_time": {
+              "type": "number"
+            },
+            "completion_rate": {
+              "type": "number"
+            },
+            "likes": {
+              "type": "number"
+            },
+            "shares": {
+              "type": "number"
+            }
+          }
+        },
+        "facebook": {
+          "type": "object",
+          "properties": {
+            "views": {
+              "type": "number"
+            },
+            "reach": {
+              "type": "number"
+            },
+            "engagement_rate": {
+              "type": "number"
+            },
+            "reactions": {
+              "type": "number"
+            },
+            "shares": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "editing_style_data": {
+      "type": "object",
+      "description": "Editing characteristics",
+      "properties": {
+        "pacing": {
+          "type": "string"
+        },
+        "mood": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number"
+        },
+        "scene_count": {
+          "type": "number"
+        },
+        "average_scene_duration": {
+          "type": "number"
+        }
+      }
+    },
+    "ai_predictions": {
+      "type": "object",
+      "description": "AI-generated predictions",
+      "properties": {
+        "predicted_retention_rate": {
+          "type": "number"
+        },
+        "predicted_engagement_score": {
+          "type": "number"
+        },
+        "predicted_viral_probability": {
+          "type": "number"
+        },
+        "confidence_score": {
+          "type": "number"
+        }
+      }
+    },
+    "actual_performance": {
+      "type": "object",
+      "description": "Actual results",
+      "properties": {
+        "overall_views": {
+          "type": "number"
+        },
+        "overall_engagement_rate": {
+          "type": "number"
+        },
+        "average_retention_rate": {
+          "type": "number"
+        },
+        "total_watch_time_minutes": {
+          "type": "number"
+        }
+      }
+    },
+    "drop_off_analysis": {
+      "type": "object",
+      "description": "Where viewers drop off",
+      "properties": {
+        "critical_drop_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp_seconds": {
+                "type": "number"
+              },
+              "drop_percentage": {
+                "type": "number"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "retention_curve": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "time_seconds": {
+                "type": "number"
+              },
+              "retention_percentage": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "performance_score": {
+      "type": "number",
+      "description": "Overall performance score 0-100"
+    },
+    "analysis_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When analysis was performed"
+    }
+  },
+  "required": [
+    "user_email",
+    "video_project_id"
+  ]
+}

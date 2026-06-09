@@ -1,0 +1,60 @@
+{
+  "name": "UserPreferences",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User these preferences belong to"
+    },
+    "daily_budget_usd": {
+      "type": "number",
+      "default": 10,
+      "description": "Daily AI spending budget"
+    },
+    "monthly_budget_usd": {
+      "type": "number",
+      "default": 100,
+      "description": "Monthly AI spending budget"
+    },
+    "email_notifications": {
+      "type": "boolean",
+      "default": true,
+      "description": "Send email notifications"
+    },
+    "notification_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "render_complete",
+        "cost_alert",
+        "limit_reached"
+      ],
+      "description": "Which notification types to receive"
+    },
+    "auto_cache_prompts": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically cache AI responses"
+    },
+    "default_video_resolution": {
+      "type": "string",
+      "default": "1920x1080",
+      "description": "Default video resolution"
+    },
+    "default_art_style": {
+      "type": "string",
+      "default": "digital_art",
+      "description": "Default AI art style"
+    },
+    "onboarding_completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user completed onboarding"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

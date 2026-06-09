@@ -1,0 +1,70 @@
+{
+  "name": "ZapierTrigger",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns this trigger"
+    },
+    "trigger_name": {
+      "type": "string",
+      "description": "Human-readable trigger name"
+    },
+    "trigger_event": {
+      "type": "string",
+      "enum": [
+        "video_completed",
+        "art_generated",
+        "post_published",
+        "lead_captured",
+        "render_failed",
+        "budget_exceeded",
+        "new_subscriber"
+      ],
+      "description": "Event that fires this trigger"
+    },
+    "zapier_webhook_url": {
+      "type": "string",
+      "description": "Zapier webhook URL to call"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether trigger is enabled"
+    },
+    "payload_template": {
+      "type": "object",
+      "description": "Data structure to send to Zapier"
+    },
+    "filters": {
+      "type": "object",
+      "description": "Conditions that must be met"
+    },
+    "last_triggered": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time this fired"
+    },
+    "trigger_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total times triggered"
+    },
+    "success_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Successful deliveries"
+    },
+    "failure_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Failed deliveries"
+    }
+  },
+  "required": [
+    "user_email",
+    "trigger_name",
+    "trigger_event",
+    "zapier_webhook_url"
+  ]
+}

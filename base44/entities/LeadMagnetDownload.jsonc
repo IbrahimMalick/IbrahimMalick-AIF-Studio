@@ -1,0 +1,108 @@
+{
+  "name": "LeadMagnetDownload",
+  "type": "object",
+  "properties": {
+    "lead_magnet_id": {
+      "type": "string",
+      "description": "Lead magnet downloaded"
+    },
+    "lead_email": {
+      "type": "string",
+      "description": "Lead's email"
+    },
+    "lead_name": {
+      "type": "string",
+      "description": "Lead's name"
+    },
+    "lead_company": {
+      "type": "string",
+      "description": "Lead's company"
+    },
+    "lead_industry": {
+      "type": "string",
+      "description": "Lead's industry"
+    },
+    "personalized_data": {
+      "type": "object",
+      "description": "Data used for personalization"
+    },
+    "variant_id": {
+      "type": "string",
+      "description": "A/B test variant shown"
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Language version downloaded"
+    },
+    "utm_source": {
+      "type": "string",
+      "description": "UTM tracking source"
+    },
+    "utm_medium": {
+      "type": "string"
+    },
+    "utm_campaign": {
+      "type": "string"
+    },
+    "utm_content": {
+      "type": "string"
+    },
+    "referrer_url": {
+      "type": "string",
+      "description": "Where user came from"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "user_agent": {
+      "type": "string"
+    },
+    "device_type": {
+      "type": "string",
+      "enum": [
+        "desktop",
+        "mobile",
+        "tablet"
+      ]
+    },
+    "download_method": {
+      "type": "string",
+      "enum": [
+        "direct",
+        "email",
+        "popup",
+        "landing_page"
+      ]
+    },
+    "converted_to_customer": {
+      "type": "boolean",
+      "default": false,
+      "description": "Did they upgrade/purchase?"
+    },
+    "conversion_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "conversion_value_usd": {
+      "type": "number",
+      "description": "Revenue from this lead"
+    },
+    "ghl_contact_id": {
+      "type": "string",
+      "description": "Created/updated GHL contact ID"
+    },
+    "email_list_added": {
+      "type": "boolean",
+      "default": false
+    },
+    "downloaded_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "lead_magnet_id",
+    "lead_email"
+  ]
+}

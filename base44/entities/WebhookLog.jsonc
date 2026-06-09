@@ -1,0 +1,47 @@
+{
+  "name": "WebhookLog",
+  "type": "object",
+  "properties": {
+    "webhook_id": {
+      "type": "string",
+      "description": "Webhook endpoint ID"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Event that triggered webhook"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Data sent to webhook"
+    },
+    "status_code": {
+      "type": "number",
+      "description": "HTTP response status code"
+    },
+    "response_body": {
+      "type": "string",
+      "description": "Response from endpoint"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether delivery succeeded"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if failed"
+    },
+    "retry_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of retry attempts"
+    },
+    "duration_ms": {
+      "type": "number",
+      "description": "Request duration in milliseconds"
+    }
+  },
+  "required": [
+    "webhook_id",
+    "event_type"
+  ]
+}

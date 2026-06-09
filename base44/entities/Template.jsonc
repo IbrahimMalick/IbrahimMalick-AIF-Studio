@@ -1,0 +1,49 @@
+{
+  "name": "Template",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "social_media",
+        "explainer",
+        "promo",
+        "tutorial",
+        "podcast",
+        "slideshow"
+      ],
+      "description": "Template category"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview thumbnail"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Default duration"
+    },
+    "json_structure": {
+      "type": "string",
+      "description": "Template JSON structure"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_premium": {
+      "type": "boolean",
+      "default": false
+    },
+    "use_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "category"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "PermissionAudit",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User whose permissions changed"
+    },
+    "changed_by": {
+      "type": "string",
+      "description": "Admin who made the change"
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "role_assigned",
+        "role_removed",
+        "permission_granted",
+        "permission_revoked",
+        "access_denied"
+      ],
+      "description": "Type of permission change"
+    },
+    "previous_role": {
+      "type": "string",
+      "description": "Role before change"
+    },
+    "new_role": {
+      "type": "string",
+      "description": "Role after change"
+    },
+    "permissions_changed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Permissions added or removed"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for change"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "IP address of change initiator"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional audit data"
+    }
+  },
+  "required": [
+    "user_email",
+    "changed_by",
+    "action_type"
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "name": "LeadNurtureSequence",
+  "type": "object",
+  "properties": {
+    "lead_id": {
+      "type": "string",
+      "description": "Lead being nurtured"
+    },
+    "nurture_rule_id": {
+      "type": "string",
+      "description": "Rule that triggered this"
+    },
+    "sequence_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "completed",
+        "cancelled",
+        "converted",
+        "lost"
+      ],
+      "default": "active",
+      "description": "Current sequence status"
+    },
+    "current_touchpoint": {
+      "type": "number",
+      "default": 0,
+      "description": "Current step in sequence"
+    },
+    "total_touchpoints": {
+      "type": "number",
+      "description": "Total steps in sequence"
+    },
+    "progress_percentage": {
+      "type": "number",
+      "default": 0,
+      "description": "Sequence progress 0-100"
+    },
+    "touchpoints_completed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "touchpoint_number": {
+            "type": "number"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "sent_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delivered": {
+            "type": "boolean"
+          },
+          "opened": {
+            "type": "boolean"
+          },
+          "clicked": {
+            "type": "boolean"
+          },
+          "replied": {
+            "type": "boolean"
+          },
+          "outbound_job_id": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Completed touchpoints"
+    },
+    "next_touchpoint_scheduled": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When next message sends"
+    },
+    "engagement_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Lead engagement in sequence"
+    },
+    "lead_responded": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether lead replied to any message"
+    },
+    "response_received_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When lead responded"
+    },
+    "response_message": {
+      "type": "string",
+      "description": "Lead's response"
+    },
+    "auto_paused": {
+      "type": "boolean",
+      "default": false,
+      "description": "Paused due to reply or engagement"
+    },
+    "pause_reason": {
+      "type": "string",
+      "description": "Why sequence paused"
+    },
+    "callback_scheduled": {
+      "type": "boolean",
+      "default": false
+    },
+    "callback_appointment_id": {
+      "type": "string",
+      "description": "Scheduled callback Appointment ID"
+    },
+    "qualified_during_sequence": {
+      "type": "boolean",
+      "default": false
+    },
+    "qualified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "exit_reason": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "converted",
+        "unsubscribed",
+        "bounced",
+        "spam_complaint",
+        "manual_stop",
+        "auto_disqualified"
+      ],
+      "description": "Why sequence ended"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Sequence start"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Sequence end"
+    },
+    "total_duration_days": {
+      "type": "number",
+      "description": "Days from start to completion"
+    },
+    "ai_insights": {
+      "type": "object",
+      "properties": {
+        "best_performing_touchpoint": {
+          "type": "number"
+        },
+        "optimal_send_times": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "engagement_pattern": {
+          "type": "string"
+        },
+        "recommended_actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "AI analysis of sequence performance"
+    },
+    "ghl_synced": {
+      "type": "boolean",
+      "default": false,
+      "description": "Synced to GoHighLevel"
+    },
+    "ghl_synced_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When synced to GHL"
+    },
+    "ghl_opportunity_id": {
+      "type": "string",
+      "description": "GHL opportunity ID if created"
+    }
+  },
+  "required": [
+    "lead_id",
+    "nurture_rule_id"
+  ]
+}

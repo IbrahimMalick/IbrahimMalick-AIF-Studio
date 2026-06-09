@@ -1,0 +1,86 @@
+{
+  "name": "EmailSequence",
+  "type": "object",
+  "properties": {
+    "sequence_name": {
+      "type": "string",
+      "description": "Sequence identifier"
+    },
+    "sequence_type": {
+      "type": "string",
+      "enum": [
+        "onboarding",
+        "trial_expiry",
+        "re_engagement",
+        "feature_adoption",
+        "upsell",
+        "customer_success"
+      ],
+      "description": "Sequence purpose"
+    },
+    "trigger": {
+      "type": "string",
+      "enum": [
+        "user_signup",
+        "trial_day_3",
+        "trial_day_7",
+        "inactive_7_days",
+        "plan_upgrade",
+        "custom"
+      ],
+      "description": "What starts the sequence"
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email_number": {
+            "type": "number"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "delay_hours": {
+            "type": "number"
+          },
+          "template_id": {
+            "type": "string"
+          },
+          "personalization_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Emails in sequence"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "total_sent": {
+      "type": "number",
+      "default": 0
+    },
+    "total_opened": {
+      "type": "number",
+      "default": 0
+    },
+    "total_clicked": {
+      "type": "number",
+      "default": 0
+    },
+    "conversion_rate": {
+      "type": "number",
+      "description": "% who completed goal"
+    }
+  },
+  "required": [
+    "sequence_name",
+    "sequence_type",
+    "trigger"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "RewardShop",
+  "type": "object",
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "description": "Unique item identifier"
+    },
+    "item_name": {
+      "type": "string",
+      "description": "Reward name"
+    },
+    "description": {
+      "type": "string",
+      "description": "What user gets"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "templates",
+        "features",
+        "credits",
+        "avatars",
+        "cosmetics",
+        "power_ups"
+      ],
+      "description": "Item category"
+    },
+    "coin_price": {
+      "type": "number",
+      "description": "Cost in virtual coins"
+    },
+    "xp_required": {
+      "type": "number",
+      "default": 0,
+      "description": "Minimum XP to purchase"
+    },
+    "level_required": {
+      "type": "number",
+      "default": 1,
+      "description": "Minimum level to unlock"
+    },
+    "item_data": {
+      "type": "object",
+      "description": "What's included in the item"
+    },
+    "thumbnail_url": {
+      "type": "string"
+    },
+    "is_limited_edition": {
+      "type": "boolean",
+      "default": false
+    },
+    "stock_available": {
+      "type": "number",
+      "description": "Limited quantity (-1 for unlimited)"
+    },
+    "purchase_count": {
+      "type": "number",
+      "default": 0
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "item_id",
+    "item_name",
+    "coin_price"
+  ]
+}

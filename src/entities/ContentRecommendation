@@ -1,0 +1,90 @@
+{
+  "name": "ContentRecommendation",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User receiving recommendation"
+    },
+    "recommendation_type": {
+      "type": "string",
+      "enum": [
+        "trending_topic",
+        "best_posting_time",
+        "content_idea",
+        "hashtag_suggestion",
+        "platform_recommendation",
+        "collaboration_opportunity"
+      ],
+      "description": "Type of recommendation"
+    },
+    "title": {
+      "type": "string",
+      "description": "Recommendation title"
+    },
+    "description": {
+      "type": "string",
+      "description": "What to do and why"
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "AI confidence (0-1)"
+    },
+    "potential_impact": {
+      "type": "object",
+      "properties": {
+        "estimated_views": {
+          "type": "number"
+        },
+        "estimated_engagement": {
+          "type": "number"
+        },
+        "estimated_revenue": {
+          "type": "number"
+        }
+      },
+      "description": "Predicted impact"
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where data came from"
+    },
+    "action_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific steps to take"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time-sensitive recommendations"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "viewed",
+        "acted_on",
+        "dismissed",
+        "expired"
+      ],
+      "default": "new"
+    },
+    "actual_results": {
+      "type": "object",
+      "description": "Track if user followed advice and results"
+    }
+  },
+  "required": [
+    "user_email",
+    "recommendation_type",
+    "title"
+  ]
+}

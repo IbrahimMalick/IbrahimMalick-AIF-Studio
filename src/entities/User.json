@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "plan_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio"
+      ],
+      "default": "free",
+      "description": "Subscription plan level"
+    },
+    "storage_used_mb": {
+      "type": "number",
+      "default": 0,
+      "description": "Storage used in megabytes"
+    },
+    "tokens_used": {
+      "type": "number",
+      "default": 0,
+      "description": "AI tokens consumed this month"
+    },
+    "theme_preference": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ],
+      "default": "dark"
+    }
+  },
+  "name": "User"
+}

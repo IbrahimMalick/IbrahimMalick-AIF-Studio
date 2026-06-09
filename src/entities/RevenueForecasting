@@ -1,0 +1,79 @@
+{
+  "name": "RevenueForecasting",
+  "type": "object",
+  "properties": {
+    "forecast_name": {
+      "type": "string",
+      "description": "Forecast identifier"
+    },
+    "forecast_period": {
+      "type": "string",
+      "enum": [
+        "next_month",
+        "next_quarter",
+        "next_year"
+      ],
+      "description": "Forecast timeframe"
+    },
+    "model_type": {
+      "type": "string",
+      "enum": [
+        "linear_regression",
+        "moving_average",
+        "exponential_smoothing",
+        "arima"
+      ],
+      "description": "Forecasting algorithm"
+    },
+    "historical_data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "revenue": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Historical revenue data"
+    },
+    "predicted_revenue": {
+      "type": "number",
+      "description": "Forecasted amount"
+    },
+    "confidence_interval": {
+      "type": "object",
+      "properties": {
+        "lower_bound": {
+          "type": "number"
+        },
+        "upper_bound": {
+          "type": "number"
+        }
+      }
+    },
+    "accuracy_score": {
+      "type": "number",
+      "description": "Model accuracy (0-100)"
+    },
+    "factors_considered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Variables in model"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "forecast_name",
+    "forecast_period",
+    "predicted_revenue"
+  ]
+}

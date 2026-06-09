@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "properties": {
+    "plan_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "creator",
+        "studio",
+        "enterprise"
+      ],
+      "default": "free",
+      "description": "Subscription plan level"
+    },
+    "storage_used_mb": {
+      "type": "number",
+      "default": 0,
+      "description": "Storage used in megabytes"
+    },
+    "tokens_used": {
+      "type": "number",
+      "default": 0,
+      "description": "AI tokens consumed this month"
+    },
+    "theme_preference": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ],
+      "default": "dark"
+    },
+    "custom_role": {
+      "type": "string",
+      "enum": [
+        "super_admin",
+        "project_manager",
+        "editor",
+        "collaborator",
+        "viewer",
+        "analyst"
+      ],
+      "description": "Custom role beyond basic admin/user"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Granular permissions assigned to user"
+    },
+    "department": {
+      "type": "string",
+      "description": "User's department or team"
+    },
+    "bio": {
+      "type": "string",
+      "description": "User biography"
+    },
+    "avatar_url": {
+      "type": "string",
+      "description": "Profile picture URL"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "America/New_York"
+    },
+    "language": {
+      "type": "string",
+      "default": "en"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether user account is active"
+    },
+    "last_login": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last login timestamp"
+    }
+  },
+  "name": "User",
+  "required": []
+}

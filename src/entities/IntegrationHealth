@@ -1,0 +1,87 @@
+{
+  "name": "IntegrationHealth",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who owns integration"
+    },
+    "integration_id": {
+      "type": "string",
+      "description": "Integration record ID"
+    },
+    "integration_type": {
+      "type": "string",
+      "enum": [
+        "gohighlevel",
+        "meta_ads",
+        "mailchimp",
+        "stripe",
+        "openai",
+        "zapier",
+        "social_media"
+      ],
+      "description": "Type of integration"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "degraded",
+        "down",
+        "unauthorized"
+      ],
+      "default": "healthy",
+      "description": "Current health status"
+    },
+    "last_check": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last health check time"
+    },
+    "last_success": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last successful operation"
+    },
+    "consecutive_failures": {
+      "type": "number",
+      "default": 0,
+      "description": "Failed checks in a row"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Latest error details"
+    },
+    "response_time_ms": {
+      "type": "number",
+      "description": "API response time"
+    },
+    "rate_limit_remaining": {
+      "type": "number",
+      "description": "API calls remaining"
+    },
+    "token_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When OAuth token expires"
+    },
+    "auto_refresh_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "alert_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user was notified of issue"
+    },
+    "alert_sent_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "user_email",
+    "integration_type"
+  ]
+}

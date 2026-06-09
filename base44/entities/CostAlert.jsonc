@@ -1,0 +1,42 @@
+{
+  "name": "CostAlert",
+  "type": "object",
+  "properties": {
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "daily_budget",
+        "monthly_budget",
+        "single_operation",
+        "unusual_spike"
+      ],
+      "description": "Type of cost alert"
+    },
+    "threshold_usd": {
+      "type": "number",
+      "description": "Cost threshold that triggered alert"
+    },
+    "actual_cost_usd": {
+      "type": "number",
+      "description": "Actual cost that triggered alert"
+    },
+    "alert_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user was notified"
+    },
+    "alert_message": {
+      "type": "string",
+      "description": "Alert message sent to user"
+    },
+    "operation_details": {
+      "type": "object",
+      "description": "Details about the operation that triggered alert"
+    }
+  },
+  "required": [
+    "alert_type",
+    "threshold_usd",
+    "actual_cost_usd"
+  ]
+}
